@@ -3,13 +3,40 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:local="clr-namespace:PzProject.View"
+      xmlns:designTime="clr-namespace:PzProject.ViewModel"
       mc:Ignorable="d"
       d:DesignHeight="400" d:DesignWidth="600"
       Title="MainPage">
+
+    <Page.Resources>
+
+        <DataTemplate x:Key="MovieItemDataTemplate">
+            <Border Margin="0">
+                <Grid Background="CornflowerBlue">
+                    <StackPanel>
+                        <TextBlock Text="{Binding Name}" VerticalAlignment="Center" />
+                        <TextBlock Text="{Binding Description}" VerticalAlignment="Center" />
+                        <TextBlock Text="{Binding Length}" VerticalAlignment="Center" />
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </DataTemplate>
+
+    </Page.Resources>
     <Grid Background="Coral">
-      
+        
+        <ListView x:Name="listView"
+                  HorizontalAlignment="Left"
+                  Height="380"
+                  Margin="10,10,0,0"
+                  VerticalAlignment="Top"
+                  Width="580" 
+                  ItemTemplate="{StaticResource MovieItemDataTemplate}"
+                  ItemsSource="{Binding MovieList}"
+        />
+        
     </Grid>
-
-
 </Page>
+
+
+

@@ -12,14 +12,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using PzProject.ViewModel;
 
 namespace PzProject.View
 {
     public partial class MainPage : Page
     {
+        private readonly MainPageViewModel _viewModel;
+
         public MainPage()
         {
             InitializeComponent();
+            _viewModel = new MainPageViewModel();
+            this.DataContext = _viewModel;
         }
     }
 }
