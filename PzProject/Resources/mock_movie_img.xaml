@@ -1,0 +1,10 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:PzProject">
+    <BitmapImage x:Key="john_wick" UriSource="movie_img/john_wick.jpg" />
+    <BitmapImage x:Key="kiler" UriSource="movie_img/kiler.jpg" />
+    <BitmapImage x:Key="psy" UriSource="movie_img/psy.jpg" />
+    <BitmapImage x:Key="rambo" UriSource="movie_img/rambo.jpg" />
+    <BitmapImage x:Key="szklana_pulapka" UriSource="movie_img/szklana_pulapka.jpg" />
+
+</ResourceDictionary>

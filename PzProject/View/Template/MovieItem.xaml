@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="PzProject.View.Template.MovieItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PzProject.View.Template"
+             mc:Ignorable="d" 
+             d:DesignHeight="100" d:DesignWidth="500">
+    <Grid>
+        <Border Margin="0">
+            <Grid Background="CornflowerBlue">
+                <StackPanel>
+                    <Image Source="{Binding ImageSrc, Converter={StaticResource ImageConverter}}" Width="100" Height="100"/>
+                    <TextBlock Text="{Binding Name, FallbackValue='movie name'}" />
+                    <TextBlock Text="{Binding Description, FallbackValue='description'}" />
+                    <TextBlock Text="{Binding Length, FallbackValue='length'}" />
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>
