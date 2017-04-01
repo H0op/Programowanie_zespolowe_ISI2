@@ -32,10 +32,12 @@
                   Height="340"
                   Margin="10,10,0,0"
                   VerticalAlignment="Top"
-                  Width="980" 
+                  Width="860" 
                   ItemTemplate="{StaticResource MovieItemDataTemplate}"
                   ItemsSource="{Binding MovieList}"
         />
+
+        <Button x:Name="button" Content="Button" Command="{Binding HaloClick}" HorizontalAlignment="Left" Margin="891,160,0,0" VerticalAlignment="Top" Width="75"/>
 
     </Grid>
 </Page>

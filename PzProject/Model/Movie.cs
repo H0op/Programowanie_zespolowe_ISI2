@@ -86,6 +86,11 @@ namespace PzProject.Model
             _minutes = minutes;
         }
 
+        public Movie()
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
 
     }

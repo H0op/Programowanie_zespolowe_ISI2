@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Documents;
 using System.Windows.Input;
 using PzProject.Model;
 using PzProject.Utility;
@@ -13,7 +14,7 @@ namespace PzProject.ViewModel
     class MainPageViewModel : BindableBase
     {
         // commands
-        public ICommand AddMovie { get; set; }
+        public ICommand HaloClick { get; set; }
 
         private ObservableCollection<Movie> _movieList;
 
@@ -27,6 +28,19 @@ namespace PzProject.ViewModel
         {
             MovieList = new ObservableCollection<Movie>();
             InitData();
+            HaloClick = new RelayCommand(action => HeheHerabataCiStygnie(), () => CanDelete());
+        }
+
+        private void HeheHerabataCiStygnie()
+        {
+            int a = 1;
+            int b = a + 1;
+            MovieList.RemoveAt(1);
+        }
+
+        private bool CanDelete()
+        {
+            return MovieList.Count > 2;
         }
 
         private async void InitData()
