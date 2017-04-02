@@ -25,6 +25,7 @@ namespace PzProject.View
             InitializeComponent();
             _viewModel = new MainPageViewModel();
             this.DataContext = _viewModel;
+            // zmiany 123
         }
     }
 }
