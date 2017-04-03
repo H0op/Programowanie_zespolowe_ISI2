@@ -14,10 +14,11 @@ namespace PzProject.ViewModel
     class MainPageViewModel : BindableBase
     {
         // commands
-        public ICommand HaloClick { get; set; }
+        //public ICommand JakisTekst { get; set; }
+
 
         private ObservableCollection<Movie> _movieList;
-
+        
         public ObservableCollection<Movie> MovieList
         {
             get { return _movieList; }
@@ -28,20 +29,12 @@ namespace PzProject.ViewModel
         {
             MovieList = new ObservableCollection<Movie>();
             InitData();
-            HaloClick = new RelayCommand(action => HeheHerabataCiStygnie(), () => CanDelete());
+            //przyklad wywolania komendy
+            //HaloClick = new RelayCommand(action => HeheHerabataCiStygnie(), () => CanDelete());
+
         }
 
-        private void HeheHerabataCiStygnie()
-        {
-            int a = 1;
-            int b = a + 1;
-            MovieList.RemoveAt(1);
-        }
 
-        private bool CanDelete()
-        {
-            return MovieList.Count > 2;
-        }
 
         private async void InitData()
         {
