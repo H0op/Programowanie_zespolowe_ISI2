@@ -9,37 +9,71 @@
       d:DesignHeight="360" d:DesignWidth="1000"
       Title="MainPage">
 
-    <Page.Resources>
 
-        <DataTemplate x:Key="MovieItemDataTemplate">
-            <Border Margin="0">
-                <Grid Background="CornflowerBlue">
-                    <StackPanel>
-                        <Image MinWidth="100" MaxHeight="200" Source="{Binding ImageSrc, Converter={ StaticResource ImageConverter}}"/>
-                        <TextBlock Text="{Binding Name, FallbackValue='movie name'}" />
-                        <TextBlock Text="{Binding Description, FallbackValue='description'}" />
-                        <TextBlock Text="{Binding Length, FallbackValue='length'}" />
-                    </StackPanel>
-                </Grid>
-            </Border>
-        </DataTemplate>
+    <Grid Background="LightGray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
 
-    </Page.Resources>
-    <Grid Background="Coral">
+        <TextBlock Text="Repertuar" 
+                   FontSize="20" 
+                   FontWeight="Bold" 
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Grid.Row="0"/>
 
-        <ListView x:Name="listView"
-                  HorizontalAlignment="Left"
-                  Height="340"
-                  Margin="10,10,0,0"
-                  VerticalAlignment="Top"
-                  Width="860" 
-                  ItemTemplate="{StaticResource MovieItemDataTemplate}"
-                  ItemsSource="{Binding MovieList}"
-        />
+        <TabControl Grid.Row="1"
+                    Margin="10" 
+                    BorderBrush="Gainsboro">
+            
+            <TabItem Header="1">
+                <ListView
+                    ItemTemplate="{StaticResource MovieItemDataTemplate}"
+                    ItemsSource="{Binding MovieList}"/>
+            </TabItem>
 
-        <Button x:Name="button" Content="Button" Command="{Binding HaloClick}" HorizontalAlignment="Left" Margin="891,160,0,0" VerticalAlignment="Top" Width="75"/>
+            <TabItem Header="2">
+                <ListView
+                    ItemTemplate="{StaticResource MovieItemDataTemplate}"
+                    ItemsSource="{Binding MovieList}"/>
+            </TabItem>
 
+            <TabItem Header="3">
+                <ListView
+                    ItemTemplate="{StaticResource MovieItemDataTemplate}"
+                    ItemsSource="{Binding MovieList}"/>
+            </TabItem>
+
+            <TabItem Header="4">
+                <ListView
+                    ItemTemplate="{StaticResource MovieItemDataTemplate}"
+                    ItemsSource="{Binding MovieList}"/>
+            </TabItem>
+
+            <TabItem Header="5">
+                <ListView
+                    ItemTemplate="{StaticResource MovieItemDataTemplate}"
+                    ItemsSource="{Binding MovieList}"/>
+            </TabItem>
+
+            <TabItem Header="6">
+                <ListView
+                    ItemTemplate="{StaticResource MovieItemDataTemplate}"
+                    ItemsSource="{Binding MovieList}"/>
+            </TabItem>
+
+            <TabItem Header="7">
+                <ListView
+                    ItemTemplate="{StaticResource MovieItemDataTemplate}"
+                    ItemsSource="{Binding MovieList}"/>
+            </TabItem>
+
+            <TabItem Header="test"/>
+
+        </TabControl>
     </Grid>
+
 </Page>
 
 
