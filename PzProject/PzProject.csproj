@@ -83,6 +83,7 @@
     <Compile Include="ViewCreator\RoomViewCreator.cs" />
     <Compile Include="ViewModel\MainPageViewModel.cs" />
     <Compile Include="ViewModel\RoomPageViewModel.cs" />
+    <Compile Include="Model\SpotButton.cs" />
     <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
