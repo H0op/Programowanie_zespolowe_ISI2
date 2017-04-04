@@ -1,0 +1,54 @@
+﻿<Page x:Class="PzProject.View.DescriptionPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PzProject.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="360" d:DesignWidth="1000"
+      Title="DescriptionPage">
+
+<Grid Background="LightGray">
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="*"/>
+    </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0" Margin="20" Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!--Zdjecie-->
+            <TextBox Background="LightPink"                   
+                           Width="150" 
+                           Margin="5" 
+                           Grid.Row="0"/>
+            <TextBlock Text="Zwiastun" Grid.Row="1"/>
+        </Grid>
+        <Grid Grid.Column="1" Margin="20" Background="white">
+            <Grid.RowDefinitions>
+                <RowDefinition MinHeight="20"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Tytuł Tytuł TytułTytułTytułTytułTytuł tytul tytul tytul" 
+                       x:Name="Tytul"
+                       TextWrapping="WrapWithOverflow" 
+                       Grid.Row="0" 
+                       FontSize="30" 
+                       FontWeight="Bold"/>
+            <TextBlock Text="gatunek,produkcja, kraj itp" Grid.Row="1"/>
+            <TextBlock Text="opis filmu opis filmu opis filmu opis filmu opis filmu " Grid.Row="3"/>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="rezyseria" Grid.Column="0"/>
+                <TextBlock Text="obsada" Grid.Column="1"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

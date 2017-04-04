@@ -2,11 +2,6 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:PzProject.Resources">
 
-    <Style x:Key="ButtonTextBlockStyle" TargetType="TextBlock">
-        <Setter Property="Background" Value="Pink" />
-    </Style>
-
-
     <Style TargetType="TabItem">
         <Setter Property="Template">
             <Setter.Value>
@@ -29,6 +24,10 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+
+    <Style x:Name="Tytul" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="Comic Sans MS"/>
     </Style>
 
 </ResourceDictionary>
