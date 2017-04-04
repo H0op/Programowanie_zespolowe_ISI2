@@ -35,7 +35,7 @@ namespace PzProject.ViewModel
          
 
             mainGrid.ColumnDefinitions.Add(col);
-            mainGrid.Margin = new Thickness(-60, 0, 0, 0);
+            mainGrid.Margin = new Thickness(-60, -60, 0, 0);
             Grid.SetColumn(inGrid, 0);
             mainGrid.Children.Add(inGrid);
 

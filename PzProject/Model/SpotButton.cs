@@ -11,8 +11,8 @@ namespace PzProject.ViewModel
         public SpotButton(Spot spot)
         {
             this._spot = spot;
-            this.MaxWidth = 50;
-            this.MaxHeight = 50;
+            this.Width = 50;
+            this.Height = 50;
             this.Content = spot.Column + "\n" + spot.Row;
             this.Background = !spot.IsAvailable ? Brushes.Gray : Brushes.Red;
         }
