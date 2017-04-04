@@ -12,24 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using PzProject.ViewModel;
 
 namespace PzProject.View
 {
-    public partial class MainPage : Page
+    /// <summary>
+    /// Interaction logic for Page1.xaml
+    /// </summary>
+    public partial class Page1 : Page
     {
-        private readonly MainPageViewModel _viewModel;
-
-        public MainPage()
+        public Page1()
         {
             InitializeComponent();
-            _viewModel = new MainPageViewModel();
-            this.DataContext = _viewModel;
-        }
-
-        private void tabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
         }
     }
 }
