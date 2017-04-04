@@ -13,7 +13,7 @@ namespace PzProject
         {
             InitializeComponent();
             NavigationManager.Initialize(MainFrame);
-            NavigationManager.NavigateTo(new MainPage());
+            NavigationManager.NavigateTo(new RoomPage());
         }
     }
 }

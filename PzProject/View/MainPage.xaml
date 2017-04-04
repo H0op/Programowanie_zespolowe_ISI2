@@ -9,45 +9,71 @@
       d:DesignHeight="360" d:DesignWidth="1000"
       Title="MainPage">
 
-    <Page.Resources>
 
-        <DataTemplate x:Key="MovieItemDataTemplate">
-            <Border Margin="0">
-                <Grid Background="CornflowerBlue">
-                    <StackPanel>
-                        <Image MinWidth="100" MaxHeight="200" Source="{Binding ImageSrc, Converter={ StaticResource ImageConverter}}"/>
-                        <TextBlock Text="{Binding Name, FallbackValue='movie name'}" />
-                        <TextBlock Text="{Binding Description, FallbackValue='description'}" />
-                        <TextBlock Text="{Binding Length, FallbackValue='length'}" />
-                    </StackPanel>
-                </Grid>
-            </Border>
-        </DataTemplate>
+    <Grid Background="LightGray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
 
-    </Page.Resources>
-    <Grid Background="#99C">
-        <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="148" Margin="72,51,0,0" VerticalAlignment="Top" Width="525" SelectionChanged="tabControl_SelectionChanged">
-            <TabItem Header="Poniedziałek">
-                <Grid Background="#FFE5E5E5" Margin="0,0,0,-71">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="158*"/>
-                        <ColumnDefinition Width="108*"/>
-                        <ColumnDefinition Width="251*"/>
-                    </Grid.ColumnDefinitions>
-                </Grid>
+        <TextBlock Text="Repertuar" 
+                   FontSize="20" 
+                   FontWeight="Bold" 
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Grid.Row="0"/>
+
+        <TabControl Grid.Row="1"
+                    Margin="10" 
+                    BorderBrush="Gainsboro">
+            
+            <TabItem Header="1">
+                <ListView
+                    ItemTemplate="{StaticResource MovieItemDataTemplate}"
+                    ItemsSource="{Binding MovieList}"/>
             </TabItem>
-            <TabItem Header="Wtorek" HorizontalAlignment="Right" Width="98" Margin="0,0,-14,0">
-                <Grid Background="#FFE5E5E5" Margin="-44,29,-8,-115" Height="250" VerticalAlignment="Top" RenderTransformOrigin="0.591,0.462">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="177*"/>
-                        <ColumnDefinition Width="27"/>
-                        <ColumnDefinition Width="365*"/>
-                    </Grid.ColumnDefinitions>
-                    <StackPanel Grid.Column="2" HorizontalAlignment="Left" Height="100" Margin="60.909,121,0,0" VerticalAlignment="Top" Width="100"/>
-                </Grid>
+
+            <TabItem Header="2">
+                <ListView
+                    ItemTemplate="{StaticResource MovieItemDataTemplate}"
+                    ItemsSource="{Binding MovieList}"/>
             </TabItem>
+
+            <TabItem Header="3">
+                <ListView
+                    ItemTemplate="{StaticResource MovieItemDataTemplate}"
+                    ItemsSource="{Binding MovieList}"/>
+            </TabItem>
+
+            <TabItem Header="4">
+                <ListView
+                    ItemTemplate="{StaticResource MovieItemDataTemplate}"
+                    ItemsSource="{Binding MovieList}"/>
+            </TabItem>
+
+            <TabItem Header="5">
+                <ListView
+                    ItemTemplate="{StaticResource MovieItemDataTemplate}"
+                    ItemsSource="{Binding MovieList}"/>
+            </TabItem>
+
+            <TabItem Header="6">
+                <ListView
+                    ItemTemplate="{StaticResource MovieItemDataTemplate}"
+                    ItemsSource="{Binding MovieList}"/>
+            </TabItem>
+
+            <TabItem Header="7">
+                <ListView
+                    ItemTemplate="{StaticResource MovieItemDataTemplate}"
+                    ItemsSource="{Binding MovieList}"/>
+            </TabItem>
+
+            <TabItem Header="test"/>
+
         </TabControl>
     </Grid>
+
 </Page>
 
 
