@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PzProject.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,24 +13,21 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using PzProject.ViewModel;
 
 namespace PzProject.View
 {
-    public partial class MainPage : Page
+    /// <summary>
+    /// Interaction logic for DescriptionPage.xaml
+    /// </summary>
+    public partial class DescriptionPage : Page
     {
-        private readonly MainPageViewModel _viewModel;
+        private readonly DescriptionPageViewModel _viewModel;
 
-        public MainPage()
+        public DescriptionPage(Movie film)
         {
             InitializeComponent();
-            _viewModel = new MainPageViewModel();
+            _viewModel = new DescriptionPageViewModel(new Movie("John Wick", "Były płatny morderca ściga gangsterów, którzy wtargnęli do jego domu.", "pack://application:,,,/Resources/movie_img/john_wick.jpg", 1, 32));
             this.DataContext = _viewModel;
-        }
-
-        private void tabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
         }
     }
 }
