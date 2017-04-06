@@ -15,15 +15,18 @@ namespace PzProject.ViewModel
     {
         // commands
         //public ICommand JakisTekst { get; set; }
-
-
         private ObservableCollection<Movie> _movieList;
-        
+
+        #region Properties
         public ObservableCollection<Movie> MovieList
         {
             get { return _movieList; }
             set { SetProperty(ref _movieList, value); }
         }
+        #endregion
+
+
+        #region Constructor
 
         public MainPageViewModel()
         {
@@ -35,7 +38,10 @@ namespace PzProject.ViewModel
         }
 
 
+        #endregion
 
+
+        #region InitData
         private async void InitData()
         {
             await Task.Delay(300);
@@ -45,5 +51,7 @@ namespace PzProject.ViewModel
             MovieList.Insert(3, new Movie("Szklana pułapka", "Grupa terrorystów opanowuje korporacyjny wieżowiec.", "pack://application:,,,/Resources/movie_img/szklana_pulapka.jpg", 2, 14));
             MovieList.Insert(4, new Movie("Psy", "Franz Maurer, były funkcjonariusz Służby Bezpieczeństwa, zaczyna pracę w policji.", "pack://application:,,,/Resources/movie_img/psy.jpg", 2, 02));
         }
+        #endregion
+
     }
 }

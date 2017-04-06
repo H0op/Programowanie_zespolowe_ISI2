@@ -13,6 +13,8 @@ namespace PzProject.Model
         private int _roomNumber;
         private ObservableCollection<Spot> _spots;
 
+        #region Properties
+
         public int RoomNumber
         {
             get { return _roomNumber; }
@@ -28,10 +30,17 @@ namespace PzProject.Model
             set { SetProperty(ref _spots, value); }
         }
 
+
+        #endregion
+
+        #region Constructor
         public Room(int roomNumber, ObservableCollection<Spot> spots)
         {
             _roomNumber = roomNumber;
             _spots = spots;
         }
+
+        #endregion
+
     }
 }

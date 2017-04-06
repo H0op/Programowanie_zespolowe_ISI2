@@ -13,7 +13,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Wybor miejsca" 
+        <TextBlock Text="Wybór miejsca" 
                    FontSize="20" 
                    FontWeight="Bold" 
                    HorizontalAlignment="Center"
@@ -29,7 +29,8 @@
             <ContentPresenter Grid.Row="0"
                               Margin="10"
                               HorizontalAlignment="Center"
-                              x:Name="Sala">
+                              x:Name="Sala"
+                              Content="{Binding Path=Grid, Mode=OneWay}">
             </ContentPresenter>
             
             <Grid Grid.Row="1">
