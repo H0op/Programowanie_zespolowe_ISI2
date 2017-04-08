@@ -9,9 +9,12 @@ namespace PzProject.Model
 {
     class Spot : BindableBase
     {
+
+        #region Fields
         private bool _isAvailable;
         private int _column;
         private int _row;
+        #endregion
 
         #region Properties
         public bool IsAvailable

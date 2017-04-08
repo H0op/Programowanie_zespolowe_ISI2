@@ -27,50 +27,126 @@
                     Margin="10" 
                     BorderBrush="Gainsboro">
             
-            <TabItem Header="1">
+            <TabItem Header="{Binding Path=DataTime[0], Mode=OneWay}">
+                <ListView x:Name="Lista"
+                    ItemTemplate="{StaticResource MovieItemDataTemplate}"
+                    ItemsSource="{Binding MovieList}"
+                    SelectedValue="{Binding Path=Index, Mode=TwoWay}"/>
+                   
+            </TabItem>
+
+            <TabItem Header="{Binding Path=DataTime[1], Mode=OneWay}">
                 <ListView
                     ItemTemplate="{StaticResource MovieItemDataTemplate}"
                     ItemsSource="{Binding MovieList}"/>
             </TabItem>
 
-            <TabItem Header="2">
+            <TabItem Header="{Binding Path=DataTime[2], Mode=OneWay}">
                 <ListView
                     ItemTemplate="{StaticResource MovieItemDataTemplate}"
                     ItemsSource="{Binding MovieList}"/>
             </TabItem>
 
-            <TabItem Header="3">
+            <TabItem Header="{Binding Path=DataTime[3], Mode=OneWay}">
                 <ListView
                     ItemTemplate="{StaticResource MovieItemDataTemplate}"
                     ItemsSource="{Binding MovieList}"/>
             </TabItem>
 
-            <TabItem Header="4">
+            <TabItem Header="{Binding Path=DataTime[4], Mode=OneWay}">
                 <ListView
                     ItemTemplate="{StaticResource MovieItemDataTemplate}"
                     ItemsSource="{Binding MovieList}"/>
             </TabItem>
 
-            <TabItem Header="5">
+            <TabItem Header="{Binding Path=DataTime[5], Mode=OneWay}">
                 <ListView
                     ItemTemplate="{StaticResource MovieItemDataTemplate}"
                     ItemsSource="{Binding MovieList}"/>
             </TabItem>
 
-            <TabItem Header="6">
+            <TabItem Header="{Binding Path=DataTime[6], Mode=OneWay}">
                 <ListView
                     ItemTemplate="{StaticResource MovieItemDataTemplate}"
                     ItemsSource="{Binding MovieList}"/>
             </TabItem>
+<!--Nowy Widok-->
+            <TabItem Header="Test">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.45*"/>
+                        <ColumnDefinition Width="0.55*"/>
+                    </Grid.ColumnDefinitions>
 
-            <TabItem Header="7">
-                <ListView
-                    ItemTemplate="{StaticResource MovieItemDataTemplate}"
-                    ItemsSource="{Binding MovieList}"/>
+                    <ListBox ItemsSource="{Binding MovieList}"
+                              SelectedValue="{Binding Path=Index, Mode=TwoWay}"
+                              Grid.Column="0"
+                             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                             SelectedItem="{Binding Path=SelectedMovie, Mode=TwoWay}">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border CornerRadius="8, 8, 8, 8"
+                                        Background="LightGray"
+                                        Margin="0, 5, 5, 5">
+                                    <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="0.9*"/>
+                                        <RowDefinition Height="0.1*"/>
+                                    </Grid.RowDefinitions>
+                                    <Image Source="{Binding ImageSrc, Converter={StaticResource ImageConverter}}" 
+                                           Width="150" 
+                                           Margin="5"
+                                           Grid.Row="0"/>
+                                    <TextBlock Grid.Row="1"
+                                               Margin="5"
+                                               Text="{Binding Name}"
+                                               FontWeight="Bold"
+                                               HorizontalAlignment="Center"/>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="0.2*"/>
+                        </Grid.RowDefinitions>
+                        
+                        <TextBlock Grid.Row="0"
+                                   Text="{Binding Path=SelectedMovie.Name, Mode=TwoWay}"
+                                   Background="White"
+                                   Margin="10"/>
+                        
+                        <Grid Grid.Row="1"
+                              Margin="10">
+                            <Grid.ColumnDefinitions>
+                               <ColumnDefinition Width="*"/>
+                               <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <Button Grid.Column="0"
+                                    Margin="5"
+                                    Content="Cos"/>
+                            <Button Grid.Column="1"
+                                    Margin="5"
+                                    Content="cos"/>
+                        </Grid>
+                        
+                    </Grid>
+
+
+
+
+                </Grid>
             </TabItem>
-
-            <TabItem Header="test"/>
-
         </TabControl>
     </Grid>
 

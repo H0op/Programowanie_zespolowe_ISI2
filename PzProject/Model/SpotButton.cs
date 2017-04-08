@@ -6,7 +6,12 @@ namespace PzProject.ViewModel
 {
     class SpotButton : Button
     {
+
+        #region Fields
+
         private Spot _spot;
+
+        #endregion
 
         #region Properties
         public Spot Spot

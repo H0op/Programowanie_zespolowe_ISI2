@@ -11,7 +11,10 @@ namespace PzProject.ViewModel
 {
     public class RoomPageViewModel : BindableBase
     {
+        #region Fields
         private Grid _grid;
+
+        #endregion
 
         #region Properties
         public Grid Grid
@@ -37,7 +40,7 @@ namespace PzProject.ViewModel
 
         #endregion
 
-
+        #region Methods
         private Grid CreateView(int column, int row)
         {
             var spots = new ObservableCollection<Spot>();
@@ -87,6 +90,9 @@ namespace PzProject.ViewModel
             return mainGrid;
         }
 
+
+        #endregion
+        
 
         #region initFakeButton
 

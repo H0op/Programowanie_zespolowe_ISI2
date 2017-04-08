@@ -15,7 +15,9 @@
     WindowTransitionsEnabled="False"
     mc:Ignorable="d">
 
-    <Frame x:Name="MainFrame" VerticalAlignment="Stretch" NavigationUIVisibility="Hidden" />
+    <Frame x:Name="MainFrame" 
+           VerticalAlignment="Stretch" 
+           NavigationUIVisibility="Hidden" />
 
 </Controls:MetroWindow>
 

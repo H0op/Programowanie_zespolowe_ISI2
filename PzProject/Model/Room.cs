@@ -10,8 +10,10 @@ namespace PzProject.Model
 {
     class Room : BindableBase
     {
+        #region Fields
         private int _roomNumber;
         private ObservableCollection<Spot> _spots;
+        #endregion
 
         #region Properties
 
