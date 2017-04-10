@@ -5,28 +5,33 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PzProject.View"
       mc:Ignorable="d" 
-      d:DesignHeight="360" d:DesignWidth="1000"
+      d:DesignHeight="720" d:DesignWidth="1000"
       Title="DescriptionPage">
 
 <Grid Background="LightGray">
     <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="*"/>
-        <ColumnDefinition Width="*"/>
-        <ColumnDefinition Width="*"/>
-    </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0" Margin="20" Background="White">
+        <ColumnDefinition Width=".5*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0" Margin="10" Background="White">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
+
             </Grid.RowDefinitions>
             <!--Zdjecie-->
             <TextBox Background="LightPink"                   
-                           Width="150" 
-                           Margin="5" 
+                           Width="250" 
+                           Margin="20" 
                            Grid.Row="0"/>
             <TextBlock Text="Zwiastun" Grid.Row="1"/>
+            <TextBlock Text="Zwiastun" Grid.Row="1" Margin="0,28,0,-28"/>
+            <TextBlock Text="Zwiastun" Grid.Row="1" Margin="0,58,0,262"/>
+            <TextBlock Text="Zwiastun" Grid.Row="1" Margin="0,88,0,239"/>
+            <TextBlock Text="Zwiastun" Grid.Row="1" Margin="0,116,0,200"/>
+
         </Grid>
-        <Grid Grid.Column="1" Margin="20" Background="white">
+        <Grid Grid.Column="1" Margin="10" Background="white">
             <Grid.RowDefinitions>
                 <RowDefinition MinHeight="20"/>
                 <RowDefinition Height="*"/>

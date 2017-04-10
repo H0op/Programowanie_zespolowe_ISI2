@@ -26,7 +26,7 @@
     </Style>
 
     <Style x:Name="Tytul" TargetType="TextBlock">
-        <Setter Property="FontFamily" Value="Comic Sans MS"/>
+        <Setter Property="FontFamily" Value="Verdana"/>
     </Style>
 
 </ResourceDictionary>
