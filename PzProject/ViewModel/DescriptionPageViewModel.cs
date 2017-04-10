@@ -10,6 +10,10 @@ namespace PzProject.View
     {
         private Movie film;
 
+        public DescriptionPageViewModel()
+        {
+        }
+
         public DescriptionPageViewModel(Movie film)
         {
             this.Film = film;
