@@ -10,8 +10,12 @@ namespace PzProject.Model
 {
     class Room : BindableBase
     {
+        #region Fields
         private int _roomNumber;
         private ObservableCollection<Spot> _spots;
+        #endregion
+
+        #region Properties
 
         public int RoomNumber
         {
@@ -28,10 +32,17 @@ namespace PzProject.Model
             set { SetProperty(ref _spots, value); }
         }
 
+
+        #endregion
+
+        #region Constructor
         public Room(int roomNumber, ObservableCollection<Spot> spots)
         {
             _roomNumber = roomNumber;
             _spots = spots;
         }
+
+        #endregion
+
     }
 }

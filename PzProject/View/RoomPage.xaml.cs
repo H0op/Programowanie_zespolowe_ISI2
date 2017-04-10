@@ -29,7 +29,7 @@ namespace PzProject.View
         public RoomPage()
         {
             InitializeComponent();
-            _viewModel = new RoomPageViewModel(this.Sala);
+            _viewModel = new RoomPageViewModel();
             this.DataContext = _viewModel;
         }
 

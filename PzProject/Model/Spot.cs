@@ -9,10 +9,14 @@ namespace PzProject.Model
 {
     class Spot : BindableBase
     {
+
+        #region Fields
         private bool _isAvailable;
         private int _column;
         private int _row;
+        #endregion
 
+        #region Properties
         public bool IsAvailable
         {
             get { return _isAvailable; }
@@ -41,11 +45,17 @@ namespace PzProject.Model
             }
         }
 
+
+        #endregion
+
+        #region Constructor
         public Spot(bool isAvailable, int column, int row)
         {
             _isAvailable = isAvailable;
             _column = column;
             _row = row;
         }
+        #endregion
+
     }
 }
