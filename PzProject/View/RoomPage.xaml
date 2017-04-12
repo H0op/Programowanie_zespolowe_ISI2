@@ -25,13 +25,13 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="0.2*"/>
             </Grid.RowDefinitions>
+            <Border Grid.Row="0" Background="GhostWhite" BorderBrush="Gainsboro" BorderThickness="1">
+    <ContentPresenter Margin="10"
+                      HorizontalAlignment="Center"
+                      Content="{Binding Path=Grid, Mode=OneWay}">
+    </ContentPresenter>
+            </Border>
 
-            <ContentPresenter Grid.Row="0"
-                              Margin="10"
-                              HorizontalAlignment="Center"
-                              x:Name="Sala"
-                              Content="{Binding Path=Grid, Mode=OneWay}">
-            </ContentPresenter>
             
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>

@@ -72,7 +72,6 @@
     <Compile Include="Utility\NavigationManager.cs" />
     <Compile Include="Utility\PropertySupport.cs" />
     <Compile Include="Utility\RelayCommand.cs" />
-    <Compile Include="ViewCreator\RoomViewCreator.cs" />
     <Compile Include="ViewModel\MainPageViewModel.cs" />
     <Compile Include="ViewModel\RoomPageViewModel.cs" />
     <Compile Include="Model\SpotButton.cs" />
@@ -112,10 +111,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\RoomPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Template\MovieItemDataTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

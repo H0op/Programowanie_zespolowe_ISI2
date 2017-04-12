@@ -27,8 +27,13 @@ namespace PzProject.ViewModel
             this._spot = spot;
             this.Width = 50;
             this.Height = 50;
-            this.Content = spot.Column + "\n" + spot.Row;
-            this.Background = !spot.IsAvailable ? Brushes.Gray : Brushes.Red;
+            this.Content = spot.SpotNumber;
+            if (spot.IsAvailable == 0) this.Background = Brushes.Gray;
+                else if (spot.IsAvailable == 1)
+            {
+                this.Background = Brushes.Red;
+                this.IsEnabled = false;
+            }
         }
         #endregion
 

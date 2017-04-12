@@ -74,7 +74,7 @@
                 </TabItem>
                 <TabItem Header="{Binding Path=DataTime[1], Mode=TwoWay}">
                     <Grid>
-                        <ListBox ItemsSource="{Binding MovieList}"
+                        <ListBox ItemsSource="{Binding MovieList2}"
                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                                  SelectedItem="{Binding Path=SelectedMovie, Mode=TwoWay}">
 
@@ -367,15 +367,22 @@
 
                     <!--Rano-->
                     <Grid Grid.Column="0" Row="1" Margin=" 5 10 0 5">
-                        <TextBlock Text="Tutaj beda guziki (?)" />
+                        <StackPanel>
+                            <Button Content="8.00"/>
+                        </StackPanel>
                     </Grid>
                     <!--Po poludniu`-->
                     <Grid Grid.Column="1" Row="1" Margin=" 5 10 0 5">
-                        <TextBlock Text="Tutaj beda guziki (?)" />
+                        <StackPanel>
+                            <Button Content="13.00"/>
+                            <Button Content="16.00"/>
+                        </StackPanel>
                     </Grid>
                     <!--Wieczorem-->
                     <Grid Grid.Column="2" Row="1" Margin=" 5 10 5 5">
-                        <TextBlock Text="Tutaj beda guziki (?)" />
+                        <StackPanel>
+                            <Button Content="20.00" Command="{Binding NextPageCommand}"/>
+                        </StackPanel>
                     </Grid>
 
                 </Grid>

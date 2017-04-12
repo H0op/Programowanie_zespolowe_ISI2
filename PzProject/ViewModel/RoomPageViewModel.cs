@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Dynamic;
 using System.Windows;
@@ -13,7 +14,7 @@ namespace PzProject.ViewModel
     {
         #region Fields
         private Grid _grid;
-
+        private Room _room;
         #endregion
 
         #region Properties
@@ -28,81 +29,119 @@ namespace PzProject.ViewModel
                 SetProperty(ref _grid, value);
             }
         }
+
+        public Room Room1
+        {
+            get { return _room; }
+            set { SetProperty(ref _room, value); }
+        }
+
         #endregion
 
         #region Constructor
 
         public RoomPageViewModel()
         {
-            Grid = CreateView(15, 15);
+            _room = fakeRoom();
+            Grid = CreateView();
         }
 
 
         #endregion
 
         #region Methods
-        private Grid CreateView(int column, int row)
+
+        private Grid CreateView()
         {
-            var spots = new ObservableCollection<Spot>();
-            var spotButtons = new List<SpotButton>();
             var mainGrid = new Grid();
-            var inGrid = new Grid();
-            var col = new ColumnDefinition();
-            RowDefinition rowDefinition;
+            SpotButton spotButton;
+            ColumnDefinition col;
+            RowDefinition row;
 
-            InitFakeButton(column, row, spots);
-            col.Width = new GridLength(1, GridUnitType.Star);
+            for (int i = 0; i < _room.RowNumber; i++)
+            {
+                row = new RowDefinition();
+                row.Height = GridLength.Auto;
+                mainGrid.RowDefinitions.Add(row);
 
+            }
 
-            mainGrid.ColumnDefinitions.Add(col);
-            mainGrid.Margin = new Thickness(-60, -60, 0, 0);
-            Grid.SetColumn(inGrid, 0);
-            mainGrid.Children.Add(inGrid);
-
-            var iterator = spots.GetEnumerator();
-            while (iterator.MoveNext())
-                spotButtons.Add(new SpotButton(iterator.Current));
-
-
-            for (var i = 0; i <= column; i++)
+            for (int i = 0; i < _room.ColumnNumber; i++)
             {
                 col = new ColumnDefinition();
-                col.Width = new GridLength(60);
-                inGrid.ColumnDefinitions.Add(col);
+                col.Width = GridLength.Auto;
+                mainGrid.ColumnDefinitions.Add(col);
             }
+                    
 
-
-            for (var j = 0; j <= row; j++)
+            var iterator = _room.Spots.GetEnumerator();
+            while (iterator.MoveNext())
             {
-                rowDefinition = new RowDefinition();
-                rowDefinition.Height = new GridLength(60);
-                inGrid.RowDefinitions.Add(rowDefinition);
+                if (iterator.Current.IsAvailable != 2)
+                {
+                    spotButton = new SpotButton(iterator.Current);
+                    Grid.SetColumn(spotButton, iterator.Current.Column);
+                    Grid.SetRow(spotButton, iterator.Current.Row);
+                    mainGrid.Children.Add(spotButton);
+                }
             }
-
-
-            foreach (var button in spotButtons)
-            {
-                Grid.SetColumn(button, button.Spot.Column);
-                Grid.SetRow(button, button.Spot.Row);
-                inGrid.Children.Add(button);
-            }
+            
 
             return mainGrid;
         }
 
 
         #endregion
-        
 
-        #region initFakeButton
+        #region InitFakeRoom
 
-        private void InitFakeButton(int column, int row, ObservableCollection<Spot> spots)
+        private Room fakeRoom()
         {
-            for (var i = 1; i <= row; i++)
-            for (var j = 1; j <= column; j++)
-                spots.Add(new Spot(false, j, i));
+            int row = 5;
+            int col = 5;
+            Room newRoom;
+            ObservableCollection<Spot> spots = new ObservableCollection<Spot>();
+
+            #region initFakeSpots
+            spots.Add(new Spot(1, 0, 0, 0));
+            spots.Add(new Spot(2, 1, 0, 0));
+            spots.Add(new Spot(0, 2, 0, 1));
+            spots.Add(new Spot(2, 3, 0, 0));
+            spots.Add(new Spot(2, 4, 0, 0));
+
+            spots.Add(new Spot(2, 0, 1, 0));
+            spots.Add(new Spot(0, 1, 1, 2));
+            spots.Add(new Spot(0, 2, 1, 3));
+            spots.Add(new Spot(0, 3, 1, 4));
+            spots.Add(new Spot(2, 4, 1, 0));
+
+            spots.Add(new Spot(0, 0, 2, 5));
+            spots.Add(new Spot(0, 1, 2, 6));
+            spots.Add(new Spot(1, 2, 2, 7));
+            spots.Add(new Spot(0, 3, 2, 8));
+            spots.Add(new Spot(0, 4, 2, 9));
+
+            spots.Add(new Spot(2, 0, 3, 0));
+            spots.Add(new Spot(0, 1, 3, 10));
+            spots.Add(new Spot(0, 2, 3, 11));
+            spots.Add(new Spot(0, 3, 3, 12));
+            spots.Add(new Spot(2, 4, 3, 0));
+
+            spots.Add(new Spot(2, 0, 4, 0));
+            spots.Add(new Spot(2, 1, 4, 0));
+            spots.Add(new Spot(0, 2, 4, 13));
+            spots.Add(new Spot(2, 3, 4, 0));
+            spots.Add(new Spot(2, 4, 4, 0));
+
+            #endregion
+
+            newRoom = new Room(1, spots, col, row);
+
+
+            return newRoom;
         }
 
         #endregion
+
     }
 }

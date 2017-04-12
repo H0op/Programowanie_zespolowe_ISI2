@@ -20,6 +20,7 @@ namespace PzProject.ViewModel
         #region Fields/Commands
         public ICommand NextPageCommand { get; set; }
         private ObservableCollection<Movie> _movieList;
+        private ObservableCollection<Movie> _movieList2;
         private string[] _dataTime;
         private Movie _selectedMovie;
 
@@ -30,6 +31,12 @@ namespace PzProject.ViewModel
         {
             get { return _movieList; }
             set { SetProperty(ref _movieList, value); }
+        }
+
+        public ObservableCollection<Movie> MovieList2
+        {
+            get { return _movieList2; }
+            set { SetProperty(ref _movieList2, value); }
         }
 
         public string[] DataTime
@@ -53,6 +60,7 @@ namespace PzProject.ViewModel
         public MainPageViewModel()
         {
             MovieList = new ObservableCollection<Movie>();
+            MovieList2 = new ObservableCollection<Movie>();
             InitData();
             InitDataTime();
             NextPageCommand = new RelayCommand(action => NextPage());
@@ -64,8 +72,8 @@ namespace PzProject.ViewModel
 
         private void NextPage()
         {
-            MessageBox.Show(SelectedMovie.Name);
-            //NavigationManager.NavigateTo(new RoomPage());
+            //MessageBox.Show(SelectedMovie.Name);
+            NavigationManager.NavigateTo(new RoomPage());
         }
 
         #endregion
@@ -83,11 +91,11 @@ namespace PzProject.ViewModel
 
         private void InitData()
         {
-            MovieList.Insert(0, new Movie("John Wick", "Były płatny morderca ściga gangsterów, którzy wtargnęli do jego domu.", "pack://application:,,,/Resources/movie_img/john_wick.jpg", 1, 32, "7 Apr 2017"));
-            MovieList.Insert(1, new Movie("Rambo", "John Rambo, były komandos, naraża się policjantom z pewnego miasteczka.", "pack://application:,,,/Resources/movie_img/rambo.jpg", 1, 24, "8 Apr 2017"));
-            MovieList.Insert(2, new Movie("Kiler", "Jerzy Kiler, przypadkowo zostaje wzięty za płatnego zabójcę.", "pack://application:,,,/Resources/movie_img/kiler.jpg", 1, 43, "9 Apr 2017"));
-            MovieList.Insert(3, new Movie("Szklana pułapka", "Grupa terrorystów opanowuje korporacyjny wieżowiec.", "pack://application:,,,/Resources/movie_img/szklana_pulapka.jpg", 2, 14, "10 Apr 2017"));
-            MovieList.Insert(4, new Movie("Psy", "Franz Maurer, były funkcjonariusz Służby Bezpieczeństwa, zaczyna pracę w policji.", "pack://application:,,,/Resources/movie_img/psy.jpg", 2, 02, "10 Apr 2017"));
+            MovieList.Add(new Movie("John Wick", "Były płatny morderca ściga gangsterów, którzy wtargnęli do jego domu.", "pack://application:,,,/Resources/movie_img/john_wick.jpg", 1, 32, "7 Apr 2017"));
+            MovieList.Add(new Movie("Rambo", "John Rambo, były komandos, naraża się policjantom z pewnego miasteczka.", "pack://application:,,,/Resources/movie_img/rambo.jpg", 1, 24, "8 Apr 2017"));
+            MovieList.Add(new Movie("Kiler", "Jerzy Kiler, przypadkowo zostaje wzięty za płatnego zabójcę.", "pack://application:,,,/Resources/movie_img/kiler.jpg", 1, 43, "9 Apr 2017"));
+            MovieList2.Add(new Movie("Szklana pułapka", "Grupa terrorystów opanowuje korporacyjny wieżowiec.", "pack://application:,,,/Resources/movie_img/szklana_pulapka.jpg", 2, 14, "10 Apr 2017"));
+            MovieList2.Add(new Movie("Psy", "Franz Maurer, były funkcjonariusz Służby Bezpieczeństwa, zaczyna pracę w policji.", "pack://application:,,,/Resources/movie_img/psy.jpg", 2, 02, "10 Apr 2017"));
         }
         #endregion
 

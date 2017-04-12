@@ -7,17 +7,18 @@ using PzProject.Utility;
 
 namespace PzProject.Model
 {
-    class Spot : BindableBase
+    public class Spot : BindableBase
     {
 
         #region Fields
-        private bool _isAvailable;
+        private int _isAvailable;
         private int _column;
         private int _row;
+        private int _spotNumber;
         #endregion
 
         #region Properties
-        public bool IsAvailable
+        public int IsAvailable
         {
             get { return _isAvailable; }
             set
@@ -45,15 +46,26 @@ namespace PzProject.Model
             }
         }
 
+        public int SpotNumber
+        {
+            get { return _spotNumber; }
+            set
+            {
+                SetProperty(ref _spotNumber, value);
+                OnPropertyChanged("SpotNumber");
+            }
+        }
+
 
         #endregion
 
         #region Constructor
-        public Spot(bool isAvailable, int column, int row)
+        public Spot(int isAvailable, int column, int row, int spotnumber)
         {
             _isAvailable = isAvailable;
             _column = column;
             _row = row;
+            _spotNumber = spotnumber;
         }
         #endregion
 
