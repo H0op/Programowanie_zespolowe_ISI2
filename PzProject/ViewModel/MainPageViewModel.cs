@@ -63,17 +63,20 @@ namespace PzProject.ViewModel
             MovieList2 = new ObservableCollection<Movie>();
             InitData();
             InitDataTime();
-            NextPageCommand = new RelayCommand(action => NextPage());
+            NextPageCommand = new RelayCommand(action => NextPage(action));
         }
 
         #endregion
 
         #region Methods
 
-        private void NextPage()
+        private void NextPage(Object action)
         {
             //MessageBox.Show(SelectedMovie.Name);
-            NavigationManager.NavigateTo(new RoomPage());
+
+            Seans newSeans = new Seans(RoomPageViewModel.fakeRoom(), SelectedMovie, new DateTime());
+
+            NavigationManager.NavigateTo(new RoomPage(newSeans));
         }
 
         #endregion

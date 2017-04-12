@@ -38,11 +38,14 @@ namespace PzProject.ViewModel
 
         #endregion
 
+        private Seans _seans;
+
         #region Constructor
 
-        public RoomPageViewModel()
+        public RoomPageViewModel(Seans newSeans)
         {
-            _room = fakeRoom();
+            _seans = newSeans;
+            _room = _seans.Room;
             Grid = CreateView();
         }
 
@@ -95,7 +98,7 @@ namespace PzProject.ViewModel
 
         #region InitFakeRoom
 
-        private Room fakeRoom()
+        public static Room fakeRoom()
         {
             int row = 5;
             int col = 5;
