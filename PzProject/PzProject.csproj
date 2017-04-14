@@ -75,9 +75,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Model\BILET.cs">
-      <DependentUpon>dbmodel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\DataSet1.cs">
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>
@@ -86,42 +83,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Model\dbmodel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>dbmodel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\dbmodel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>dbmodel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\dbmodel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>dbmodel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Model\FILM.cs">
-      <DependentUpon>dbmodel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\GATUNEK.cs">
-      <DependentUpon>dbmodel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\MIEJSCE.cs">
-      <DependentUpon>dbmodel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\Movie.cs" />
     <Compile Include="Model\Room.cs" />
-    <Compile Include="Model\SALA.cs">
-      <DependentUpon>dbmodel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\SEANS.cs">
-      <DependentUpon>dbmodel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\Spot.cs" />
-    <Compile Include="Model\ULGA.cs">
-      <DependentUpon>dbmodel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Utility\BindableBase.cs" />
     <Compile Include="Utility\Converters\Corventers.cs" />
     <Compile Include="Utility\NavigationManager.cs" />
@@ -201,10 +165,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="Model\dbmodel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>dbmodel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
     <None Include="Model\DataSet1.xsc">
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </None>
@@ -214,9 +174,6 @@
     </None>
     <None Include="Model\DataSet1.xss">
       <DependentUpon>DataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="Model\dbmodel.edmx.diagram">
-      <DependentUpon>dbmodel.edmx</DependentUpon>
     </None>
     <None Include="packages.config">
       <SubType>Designer</SubType>
@@ -231,18 +188,6 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Model\dbmodel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>dbmodel.edmx</DependentUpon>
-      <LastGenOutput>dbmodel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Model\dbmodel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>dbmodel.edmx</DependentUpon>
-      <LastGenOutput>dbmodel.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\movie_img\john_wick.jpg" />
