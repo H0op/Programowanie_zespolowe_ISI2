@@ -26,10 +26,5 @@ namespace PzProject.View
             _viewModel = new MainPageViewModel();
             this.DataContext = _viewModel;
         }
-
-        private void tabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
     }
 }

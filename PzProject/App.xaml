@@ -18,7 +18,6 @@
                 <ResourceDictionary Source="Resources/mock_movie_img.xaml" />
 
                 <ResourceDictionary Source="Resources/Style.xaml" />
-                <ResourceDictionary Source="View/Template/MovieItemDataTemplate.xaml"/>
 
 
             </ResourceDictionary.MergedDictionaries>
