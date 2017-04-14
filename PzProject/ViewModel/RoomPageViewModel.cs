@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Dynamic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
+using System.Windows.Media.Animation;
 using PzProject.Model;
 using PzProject.Utility;
 
@@ -14,13 +11,36 @@ namespace PzProject.ViewModel
 {
     public class RoomPageViewModel : BindableBase
     {
+        #region Fields
+        private Grid _grid;
 
-        public RoomPageViewModel(ContentPresenter salaContent)
+        #endregion
+
+        #region Properties
+        public Grid Grid
         {
-            salaContent.Content = CreateView(10, 5);
+            get
+            {
+                return _grid;
+            }
+            set
+            {
+                SetProperty(ref _grid, value);
+            }
+        }
+        #endregion
+
+        #region Constructor
+
+        public RoomPageViewModel()
+        {
+            Grid = CreateView(15, 15);
         }
 
 
+        #endregion
+
+        #region Methods
         private Grid CreateView(int column, int row)
         {
             var spots = new ObservableCollection<Spot>();
@@ -32,7 +52,7 @@ namespace PzProject.ViewModel
 
             InitFakeButton(column, row, spots);
             col.Width = new GridLength(1, GridUnitType.Star);
-         
+
 
             mainGrid.ColumnDefinitions.Add(col);
             mainGrid.Margin = new Thickness(-60, -60, 0, 0);
@@ -41,12 +61,10 @@ namespace PzProject.ViewModel
 
             var iterator = spots.GetEnumerator();
             while (iterator.MoveNext())
-            {
                 spotButtons.Add(new SpotButton(iterator.Current));
-            }
 
 
-            for (int i = 0; i <= column; i++)
+            for (var i = 0; i <= column; i++)
             {
                 col = new ColumnDefinition();
                 col.Width = new GridLength(60);
@@ -54,15 +72,15 @@ namespace PzProject.ViewModel
             }
 
 
-            for (int j = 0; j <= row; j++)
+            for (var j = 0; j <= row; j++)
             {
                 rowDefinition = new RowDefinition();
                 rowDefinition.Height = new GridLength(60);
                 inGrid.RowDefinitions.Add(rowDefinition);
             }
-               
 
-            foreach (SpotButton button in spotButtons)
+
+            foreach (var button in spotButtons)
             {
                 Grid.SetColumn(button, button.Spot.Column);
                 Grid.SetRow(button, button.Spot.Row);
@@ -73,15 +91,18 @@ namespace PzProject.ViewModel
         }
 
 
+        #endregion
+        
+
         #region initFakeButton
+
         private void InitFakeButton(int column, int row, ObservableCollection<Spot> spots)
         {
-            for (int i = 1; i <= row; i++)
-            for (int j = 1; j <= column; j++)
+            for (var i = 1; i <= row; i++)
+            for (var j = 1; j <= column; j++)
                 spots.Add(new Spot(false, j, i));
         }
 
         #endregion
     }
-
 }

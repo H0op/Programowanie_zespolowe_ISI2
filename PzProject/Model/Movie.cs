@@ -10,11 +10,15 @@ namespace PzProject.Model
 {
     public class Movie : BindableBase
     {
+        #region Fields
         private string _name;
         private string _description;
         private string _imageSrc;
         private int _hours;
         private int _minutes;
+        private string _releasDate;
+
+        #endregion
 
         #region Properties
 
@@ -73,17 +77,28 @@ namespace PzProject.Model
             get { return $"{(Hours*60) +Minutes}min"; }
         }
 
+        public string ReleaseDate
+        {
+            get { return _releasDate; }
+            set
+            {
+                SetProperty(ref _releasDate, value);
+                OnPropertyChanged("ReleaseDate");
+            }
+        }
+
         #endregion
 
         #region Constructor
 
-        public Movie(string name, string description, string imageSrc, int hours, int minutes)
+        public Movie(string name, string description, string imageSrc, int hours, int minutes, string releaseData)
         {
             _name = name;
             _description = description;
             _imageSrc = imageSrc;
             _hours = hours;
             _minutes = minutes;
+            _releasDate = releaseData;
         }
 
         public Movie()

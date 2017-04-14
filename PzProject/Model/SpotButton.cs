@@ -6,8 +6,22 @@ namespace PzProject.ViewModel
 {
     class SpotButton : Button
     {
+
+        #region Fields
+
         private Spot _spot;
 
+        #endregion
+
+        #region Properties
+        public Spot Spot
+        {
+            get { return _spot; }
+            private set { _spot = value; }
+        }
+        #endregion
+
+        #region Constructor
         public SpotButton(Spot spot)
         {
             this._spot = spot;
@@ -16,11 +30,9 @@ namespace PzProject.ViewModel
             this.Content = spot.Column + "\n" + spot.Row;
             this.Background = !spot.IsAvailable ? Brushes.Gray : Brushes.Red;
         }
+        #endregion
 
-        public Spot Spot
-        {
-            get { return _spot; }
-            private set { _spot = value; }
-        }
+
+
     }
 }
