@@ -1,0 +1,530 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model1.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BILET">
+          <Key>
+            <PropertyRef Name="id_bilet" />
+            <PropertyRef Name="id_seans" />
+            <PropertyRef Name="id_film" />
+            <PropertyRef Name="id_gatunek" />
+            <PropertyRef Name="id_sala" />
+          </Key>
+          <Property Name="id_bilet" Type="int" Nullable="false" />
+          <Property Name="potwierdzenie" Type="bool" />
+          <Property Name="realizacja" Type="bool" />
+          <Property Name="id_seans" Type="int" Nullable="false" />
+          <Property Name="id_film" Type="int" Nullable="false" />
+          <Property Name="id_gatunek" Type="int" Nullable="false" />
+          <Property Name="id_sala" Type="int" Nullable="false" />
+          <Property Name="id_ulga" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FILM">
+          <Key>
+            <PropertyRef Name="id_film" />
+            <PropertyRef Name="id_gatunek" />
+          </Key>
+          <Property Name="id_film" Type="int" Nullable="false" />
+          <Property Name="tytul" Type="varchar" MaxLength="45" />
+          <Property Name="czas_trwania" Type="int" />
+          <Property Name="rok_produkcji" Type="year" />
+          <Property Name="opis" Type="text" />
+          <Property Name="scenariusz" Type="varchar" MaxLength="45" />
+          <Property Name="rezyser" Type="varchar" MaxLength="45" />
+          <Property Name="kategoria_wiekowa" Type="varchar" MaxLength="45" />
+          <Property Name="obsada" Type="text" />
+          <Property Name="produkcja" Type="varchar" MaxLength="45" />
+          <Property Name="zdjecie" Type="text" />
+          <Property Name="zwiastun" Type="varchar" MaxLength="45" />
+          <Property Name="data_konca" Type="datetime" Precision="0" />
+          <Property Name="id_gatunek" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GATUNEK">
+          <Key>
+            <PropertyRef Name="id_gatunek" />
+          </Key>
+          <Property Name="id_gatunek" Type="int" Nullable="false" />
+          <Property Name="nazwa" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="MIEJSCE">
+          <Key>
+            <PropertyRef Name="id_miejsce" />
+            <PropertyRef Name="id_sala" />
+          </Key>
+          <Property Name="id_miejsce" Type="int" Nullable="false" />
+          <Property Name="rzad" Type="int" />
+          <Property Name="miejsce" Type="int" />
+          <Property Name="zajete" Type="bool" Nullable="false" />
+          <Property Name="id_sala" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SALA">
+          <Key>
+            <PropertyRef Name="id_sala" />
+          </Key>
+          <Property Name="id_sala" Type="int" Nullable="false" />
+          <Property Name="ilosc_miejsc" Type="int" />
+        </EntityType>
+        <EntityType Name="SEANS">
+          <Key>
+            <PropertyRef Name="id_seans" />
+            <PropertyRef Name="id_film" />
+            <PropertyRef Name="id_gatunek" />
+            <PropertyRef Name="id_sala" />
+          </Key>
+          <Property Name="id_seans" Type="int" Nullable="false" />
+          <Property Name="dzien" Type="date" />
+          <Property Name="godzina" Type="time" Precision="0" />
+          <Property Name="id_film" Type="int" Nullable="false" />
+          <Property Name="id_gatunek" Type="int" Nullable="false" />
+          <Property Name="id_sala" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ULGA">
+          <Key>
+            <PropertyRef Name="id_ulga" />
+          </Key>
+          <Property Name="id_ulga" Type="int" Nullable="false" />
+          <Property Name="wartosc" Type="int" />
+          <Property Name="nazwa" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <Association Name="fk_FILM_GATUNEK1">
+          <End Role="GATUNEK" Type="Self.GATUNEK" Multiplicity="1" />
+          <End Role="FILM" Type="Self.FILM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GATUNEK">
+              <PropertyRef Name="id_gatunek" />
+            </Principal>
+            <Dependent Role="FILM">
+              <PropertyRef Name="id_gatunek" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_MIEJSCE_SALA">
+          <End Role="SALA" Type="Self.SALA" Multiplicity="1" />
+          <End Role="MIEJSCE" Type="Self.MIEJSCE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SALA">
+              <PropertyRef Name="id_sala" />
+            </Principal>
+            <Dependent Role="MIEJSCE">
+              <PropertyRef Name="id_sala" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_REZERWACJA_ULGA1">
+          <End Role="ULGA" Type="Self.ULGA" Multiplicity="1" />
+          <End Role="BILET" Type="Self.BILET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ULGA">
+              <PropertyRef Name="id_ulga" />
+            </Principal>
+            <Dependent Role="BILET">
+              <PropertyRef Name="id_ulga" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_REZERWACJE_SEANS1">
+          <End Role="SEANS" Type="Self.SEANS" Multiplicity="1" />
+          <End Role="BILET" Type="Self.BILET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEANS">
+              <PropertyRef Name="id_seans" />
+              <PropertyRef Name="id_film" />
+              <PropertyRef Name="id_gatunek" />
+              <PropertyRef Name="id_sala" />
+            </Principal>
+            <Dependent Role="BILET">
+              <PropertyRef Name="id_seans" />
+              <PropertyRef Name="id_film" />
+              <PropertyRef Name="id_gatunek" />
+              <PropertyRef Name="id_sala" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_SEANS_FILM1">
+          <End Role="FILM" Type="Self.FILM" Multiplicity="1" />
+          <End Role="SEANS" Type="Self.SEANS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FILM">
+              <PropertyRef Name="id_film" />
+              <PropertyRef Name="id_gatunek" />
+            </Principal>
+            <Dependent Role="SEANS">
+              <PropertyRef Name="id_film" />
+              <PropertyRef Name="id_gatunek" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_SEANS_SALA1">
+          <End Role="SALA" Type="Self.SALA" Multiplicity="1" />
+          <End Role="SEANS" Type="Self.SEANS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SALA">
+              <PropertyRef Name="id_sala" />
+            </Principal>
+            <Dependent Role="SEANS">
+              <PropertyRef Name="id_sala" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Model1StoreContainer">
+          <EntitySet Name="BILET" EntityType="Self.BILET" Schema="ii303075" store:Type="Tables" />
+          <EntitySet Name="FILM" EntityType="Self.FILM" Schema="ii303075" store:Type="Tables" />
+          <EntitySet Name="GATUNEK" EntityType="Self.GATUNEK" Schema="ii303075" store:Type="Tables" />
+          <EntitySet Name="MIEJSCE" EntityType="Self.MIEJSCE" Schema="ii303075" store:Type="Tables" />
+          <EntitySet Name="SALA" EntityType="Self.SALA" Schema="ii303075" store:Type="Tables" />
+          <EntitySet Name="SEANS" EntityType="Self.SEANS" Schema="ii303075" store:Type="Tables" />
+          <EntitySet Name="ULGA" EntityType="Self.ULGA" Schema="ii303075" store:Type="Tables" />
+          <AssociationSet Name="fk_FILM_GATUNEK1" Association="Self.fk_FILM_GATUNEK1">
+            <End Role="GATUNEK" EntitySet="GATUNEK" />
+            <End Role="FILM" EntitySet="FILM" />
+          </AssociationSet>
+          <AssociationSet Name="fk_MIEJSCE_SALA" Association="Self.fk_MIEJSCE_SALA">
+            <End Role="SALA" EntitySet="SALA" />
+            <End Role="MIEJSCE" EntitySet="MIEJSCE" />
+          </AssociationSet>
+          <AssociationSet Name="fk_REZERWACJA_ULGA1" Association="Self.fk_REZERWACJA_ULGA1">
+            <End Role="ULGA" EntitySet="ULGA" />
+            <End Role="BILET" EntitySet="BILET" />
+          </AssociationSet>
+          <AssociationSet Name="fk_REZERWACJE_SEANS1" Association="Self.fk_REZERWACJE_SEANS1">
+            <End Role="SEANS" EntitySet="SEANS" />
+            <End Role="BILET" EntitySet="BILET" />
+          </AssociationSet>
+          <AssociationSet Name="fk_SEANS_FILM1" Association="Self.fk_SEANS_FILM1">
+            <End Role="FILM" EntitySet="FILM" />
+            <End Role="SEANS" EntitySet="SEANS" />
+          </AssociationSet>
+          <AssociationSet Name="fk_SEANS_SALA1" Association="Self.fk_SEANS_SALA1">
+            <End Role="SALA" EntitySet="SALA" />
+            <End Role="SEANS" EntitySet="SEANS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BILET">
+          <Key>
+            <PropertyRef Name="id_bilet" />
+            <PropertyRef Name="id_seans" />
+            <PropertyRef Name="id_film" />
+            <PropertyRef Name="id_gatunek" />
+            <PropertyRef Name="id_sala" />
+          </Key>
+          <Property Name="id_bilet" Type="Int32" Nullable="false" />
+          <Property Name="potwierdzenie" Type="Boolean" />
+          <Property Name="realizacja" Type="Boolean" />
+          <Property Name="id_seans" Type="Int32" Nullable="false" />
+          <Property Name="id_film" Type="Int32" Nullable="false" />
+          <Property Name="id_gatunek" Type="Int32" Nullable="false" />
+          <Property Name="id_sala" Type="Int32" Nullable="false" />
+          <Property Name="id_ulga" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ULGA" Relationship="Self.fk_REZERWACJA_ULGA1" FromRole="BILET" ToRole="ULGA" />
+          <NavigationProperty Name="SEANS" Relationship="Self.fk_REZERWACJE_SEANS1" FromRole="BILET" ToRole="SEANS" />
+        </EntityType>
+        <EntityType Name="FILM">
+          <Key>
+            <PropertyRef Name="id_film" />
+            <PropertyRef Name="id_gatunek" />
+          </Key>
+          <Property Name="id_film" Type="Int32" Nullable="false" />
+          <Property Name="tytul" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="czas_trwania" Type="Int32" />
+          <Property Name="rok_produkcji" Type="Int16" />
+          <Property Name="opis" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="scenariusz" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="rezyser" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="kategoria_wiekowa" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="obsada" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="produkcja" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="zdjecie" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="zwiastun" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="data_konca" Type="DateTime" />
+          <Property Name="id_gatunek" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="GATUNEK" Relationship="Self.fk_FILM_GATUNEK1" FromRole="FILM" ToRole="GATUNEK" />
+          <NavigationProperty Name="SEANS" Relationship="Self.fk_SEANS_FILM1" FromRole="FILM" ToRole="SEANS" />
+        </EntityType>
+        <EntityType Name="GATUNEK">
+          <Key>
+            <PropertyRef Name="id_gatunek" />
+          </Key>
+          <Property Name="id_gatunek" Type="Int32" Nullable="false" />
+          <Property Name="nazwa" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="FILM" Relationship="Self.fk_FILM_GATUNEK1" FromRole="GATUNEK" ToRole="FILM" />
+        </EntityType>
+        <EntityType Name="MIEJSCE">
+          <Key>
+            <PropertyRef Name="id_miejsce" />
+            <PropertyRef Name="id_sala" />
+          </Key>
+          <Property Name="id_miejsce" Type="Int32" Nullable="false" />
+          <Property Name="rzad" Type="Int32" />
+          <Property Name="miejsce1" Type="Int32" />
+          <Property Name="zajete" Type="Boolean" Nullable="false" />
+          <Property Name="id_sala" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="SALA" Relationship="Self.fk_MIEJSCE_SALA" FromRole="MIEJSCE" ToRole="SALA" />
+        </EntityType>
+        <EntityType Name="SALA">
+          <Key>
+            <PropertyRef Name="id_sala" />
+          </Key>
+          <Property Name="id_sala" Type="Int32" Nullable="false" />
+          <Property Name="ilosc_miejsc" Type="Int32" />
+          <NavigationProperty Name="MIEJSCE" Relationship="Self.fk_MIEJSCE_SALA" FromRole="SALA" ToRole="MIEJSCE" />
+          <NavigationProperty Name="SEANS" Relationship="Self.fk_SEANS_SALA1" FromRole="SALA" ToRole="SEANS" />
+        </EntityType>
+        <EntityType Name="SEANS">
+          <Key>
+            <PropertyRef Name="id_seans" />
+            <PropertyRef Name="id_film" />
+            <PropertyRef Name="id_gatunek" />
+            <PropertyRef Name="id_sala" />
+          </Key>
+          <Property Name="id_seans" Type="Int32" Nullable="false" />
+          <Property Name="dzien" Type="DateTime" />
+          <Property Name="godzina" Type="Time" />
+          <Property Name="id_film" Type="Int32" Nullable="false" />
+          <Property Name="id_gatunek" Type="Int32" Nullable="false" />
+          <Property Name="id_sala" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="BILET" Relationship="Self.fk_REZERWACJE_SEANS1" FromRole="SEANS" ToRole="BILET" />
+          <NavigationProperty Name="FILM" Relationship="Self.fk_SEANS_FILM1" FromRole="SEANS" ToRole="FILM" />
+          <NavigationProperty Name="SALA" Relationship="Self.fk_SEANS_SALA1" FromRole="SEANS" ToRole="SALA" />
+        </EntityType>
+        <EntityType Name="ULGA">
+          <Key>
+            <PropertyRef Name="id_ulga" />
+          </Key>
+          <Property Name="id_ulga" Type="Int32" Nullable="false" />
+          <Property Name="wartosc" Type="Int32" />
+          <Property Name="nazwa" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="BILET" Relationship="Self.fk_REZERWACJA_ULGA1" FromRole="ULGA" ToRole="BILET" />
+        </EntityType>
+        <Association Name="fk_REZERWACJA_ULGA1">
+          <End Role="ULGA" Type="Self.ULGA" Multiplicity="1" />
+          <End Role="BILET" Type="Self.BILET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ULGA">
+              <PropertyRef Name="id_ulga" />
+            </Principal>
+            <Dependent Role="BILET">
+              <PropertyRef Name="id_ulga" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_REZERWACJE_SEANS1">
+          <End Role="SEANS" Type="Self.SEANS" Multiplicity="1" />
+          <End Role="BILET" Type="Self.BILET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEANS">
+              <PropertyRef Name="id_seans" />
+              <PropertyRef Name="id_film" />
+              <PropertyRef Name="id_gatunek" />
+              <PropertyRef Name="id_sala" />
+            </Principal>
+            <Dependent Role="BILET">
+              <PropertyRef Name="id_seans" />
+              <PropertyRef Name="id_film" />
+              <PropertyRef Name="id_gatunek" />
+              <PropertyRef Name="id_sala" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_FILM_GATUNEK1">
+          <End Role="GATUNEK" Type="Self.GATUNEK" Multiplicity="1" />
+          <End Role="FILM" Type="Self.FILM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GATUNEK">
+              <PropertyRef Name="id_gatunek" />
+            </Principal>
+            <Dependent Role="FILM">
+              <PropertyRef Name="id_gatunek" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_SEANS_FILM1">
+          <End Role="FILM" Type="Self.FILM" Multiplicity="1" />
+          <End Role="SEANS" Type="Self.SEANS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FILM">
+              <PropertyRef Name="id_film" />
+              <PropertyRef Name="id_gatunek" />
+            </Principal>
+            <Dependent Role="SEANS">
+              <PropertyRef Name="id_film" />
+              <PropertyRef Name="id_gatunek" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_MIEJSCE_SALA">
+          <End Role="SALA" Type="Self.SALA" Multiplicity="1" />
+          <End Role="MIEJSCE" Type="Self.MIEJSCE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SALA">
+              <PropertyRef Name="id_sala" />
+            </Principal>
+            <Dependent Role="MIEJSCE">
+              <PropertyRef Name="id_sala" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_SEANS_SALA1">
+          <End Role="SALA" Type="Self.SALA" Multiplicity="1" />
+          <End Role="SEANS" Type="Self.SEANS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SALA">
+              <PropertyRef Name="id_sala" />
+            </Principal>
+            <Dependent Role="SEANS">
+              <PropertyRef Name="id_sala" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ii303075Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BILET" EntityType="Self.BILET" />
+          <EntitySet Name="FILM" EntityType="Self.FILM" />
+          <EntitySet Name="GATUNEK" EntityType="Self.GATUNEK" />
+          <EntitySet Name="MIEJSCE" EntityType="Self.MIEJSCE" />
+          <EntitySet Name="SALA" EntityType="Self.SALA" />
+          <EntitySet Name="SEANS" EntityType="Self.SEANS" />
+          <EntitySet Name="ULGA" EntityType="Self.ULGA" />
+          <AssociationSet Name="fk_REZERWACJA_ULGA1" Association="Self.fk_REZERWACJA_ULGA1">
+            <End Role="ULGA" EntitySet="ULGA" />
+            <End Role="BILET" EntitySet="BILET" />
+          </AssociationSet>
+          <AssociationSet Name="fk_REZERWACJE_SEANS1" Association="Self.fk_REZERWACJE_SEANS1">
+            <End Role="SEANS" EntitySet="SEANS" />
+            <End Role="BILET" EntitySet="BILET" />
+          </AssociationSet>
+          <AssociationSet Name="fk_FILM_GATUNEK1" Association="Self.fk_FILM_GATUNEK1">
+            <End Role="GATUNEK" EntitySet="GATUNEK" />
+            <End Role="FILM" EntitySet="FILM" />
+          </AssociationSet>
+          <AssociationSet Name="fk_SEANS_FILM1" Association="Self.fk_SEANS_FILM1">
+            <End Role="FILM" EntitySet="FILM" />
+            <End Role="SEANS" EntitySet="SEANS" />
+          </AssociationSet>
+          <AssociationSet Name="fk_MIEJSCE_SALA" Association="Self.fk_MIEJSCE_SALA">
+            <End Role="SALA" EntitySet="SALA" />
+            <End Role="MIEJSCE" EntitySet="MIEJSCE" />
+          </AssociationSet>
+          <AssociationSet Name="fk_SEANS_SALA1" Association="Self.fk_SEANS_SALA1">
+            <End Role="SALA" EntitySet="SALA" />
+            <End Role="SEANS" EntitySet="SEANS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Model1StoreContainer" CdmEntityContainer="ii303075Entities">
+          <EntitySetMapping Name="BILET">
+            <EntityTypeMapping TypeName="Model1.BILET">
+              <MappingFragment StoreEntitySet="BILET">
+                <ScalarProperty Name="id_bilet" ColumnName="id_bilet" />
+                <ScalarProperty Name="potwierdzenie" ColumnName="potwierdzenie" />
+                <ScalarProperty Name="realizacja" ColumnName="realizacja" />
+                <ScalarProperty Name="id_seans" ColumnName="id_seans" />
+                <ScalarProperty Name="id_film" ColumnName="id_film" />
+                <ScalarProperty Name="id_gatunek" ColumnName="id_gatunek" />
+                <ScalarProperty Name="id_sala" ColumnName="id_sala" />
+                <ScalarProperty Name="id_ulga" ColumnName="id_ulga" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FILM">
+            <EntityTypeMapping TypeName="Model1.FILM">
+              <MappingFragment StoreEntitySet="FILM">
+                <ScalarProperty Name="id_film" ColumnName="id_film" />
+                <ScalarProperty Name="tytul" ColumnName="tytul" />
+                <ScalarProperty Name="czas_trwania" ColumnName="czas_trwania" />
+                <ScalarProperty Name="rok_produkcji" ColumnName="rok_produkcji" />
+                <ScalarProperty Name="opis" ColumnName="opis" />
+                <ScalarProperty Name="scenariusz" ColumnName="scenariusz" />
+                <ScalarProperty Name="rezyser" ColumnName="rezyser" />
+                <ScalarProperty Name="kategoria_wiekowa" ColumnName="kategoria_wiekowa" />
+                <ScalarProperty Name="obsada" ColumnName="obsada" />
+                <ScalarProperty Name="produkcja" ColumnName="produkcja" />
+                <ScalarProperty Name="zdjecie" ColumnName="zdjecie" />
+                <ScalarProperty Name="zwiastun" ColumnName="zwiastun" />
+                <ScalarProperty Name="data_konca" ColumnName="data_konca" />
+                <ScalarProperty Name="id_gatunek" ColumnName="id_gatunek" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GATUNEK">
+            <EntityTypeMapping TypeName="Model1.GATUNEK">
+              <MappingFragment StoreEntitySet="GATUNEK">
+                <ScalarProperty Name="id_gatunek" ColumnName="id_gatunek" />
+                <ScalarProperty Name="nazwa" ColumnName="nazwa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MIEJSCE">
+            <EntityTypeMapping TypeName="Model1.MIEJSCE">
+              <MappingFragment StoreEntitySet="MIEJSCE">
+                <ScalarProperty Name="id_miejsce" ColumnName="id_miejsce" />
+                <ScalarProperty Name="rzad" ColumnName="rzad" />
+                <ScalarProperty Name="miejsce1" ColumnName="miejsce" />
+                <ScalarProperty Name="zajete" ColumnName="zajete" />
+                <ScalarProperty Name="id_sala" ColumnName="id_sala" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SALA">
+            <EntityTypeMapping TypeName="Model1.SALA">
+              <MappingFragment StoreEntitySet="SALA">
+                <ScalarProperty Name="id_sala" ColumnName="id_sala" />
+                <ScalarProperty Name="ilosc_miejsc" ColumnName="ilosc_miejsc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SEANS">
+            <EntityTypeMapping TypeName="Model1.SEANS">
+              <MappingFragment StoreEntitySet="SEANS">
+                <ScalarProperty Name="id_seans" ColumnName="id_seans" />
+                <ScalarProperty Name="dzien" ColumnName="dzien" />
+                <ScalarProperty Name="godzina" ColumnName="godzina" />
+                <ScalarProperty Name="id_film" ColumnName="id_film" />
+                <ScalarProperty Name="id_gatunek" ColumnName="id_gatunek" />
+                <ScalarProperty Name="id_sala" ColumnName="id_sala" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ULGA">
+            <EntityTypeMapping TypeName="Model1.ULGA">
+              <MappingFragment StoreEntitySet="ULGA">
+                <ScalarProperty Name="id_ulga" ColumnName="id_ulga" />
+                <ScalarProperty Name="wartosc" ColumnName="wartosc" />
+                <ScalarProperty Name="nazwa" ColumnName="nazwa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

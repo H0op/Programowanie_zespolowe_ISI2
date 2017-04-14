@@ -82,17 +82,22 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Model\Movie.cs" />
+    <Compile Include="Model\Room.cs" />
+    <Compile Include="Model\Seance.cs" />
+    <Compile Include="Model\Spot.cs" />
     <Compile Include="Utility\BindableBase.cs" />
     <Compile Include="Utility\Converters\Corventers.cs" />
     <Compile Include="Utility\NavigationManager.cs" />
     <Compile Include="Utility\PropertySupport.cs" />
     <Compile Include="Utility\RelayCommand.cs" />
     <Compile Include="ViewModel\MainPageViewModel.cs" />
+    <Compile Include="ViewModel\RoomPageViewModel.cs" />
+    <Compile Include="Model\SpotButton.cs" />
     <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Template\MovieItem.xaml.cs">
-      <DependentUpon>MovieItem.xaml</DependentUpon>
+    <Compile Include="View\RoomPage.xaml.cs">
+      <DependentUpon>RoomPage.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -115,11 +120,15 @@
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Page>
+    <Page Include="Resources\Style.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Template\MovieItem.xaml">
+    <Page Include="View\RoomPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

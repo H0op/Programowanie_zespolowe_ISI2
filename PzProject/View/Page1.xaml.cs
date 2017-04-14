@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace PzProject.View.Template
+namespace PzProject.View
 {
     /// <summary>
-    /// Interaction logic for MovieItem.xaml
+    /// Interaction logic for Page1.xaml
     /// </summary>
-    public partial class MovieItem : UserControl
+    public partial class Page1 : Page
     {
-        public MovieItem()
+        public Page1()
         {
             InitializeComponent();
         }
