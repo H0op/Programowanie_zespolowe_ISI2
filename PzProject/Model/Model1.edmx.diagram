@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="81c5942aa4e04188b087c79d603f664c" Name="Diagram1">
+        <EntityTypeShape EntityType="Model1.BILET" Width="1.5" PointX="8.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model1.FILM" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model1.GATUNEK" Width="1.5" PointX="1.5" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model1.MIEJSCE" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model1.SALA" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model1.SEANS" Width="1.5" PointX="6" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model1.ULGA" Width="1.5" PointX="6" PointY="1.875" IsExpanded="true" />
+        <AssociationConnector Association="Model1.fk_REZERWACJA_ULGA1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model1.fk_REZERWACJE_SEANS1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model1.fk_FILM_GATUNEK1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model1.fk_SEANS_FILM1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model1.fk_MIEJSCE_SALA" ManuallyRouted="false" />
+        <AssociationConnector Association="Model1.fk_SEANS_SALA1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

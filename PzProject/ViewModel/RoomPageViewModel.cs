@@ -4,17 +4,22 @@ using System.Collections.ObjectModel;
 using System.Dynamic;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media.Animation;
 using PzProject.Model;
 using PzProject.Utility;
+using PzProject.View;
 
 namespace PzProject.ViewModel
 {
     public class RoomPageViewModel : BindableBase
     {
-        #region Fields
+        #region Fields/Commands
+        public ICommand PreviousPageCommand { get; set; }
+
         private Grid _grid;
         private Room _room;
+        private Seance _seance;
         #endregion
 
         #region Properties
@@ -30,22 +35,21 @@ namespace PzProject.ViewModel
             }
         }
 
-        public Room Room1
+        public Seance Seance
         {
-            get { return _room; }
-            set { SetProperty(ref _room, value); }
+            get { return _seance; }
+            set { SetProperty(ref _seance, value); }
         }
-
         #endregion
-
-        private Seans _seans;
 
         #region Constructor
 
-        public RoomPageViewModel(Seans newSeans)
+        public RoomPageViewModel(Seance selectedSeance)
         {
-            _seans = newSeans;
-            _room = _seans.Room;
+            PreviousPageCommand = new RelayCommand(action => PreviousPage());
+
+            _seance = selectedSeance;
+            _room = _seance.Rooms[0];
             Grid = CreateView();
         }
 
@@ -83,6 +87,7 @@ namespace PzProject.ViewModel
                 if (iterator.Current.IsAvailable != 2)
                 {
                     spotButton = new SpotButton(iterator.Current);
+                    spotButton.Margin = new Thickness(2);
                     Grid.SetColumn(spotButton, iterator.Current.Column);
                     Grid.SetRow(spotButton, iterator.Current.Row);
                     mainGrid.Children.Add(spotButton);
@@ -93,12 +98,16 @@ namespace PzProject.ViewModel
             return mainGrid;
         }
 
+        private void PreviousPage()
+        {
+            NavigationManager.NavigateTo(new MainPage());
+        }
 
         #endregion
 
         #region InitFakeRoom
 
-        public static Room fakeRoom()
+        private Room fakeRoom()
         {
             int row = 5;
             int col = 5;

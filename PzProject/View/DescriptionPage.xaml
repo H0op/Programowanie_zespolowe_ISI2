@@ -1,0 +1,154 @@
+﻿<Page x:Class="PzProject.View.DescriptionPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PzProject.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="1000"
+      Title="DescriptionPage">
+
+    <Grid Background="#DDD">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width=".5*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <!--lewa kolumna-->
+        <Grid Grid.Column="0" Margin="15" Background="wHITE">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+
+            </Grid.RowDefinitions>
+            <!--Zdjecie-->
+            <Image Source="{StaticResource kiler}"    
+                    Margin="10"
+                    Grid.Row="0" />
+
+            <TextBlock Grid.Row="1" 
+                       Margin="20" 
+                       FontSize="15" 
+                       TextWrapping="Wrap" 
+                       FontStyle="Italic"
+                       Foreground="#666">
+                
+                <Run Text="Premiera: " FontWeight="Bold" />
+                <!--<Run Text="{Binding SelectedMovie.ReleaseDate}" /><LineBreak />-->
+                <Run Text="2017-03-10" /><LineBreak />
+                
+                <Run Text="Produkcja: " FontWeight="Bold" />
+                <!--<Run Text="{Binding SelectedMovie.ReleaseDate}" /><LineBreak />-->
+                <Run Text="USA" /><LineBreak />
+                
+                <Run Text="Gatunek: " FontWeight="Bold"/>
+                <!--<Run Text="{Binding SelectedMovie.ReleaseDate}" /><LineBreak />-->
+                <Run Text="Dramat" /><LineBreak />
+                
+                <Run Text="Czas trwania: " FontWeight="Bold" />
+                <!--<Run Text="{Binding SelectedMovie.ReleaseDate}" /><LineBreak />-->
+                <Run Text="132 min." /><LineBreak />
+                
+                <Run Text="Od lat: " FontWeight="Bold" />
+                <!--<Run Text="{Binding SelectedMovie.ReleaseDate}" /><LineBreak />-->
+                <Run Text="16" /><LineBreak />
+                
+                <Run Text="Reżyseria: " FontWeight="Bold" />
+                <!--<Run Text="{Binding SelectedMovie.ReleaseDate}" /><LineBreak />-->
+                <Run Text="Stuart Hazeldine" /><LineBreak />
+                
+                <Run Text="Scenariusz: " FontWeight="Bold" />
+                <!--<Run Text="{Binding SelectedMovie.ReleaseDate}" /><LineBreak />-->
+                <Run Text="John Fusco" /><LineBreak />
+                
+                <Run Text="Obsata: " FontWeight="Bold" />
+                <!--<Run Text="{Binding SelectedMovie.ReleaseDate}" /><LineBreak />-->
+                <Run Text="Scarlett Johansson, Michael Wincott, Michael Pitt, Juliette Binoche, Pilou Asbæk, Pilou Asbæk" /><LineBreak />
+
+            </TextBlock>
+        </Grid>
+        
+        <!--prawa kolumna-->
+        <Grid Grid.Column="1" Margin="15" Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition MinHeight="80"/>
+            </Grid.RowDefinitions>
+            <!--Tytuł-->           
+            <TextBlock Text="Ghost in the Shell (2D, napisy)"                       
+                       x:Name="Tytul"
+                       TextWrapping="WrapWithOverflow" 
+                       Grid.Row="0" 
+                       Margin="10"
+                       FontSize="35" 
+                       FontWeight="Bold"/>
+            <!--<Run Text="{Binding SelectedMovie.Title}" />-->
+
+            <!--Opis filmu-->
+            <TextBlock Grid.Row="1" 
+                       TextWrapping="Wrap"
+                       FontSize="15" 
+                       Margin="10"
+                       Foreground="#666"
+                       Text='Niedaleka przyszłość. Cyborg o ludzkim mózgu Motoko Kusanagi (Scarlett Johansson) przewodzi Sekcji 9, tajemniczej organizacji do spraw walki z cyberprzestępczością. W rzeczywistości opanowanej przez zagrażające ludzkości cyborgi największym niebezpieczeństwem jest "ghost hacking" - przejęcie kontroli nad umysłem. Przy czym przestrzeń "Ghost" ma tu wymiar filozoficzny - jest istotą człowieka w zcyborgizowanych humanoidach.'/>
+           
+            <TextBlock Grid.Row="2"
+                       Margin="50,10,50,5"
+                       FontSize="25"
+                       Foreground="DarkViolet"
+                       Text="Zobacz zwiastun"/>
+            
+            <!--Zwiastun Youtube-->
+            <Grid Grid.Row="3" Background="#333">
+                <TextBlock TextAlignment="Center" FontSize="100" Text="YouTube"/>
+            </Grid>
+
+            <TextBlock Grid.Row="4"
+                       Margin="50,10,50,5"
+                       FontSize="25"
+                       Foreground="DarkViolet"
+                       Text="Zarezerwuj / Kup bilet"/>
+
+            <Grid Grid.Row="5" Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <Button x:Name = "button1"
+                        Grid.Column="0"
+                        Content = "15:00"
+                        Margin = "10"  
+                        Width = "100" 
+                        Height="30"
+                        HorizontalAlignment = "Center" 
+                        Foreground = "#555"/>
+
+                <Button x:Name = "button2"  
+                        Grid.Column="1"   
+                        Content = "18:30"
+                        Margin = "10"  
+                        Width = "100"  
+                        Height="30"
+                        HorizontalAlignment = "Center"  
+                        Foreground = "#555"/>
+                
+                <Button x:Name = "button3"  
+                        Grid.Column="2"                        
+                        Content = "21:00" 
+                        Margin = "10"  
+                        Width = "100"  
+                        Height="30"
+                        HorizontalAlignment = "Center"  
+                        Foreground = "#555"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>
