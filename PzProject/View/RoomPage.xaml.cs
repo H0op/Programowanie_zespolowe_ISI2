@@ -26,10 +26,10 @@ namespace PzProject.View
     {
         private RoomPageViewModel _viewModel;
 
-        public RoomPage()
+        public RoomPage(Seance selectedSeance, string hour)
         {
             InitializeComponent();
-            _viewModel = new RoomPageViewModel();
+            _viewModel = new RoomPageViewModel(selectedSeance, hour);
             this.DataContext = _viewModel;
         }
 

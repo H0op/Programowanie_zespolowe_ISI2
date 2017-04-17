@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 using PzProject.Model;
 
@@ -27,11 +28,12 @@ namespace PzProject.ViewModel
             this._spot = spot;
             this.Width = 50;
             this.Height = 50;
+            this.Margin = new Thickness(2);
             this.Content = spot.SpotNumber;
+            this.Focusable = false;
             if (spot.IsAvailable == 0) this.Background = Brushes.Gray;
                 else if (spot.IsAvailable == 1)
             {
-                this.Background = Brushes.Red;
                 this.IsEnabled = false;
             }
         }

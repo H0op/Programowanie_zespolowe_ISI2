@@ -66,6 +66,7 @@
     </ApplicationDefinition>
     <Compile Include="Model\Movie.cs" />
     <Compile Include="Model\Room.cs" />
+    <Compile Include="Model\Seance.cs" />
     <Compile Include="Model\Spot.cs" />
     <Compile Include="Utility\BindableBase.cs" />
     <Compile Include="Utility\Converters\Corventers.cs" />
