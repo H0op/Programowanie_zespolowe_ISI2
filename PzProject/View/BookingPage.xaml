@@ -1,0 +1,59 @@
+﻿<Page x:Class="PzProject.View.BookingPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PzProject.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="500"
+      Title="BookingPage">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.6*"/>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="0.5*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Rezerwacja"
+                   FontSize="30"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Grid.Row="0"/>
+        
+        <Grid Grid.Row="1" HorizontalAlignment="Center" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <TextBlock Text="Imie: " FontSize="20" FontWeight="Bold" Grid.Row="0" Grid.Column="0" Margin="2"/>
+            <TextBlock Text="Nazwisko: " FontSize="20" FontWeight="Bold" Grid.Row="1" Grid.Column="0" Margin="2"/>
+            <TextBlock Text="Email: " FontSize="20" FontWeight="Bold" Grid.Row="2" Grid.Column="0" Margin="2"/>
+            <TextBlock Text="Nr Telefonu: " FontSize="20" FontWeight="Bold" Grid.Row="3" Grid.Column="0" Margin="2"/>
+
+            <TextBox Grid.Row="0" Grid.Column="1" Width="200" Margin="2" Text="{Binding FirstName}"/>
+            <TextBox Grid.Row="1" Grid.Column="1" Width="200" Margin="2" Text="{Binding LastName}"/>
+            <TextBox Grid.Row="2" Grid.Column="1" Width="200" Margin="2" Text="{Binding Email}"/>
+            <TextBox Grid.Row="3" Grid.Column="1" Width="200" Margin="2" Text="{Binding PhoneNumber}"/>
+        </Grid>
+
+        <ContentPresenter Margin="10"
+                          Grid.Row="2"
+                          HorizontalAlignment="Center"
+                          Content="{Binding Path=Grid, Mode=TwoWay}" />
+        
+        <WrapPanel Grid.Row="3"
+                   HorizontalAlignment="Center">
+            <Button Content="Rezerwuj" Width="150" Margin="0 0 10 0" Height="50" Command="{Binding BookingCommand}"/>
+            <Button Content="Powrot" Command="{Binding PreviousPageCommand}"/>
+        </WrapPanel>
+    </Grid>
+</Page>

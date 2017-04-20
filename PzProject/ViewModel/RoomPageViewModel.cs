@@ -20,12 +20,14 @@ namespace PzProject.ViewModel
         #region Fields/Commands
         public ICommand PreviousPageCommand { get; set; }
         public ICommand SelectSpotCommand { get; set; }
+        public ICommand BookingCommand { get; set; }
+
 
         private Grid _grid;
         private Room _room;
         private string _selectedHour;
         private Seance _seance;
-        private ObservableCollection<Spot> _selectedSpots;
+        private List<Spot> _selectedSpots;
         #endregion
 
         #region Properties
@@ -55,12 +57,13 @@ namespace PzProject.ViewModel
         {
             PreviousPageCommand = new RelayCommand(action => PreviousPage());
             SelectSpotCommand = new RelayCommand(action => SelectSpot( (Spot)action ));
-            _selectedSpots = new ObservableCollection<Spot>();
+            BookingCommand = new RelayCommand(action => Booking());
+            _selectedSpots = new List<Spot>();
 
             _selectedHour = hour;
             _seance = selectedSeance;
             _room = _seance.Rooms[selectedSeance.SeanceHours.IndexOf(_selectedHour)];
-            Grid = CreateView();
+            _grid = CreateView();
         }
 
 
@@ -128,6 +131,11 @@ namespace PzProject.ViewModel
         private void PreviousPage()
         {
             NavigationManager.NavigateTo(new MainPage());
+        }
+
+        private void Booking()
+        {
+            NavigationManager.NavigateTo(new BookingPage(_selectedSpots, _seance, _selectedHour));
         }
 
         #endregion

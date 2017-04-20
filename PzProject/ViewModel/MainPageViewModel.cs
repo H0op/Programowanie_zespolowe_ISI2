@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Documents;
 using System.Windows.Input;
 using PzProject.Model;
 using PzProject.Utility;
@@ -20,7 +13,7 @@ namespace PzProject.ViewModel
     {
         #region Fields/Commands
 
-        private ICommand _nextPageCommand;
+        public ICommand NextPageCommand { get; set; }
 
         private ObservableCollection<Seance> _seances;
         private string[] _dataTime;
@@ -37,15 +30,6 @@ namespace PzProject.ViewModel
         public string[] DataTime
         {
             get { return _dataTime; }
-        }
-
-        public ICommand NextPageCommand
-        {
-            get
-            {
-                return _nextPageCommand;
-            }
-            set { _nextPageCommand = value; }
         }
 
         public Seance SelectedSeance
@@ -149,11 +133,11 @@ namespace PzProject.ViewModel
 
         private void InitData()
         {
-            Movie JohnWick = new Movie("John Wick", "Były płatny morderca ściga gangsterów, którzy wtargnęli do jego domu.", "pack://application:,,,/Resources/movie_img/john_wick.jpg", 1, 32, "7 Apr 2017");
-            Movie Rambo = new Movie("Rambo", "John Rambo, były komandos, naraża się policjantom z pewnego miasteczka.", "pack://application:,,,/Resources/movie_img/rambo.jpg", 1, 24, "8 Apr 2017");
-            Movie Kiler = new Movie("Kiler", "Jerzy Kiler, przypadkowo zostaje wzięty za płatnego zabójcę.","pack://application:,,,/Resources/movie_img/kiler.jpg", 1, 43, "9 Apr 2017");
-            Movie SzklanaPulapka = new Movie("Szklana pułapka", "Grupa terrorystów opanowuje korporacyjny wieżowiec.", "pack://application:,,,/Resources/movie_img/szklana_pulapka.jpg", 2, 14, "10 Apr 2017");
-            Movie Psy = new Movie("Psy", "Franz Maurer, były funkcjonariusz Służby Bezpieczeństwa, zaczyna pracę w policji.", "pack://application:,,,/Resources/movie_img/psy.jpg", 2, 02, "10 Apr 2017");
+            var johnWick = new Movie("John Wick", "Były płatny morderca ściga gangsterów, którzy wtargnęli do jego domu.", "pack://application:,,,/Resources/movie_img/john_wick.jpg", 1, 32, "7 Apr 2017");
+            var rambo = new Movie("Rambo", "John Rambo, były komandos, naraża się policjantom z pewnego miasteczka.", "pack://application:,,,/Resources/movie_img/rambo.jpg", 1, 24, "8 Apr 2017");
+            var kiler = new Movie("Kiler", "Jerzy Kiler, przypadkowo zostaje wzięty za płatnego zabójcę.","pack://application:,,,/Resources/movie_img/kiler.jpg", 1, 43, "9 Apr 2017");
+            var szklanaPulapka = new Movie("Szklana pułapka", "Grupa terrorystów opanowuje korporacyjny wieżowiec.", "pack://application:,,,/Resources/movie_img/szklana_pulapka.jpg", 2, 14, "10 Apr 2017");
+            var psy = new Movie("Psy", "Franz Maurer, były funkcjonariusz Służby Bezpieczeństwa, zaczyna pracę w policji.", "pack://application:,,,/Resources/movie_img/psy.jpg", 2, 02, "10 Apr 2017");
 
 
             ObservableCollection<Spot> spots = new ObservableCollection<Spot>()
@@ -184,6 +168,63 @@ namespace PzProject.ViewModel
                 new Spot(0, 1, 2, 22),
                 new Spot(0, 2, 2, 23),
                 new Spot(0, 3, 2, 24),
+                new Spot(0, 4, 2, 25),
+                new Spot(0, 5, 2, 26),
+                new Spot(0, 6, 2, 27),
+                new Spot(0, 7, 2, 28),
+                new Spot(0, 8, 2, 29),
+                new Spot(0, 9, 2, 30),
+
+                new Spot(0, 0, 3, 31),
+                new Spot(0, 1, 3, 32),
+                new Spot(0, 2, 3, 33),
+                new Spot(0, 3, 3, 34),
+                new Spot(0, 4, 3, 35),
+                new Spot(0, 5, 3, 36),
+                new Spot(0, 6, 3, 37),
+                new Spot(0, 7, 3, 38),
+                new Spot(0, 8, 3, 39),
+                new Spot(0, 9, 3, 40),
+
+                new Spot(0, 0, 4, 41),
+                new Spot(0, 1, 4, 42),
+                new Spot(0, 2, 4, 43),
+                new Spot(0, 3, 4, 44),
+                new Spot(0, 4, 4, 45),
+                new Spot(0, 5, 4, 46),
+                new Spot(0, 6, 4, 47),
+                new Spot(0, 7, 4, 48),
+                new Spot(0, 8, 4, 49),
+                new Spot(0, 9, 4, 50)
+            };
+            ObservableCollection<Spot> spots1 = new ObservableCollection<Spot>()
+            {
+                new Spot(0, 0, 0, 1),
+                new Spot(0, 1, 0, 2),
+                new Spot(2, 2, 0, 3),
+                new Spot(2, 3, 0, 4),
+                new Spot(0, 4, 0, 5),
+                new Spot(0, 5, 0, 6),
+                new Spot(0, 6, 0, 7),
+                new Spot(0, 7, 0, 8),
+                new Spot(0, 8, 0, 9),
+                new Spot(0, 9, 0, 10),
+
+                new Spot(0, 0, 1, 11),
+                new Spot(0, 1, 1, 12),
+                new Spot(2, 2, 1, 13),
+                new Spot(2, 3, 1, 14),
+                new Spot(0, 4, 1, 15),
+                new Spot(0, 5, 1, 16),
+                new Spot(0, 6, 1, 17),
+                new Spot(0, 7, 1, 18),
+                new Spot(0, 8, 1, 19),
+                new Spot(0, 9, 1, 20),
+
+                new Spot(0, 0, 2, 21),
+                new Spot(0, 1, 2, 22),
+                new Spot(2, 2, 2, 23),
+                new Spot(2, 3, 2, 24),
                 new Spot(0, 4, 2, 25),
                 new Spot(0, 5, 2, 26),
                 new Spot(0, 6, 2, 27),
@@ -279,7 +320,7 @@ namespace PzProject.ViewModel
             };
             ObservableCollection<Room> rooms2 = new ObservableCollection<Room>()
             {
-                new Room(1, spots, 10, 5),
+                new Room(1, spots1, 10, 5),
                 new Room(2, spots2, 10, 5)
             };
             ObservableCollection<string> seanceHours = new ObservableCollection<string>()
@@ -295,11 +336,11 @@ namespace PzProject.ViewModel
                 "12:00"
             };
 
-            Seances.Add(new Seance(JohnWick, rooms, seanceHours, new DateTime(2017, 4, 14), new DateTime(2017, 4, 16) ));
-            Seances.Add(new Seance(Rambo, rooms, seanceHours, new DateTime(2017, 4, 14), new DateTime(2017, 4, 16) ));
-            Seances.Add(new Seance(Kiler, rooms2, seanceHours2, new DateTime(2017, 4, 14), new DateTime(2017, 4, 16) ));
-            Seances.Add(new Seance(SzklanaPulapka, rooms, seanceHours, new DateTime(2017, 4, 14), new DateTime(2017, 4, 16) ));
-            Seances.Add(new Seance(Psy, rooms2, seanceHours2, new DateTime(2017, 4, 14), new DateTime(2017, 4, 16) ));
+            Seances.Add(new Seance(johnWick, rooms, seanceHours, new DateTime(2017, 4, 14), new DateTime(2017, 4, 16) ));
+            Seances.Add(new Seance(rambo, rooms, seanceHours, new DateTime(2017, 4, 14), new DateTime(2017, 4, 16) ));
+            Seances.Add(new Seance(kiler, rooms2, seanceHours2, new DateTime(2017, 4, 14), new DateTime(2017, 4, 16) ));
+            Seances.Add(new Seance(szklanaPulapka, rooms, seanceHours, new DateTime(2017, 4, 14), new DateTime(2017, 4, 16) ));
+            Seances.Add(new Seance(psy, rooms2, seanceHours2, new DateTime(2017, 4, 14), new DateTime(2017, 4, 16) ));
         }
         #endregion
 
