@@ -129,7 +129,6 @@ namespace PzProject.ViewModel
                 mainGrid.Children.Add(ulgi);
             }
 
-
             return mainGrid;
         }
 

@@ -331,6 +331,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*" />
                             <RowDefinition Height="*" />
+                            <RowDefinition Height="0.2*" />
                         </Grid.RowDefinitions>
 
                         <TextBlock Grid.Row="0" Margin="5,0,0,0">
@@ -346,7 +347,13 @@
                             <Run Text="Opis: " /><LineBreak />
                             <Run Text="Tutaj bedzie krotki opis filmu" />
                         </TextBlock>
-
+                        
+                        <Button Grid.Row="2" 
+                                Content="Szczegółowy opis filmu" 
+                                Width="180"
+                                HorizontalAlignment="Right"
+                                Click="DescriptionPage_Click"/>
+                                <!--="{Binding PreviousPageCommand}" -->                                
                     </Grid>
 
                 </Grid>

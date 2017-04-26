@@ -32,6 +32,5 @@ namespace PzProject.View
             _viewModel = new RoomPageViewModel(selectedSeance, hour);
             this.DataContext = _viewModel;
         }
-
     }
 }
