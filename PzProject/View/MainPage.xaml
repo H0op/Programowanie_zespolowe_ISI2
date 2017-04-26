@@ -347,13 +347,13 @@
                             <Run Text="Opis: " /><LineBreak />
                             <Run Text="Tutaj bedzie krotki opis filmu" />
                         </TextBlock>
-                        
+
                         <Button Grid.Row="2" 
                                 Content="Szczegółowy opis filmu" 
                                 Width="180"
                                 HorizontalAlignment="Right"
-                                Click="DescriptionPage_Click"/>
-                                <!--="{Binding PreviousPageCommand}" -->                                
+                                Command="{Binding MoreInfoCommand}"/>
+                                                             
                     </Grid>
 
                 </Grid>

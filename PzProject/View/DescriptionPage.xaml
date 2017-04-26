@@ -22,9 +22,11 @@
 
             </Grid.RowDefinitions>
             <!--Zdjecie-->
-            <Image Source="{StaticResource kiler}"    
-                    Margin="10"
-                    Grid.Row="0" />
+            <Image
+                    Source="{Binding Seans.Movie.ImageSrc, Converter={StaticResource ImageConverter}, Mode=TwoWay}"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    Grid.Column="0" />
 
             <TextBlock Grid.Row="1" 
                        Margin="20" 
@@ -34,8 +36,7 @@
                        Foreground="#666">
                 
                 <Run Text="Premiera: " FontWeight="Bold" />
-                <!--<Run Text="{Binding SelectedMovie.ReleaseDate}" /><LineBreak />-->
-                <Run Text="2017-03-10" /><LineBreak />
+                <Run Text="{Binding Seans.Movie.ReleaseDate}" /><LineBreak />
                 
                 <Run Text="Produkcja: " FontWeight="Bold" />
                 <!--<Run Text="{Binding SelectedMovie.ReleaseDate}" /><LineBreak />-->
@@ -46,8 +47,7 @@
                 <Run Text="Dramat" /><LineBreak />
                 
                 <Run Text="Czas trwania: " FontWeight="Bold" />
-                <!--<Run Text="{Binding SelectedMovie.ReleaseDate}" /><LineBreak />-->
-                <Run Text="132 min." /><LineBreak />
+                <Run Text="{Binding Path=Seans.Movie.Length, Mode=OneWay}" /><LineBreak />
                 
                 <Run Text="Od lat: " FontWeight="Bold" />
                 <!--<Run Text="{Binding SelectedMovie.ReleaseDate}" /><LineBreak />-->
@@ -79,23 +79,21 @@
                 <RowDefinition MinHeight="80"/>
             </Grid.RowDefinitions>
             <!--Tytuł-->           
-            <TextBlock Text="Ghost in the Shell (2D, napisy)"                       
-                       x:Name="Tytul"
+            <TextBlock Text="{Binding Seans.Movie.Name}"                       
                        TextWrapping="WrapWithOverflow" 
                        Grid.Row="0" 
                        Margin="10"
                        FontSize="35" 
                        FontWeight="Bold"/>
-            <!--<Run Text="{Binding SelectedMovie.Title}" />-->
 
             <!--Opis filmu-->
-            <TextBlock Grid.Row="1" 
+            <TextBlock Text="{Binding Seans.Movie.Description}"
+                       Grid.Row="1" 
                        TextWrapping="Wrap"
                        FontSize="15" 
                        Margin="10"
-                       Foreground="#666"
-                       Text='Niedaleka przyszłość. Cyborg o ludzkim mózgu Motoko Kusanagi (Scarlett Johansson) przewodzi Sekcji 9, tajemniczej organizacji do spraw walki z cyberprzestępczością. W rzeczywistości opanowanej przez zagrażające ludzkości cyborgi największym niebezpieczeństwem jest "ghost hacking" - przejęcie kontroli nad umysłem. Przy czym przestrzeń "Ghost" ma tu wymiar filozoficzny - jest istotą człowieka w zcyborgizowanych humanoidach.'/>
-           
+                       Foreground="#666"/>
+
             <TextBlock Grid.Row="2"
                        Margin="50,10,50,5"
                        FontSize="25"
@@ -119,35 +117,23 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                
-                <Button x:Name = "button1"
-                        Grid.Column="0"
-                        Content = "15:00"
-                        Margin = "10"  
-                        Width = "100" 
-                        Height="30"
-                        HorizontalAlignment = "Center" 
-                        Foreground = "#555"/>
 
-                <Button x:Name = "button2"  
-                        Grid.Column="1"   
-                        Content = "18:30"
-                        Margin = "10"  
-                        Width = "100"  
-                        Height="30"
-                        HorizontalAlignment = "Center"  
-                        Foreground = "#555"/>
-                
-                <Button x:Name = "button3"  
-                        Grid.Column="2"                        
-                        Content = "21:00" 
-                        Margin = "10"  
-                        Width = "100"  
-                        Height="30"
-                        HorizontalAlignment = "Center"  
-                        Foreground = "#555"/>
+
+                <ContentPresenter HorizontalAlignment="Center"
+                                  Grid.Column="0"
+                                  Content="{Binding Path=Morning, Mode=TwoWay}" />
+                <ContentPresenter HorizontalAlignment="Center"
+                                  Grid.Column="1"
+                               Content="{Binding Path=Afternoon, Mode=TwoWay}" />
+                <ContentPresenter HorizontalAlignment="Center"
+                                  Grid.Column="2"
+                               Content="{Binding Path=Evening, Mode=TwoWay}" />
+                <Button Content="Powrót"
+                        Grid.Column="3"
+                        Width="100"
+                        Command="{Binding PowrotCommand}"/>
+
             </Grid>
         </Grid>
     </Grid>

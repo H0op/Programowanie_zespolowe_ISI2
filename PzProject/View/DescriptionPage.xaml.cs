@@ -20,11 +20,12 @@ namespace PzProject.View
     {
         private readonly DescriptionPageViewModel _viewModel;
 
-        public DescriptionPage()
+        public DescriptionPage(Seance seans)
         {
             InitializeComponent();
-            _viewModel = new DescriptionPageViewModel();
+            _viewModel = new DescriptionPageViewModel(seans);
             this.DataContext = _viewModel;
+
 
             /*var wb = new WebBrowser();
             this.Content = wb;
