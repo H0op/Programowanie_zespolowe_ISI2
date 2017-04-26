@@ -11,7 +11,7 @@ namespace PzProject
         {
             InitializeComponent();
             NavigationManager.Initialize(MainFrame);
-            NavigationManager.NavigateTo(new DescriptionPage());
+            NavigationManager.NavigateTo(new MainPage());
         }
     }
 }
