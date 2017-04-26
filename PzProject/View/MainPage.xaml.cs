@@ -27,8 +27,9 @@ namespace PzProject.View
             this.DataContext = _viewModel;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void DescriptionPage_Click(object sender, RoutedEventArgs e)
         {
+
         }
     }
 }
