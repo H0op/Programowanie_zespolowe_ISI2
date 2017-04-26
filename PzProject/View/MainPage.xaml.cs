@@ -27,9 +27,8 @@ namespace PzProject.View
             this.DataContext = _viewModel;
         }
 
-        private void tabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-
         }
     }
 }

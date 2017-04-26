@@ -36,9 +36,9 @@
                 <!--Nowy Widok-->
                 <TabItem Header="{Binding Path=DataTime[0], Mode=TwoWay}">
                     <Grid>
-                        <ListBox ItemsSource="{Binding MovieList}"
+                        <ListBox ItemsSource="{Binding Seances}"
                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                                 SelectedItem="{Binding Path=SelectedMovie, Mode=TwoWay}">
+                                 SelectedItem="{Binding Path=SelectedSeance, Mode=TwoWay}">
 
                             <ListBox.ItemsPanel>
                                 <ItemsPanelTemplate>
@@ -56,13 +56,13 @@
                                                 <RowDefinition Height="0.9*" />
                                                 <RowDefinition Height="0.1*" />
                                             </Grid.RowDefinitions>
-                                            <Image Source="{Binding ImageSrc, Converter={StaticResource ImageConverter}}"
+                                            <Image Source="{Binding Movie.ImageSrc, Converter={StaticResource ImageConverter}}"
                                                    Width="150"
                                                    Margin="5"
                                                    Grid.Row="0" />
                                             <TextBlock Grid.Row="1"
                                                        Margin="5"
-                                                       Text="{Binding Name}"
+                                                       Text="{Binding Movie.Name}"
                                                        FontWeight="Bold"
                                                        HorizontalAlignment="Center" />
                                         </Grid>
@@ -74,7 +74,7 @@
                 </TabItem>
                 <TabItem Header="{Binding Path=DataTime[1], Mode=TwoWay}">
                     <Grid>
-                        <ListBox ItemsSource="{Binding MovieList}"
+                        <ListBox ItemsSource="{Binding MovieList2}"
                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                                  SelectedItem="{Binding Path=SelectedMovie, Mode=TwoWay}">
 
@@ -322,7 +322,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Image
-                        Source="{Binding SelectedMovie.ImageSrc, Converter={StaticResource ImageConverter}, Mode=TwoWay}"
+                        Source="{Binding SelectedSeance.Movie.ImageSrc, Converter={StaticResource ImageConverter}, Mode=TwoWay}"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Top"
                         Grid.Column="0" />
@@ -331,22 +331,29 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*" />
                             <RowDefinition Height="*" />
+                            <RowDefinition Height="0.2*" />
                         </Grid.RowDefinitions>
 
                         <TextBlock Grid.Row="0" Margin="5,0,0,0">
                             <Run Text="Tytuł: " FontSize="15" FontWeight="Bold" />
-                            <Run Text="{Binding SelectedMovie.Name}" FontSize="15" FontWeight="Bold" /><LineBreak />
+                            <Run Text="{Binding SelectedSeance.Movie.Name}" FontSize="15" FontWeight="Bold" /><LineBreak />
                             <Run Text="Data premiery: " FontSize="10" />
-                            <Run Text="{Binding SelectedMovie.ReleaseDate}" /><LineBreak />
+                            <Run Text="{Binding SelectedSeance.Movie.ReleaseDate}" /><LineBreak />
                             <Run Text="Czas trwania: " FontSize="10" />
-                            <Run Text="{Binding SelectedMovie.Length, Mode=OneWay}" />
+                            <Run Text="{Binding SelectedSeance.Movie.Length, Mode=OneWay}" />
                         </TextBlock>
 
                         <TextBlock Grid.Row="1">
                             <Run Text="Opis: " /><LineBreak />
                             <Run Text="Tutaj bedzie krotki opis filmu" />
                         </TextBlock>
-
+                        
+                        <Button Grid.Row="2" 
+                                Content="Szczegółowy opis filmu" 
+                                Width="180"
+                                HorizontalAlignment="Right"
+                                Click="DescriptionPage_Click"/>
+                                <!--="{Binding PreviousPageCommand}" -->                                
                     </Grid>
 
                 </Grid>
@@ -367,15 +374,18 @@
 
                     <!--Rano-->
                     <Grid Grid.Column="0" Row="1" Margin=" 5 10 0 5">
-                        <TextBlock Text="Tutaj beda guziki (?)" />
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          Content="{Binding Path=Morning, Mode=TwoWay}" />
                     </Grid>
-                    <!--Po poludniu`-->
+                    <!--Po poludniu-->
                     <Grid Grid.Column="1" Row="1" Margin=" 5 10 0 5">
-                        <TextBlock Text="Tutaj beda guziki (?)" />
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          Content="{Binding Path=Afternoon, Mode=TwoWay}" />
                     </Grid>
                     <!--Wieczorem-->
                     <Grid Grid.Column="2" Row="1" Margin=" 5 10 5 5">
-                        <TextBlock Text="Tutaj beda guziki (?)" />
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          Content="{Binding Path=Evening, Mode=TwoWay}" />
                     </Grid>
 
                 </Grid>
