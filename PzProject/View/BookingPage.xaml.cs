@@ -21,17 +21,16 @@ using System.Xml;
 
 namespace PzProject.View
 {
-
-    public partial class RoomPage : Page
+    public partial class BookingPage : Page
     {
-        private RoomPageViewModel _viewModel;
 
-        public RoomPage(Seance selectedSeance, string hour)
+        private BookingPageViewModel _viewModel;
+
+        public BookingPage(List<Spot> selectedSpots,Seance seance,string selectedHour)
         {
             InitializeComponent();
-            _viewModel = new RoomPageViewModel(selectedSeance, hour);
+            _viewModel = new BookingPageViewModel(selectedSpots, seance, selectedHour);
             this.DataContext = _viewModel;
         }
-
     }
 }

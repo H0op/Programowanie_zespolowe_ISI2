@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Dynamic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Media.Animation;
+using MahApps.Metro.Controls;
 using PzProject.Model;
 using PzProject.Utility;
 using PzProject.View;
@@ -16,10 +19,15 @@ namespace PzProject.ViewModel
     {
         #region Fields/Commands
         public ICommand PreviousPageCommand { get; set; }
+        public ICommand SelectSpotCommand { get; set; }
+        public ICommand BookingCommand { get; set; }
+
 
         private Grid _grid;
         private Room _room;
+        private string _selectedHour;
         private Seance _seance;
+        private List<Spot> _selectedSpots;
         #endregion
 
         #region Properties
@@ -40,23 +48,44 @@ namespace PzProject.ViewModel
             get { return _seance; }
             set { SetProperty(ref _seance, value); }
         }
+
         #endregion
 
         #region Constructor
 
-        public RoomPageViewModel(Seance selectedSeance)
+        public RoomPageViewModel(Seance selectedSeance, string hour)
         {
             PreviousPageCommand = new RelayCommand(action => PreviousPage());
+            SelectSpotCommand = new RelayCommand(action => SelectSpot( (Spot)action ));
+            BookingCommand = new RelayCommand(action => Booking());
+            _selectedSpots = new List<Spot>();
 
+            _selectedHour = hour;
             _seance = selectedSeance;
-            _room = _seance.Rooms[0];
-            Grid = CreateView();
+            _room = _seance.Rooms[selectedSeance.SeanceHours.IndexOf(_selectedHour)];
+            _grid = CreateView();
         }
 
 
         #endregion
 
         #region Methods
+
+        private void SelectSpot(Spot spot)
+        {
+            if (_selectedSpots.Contains(spot))
+            {
+                _selectedSpots.Remove(spot);
+                SpotButton selectedSpotButton = _grid.Children.Cast<SpotButton>().First(e => Grid.GetRow(e) == spot.Row && Grid.GetColumn(e) == spot.Column);
+                selectedSpotButton.Background = Brushes.Gray;
+            }
+            else
+            {
+                _selectedSpots.Add(spot);
+                SpotButton selectedSpotButton = _grid.Children.Cast<SpotButton>().First(e => Grid.GetRow(e) == spot.Row && Grid.GetColumn(e) == spot.Column);
+                selectedSpotButton.Background = Brushes.ForestGreen;
+            }
+        }
 
         private Grid CreateView()
         {
@@ -87,7 +116,8 @@ namespace PzProject.ViewModel
                 if (iterator.Current.IsAvailable != 2)
                 {
                     spotButton = new SpotButton(iterator.Current);
-                    spotButton.Margin = new Thickness(2);
+                    spotButton.Command = SelectSpotCommand;
+                    spotButton.CommandParameter = iterator.Current;
                     Grid.SetColumn(spotButton, iterator.Current.Column);
                     Grid.SetRow(spotButton, iterator.Current.Row);
                     mainGrid.Children.Add(spotButton);
@@ -101,6 +131,11 @@ namespace PzProject.ViewModel
         private void PreviousPage()
         {
             NavigationManager.NavigateTo(new MainPage());
+        }
+
+        private void Booking()
+        {
+            NavigationManager.NavigateTo(new BookingPage(_selectedSpots, _seance, _selectedHour));
         }
 
         #endregion
