@@ -1,6 +1,7 @@
 ﻿using PzProject.Model;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,27 +26,13 @@ namespace PzProject.View
             InitializeComponent();
             _viewModel = new DescriptionPageViewModel(seans);
             this.DataContext = _viewModel;
-
-
-            /*var wb = new WebBrowser();
-            this.Content = wb;
-            wb.NavigateToString(@"
-                <!DOCTYPE html>
-                <html>
-                <head>
-                    <meta http-equiv='Content-Type' content='text/html; charset=unicode' />
-                    <meta http-equiv='X-UA-Compatible' content='IE=9' /> 
-                    <title></title>
-                </head>
-                <body>
-                    <div>
-                         <video autoplay='autoplay' preload='metadata'>
-                            <source src='http://html5demos.com/assets/dizzy.mp4' type='video/mp4' />
-                        </video>
-                    </div>
-                </body>
-                </html>");
-                */
         }
+
+        private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
+            e.Handled = true;
+        }
+
     }
 }
