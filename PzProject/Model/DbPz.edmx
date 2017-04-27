@@ -1,0 +1,335 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DatabasePZModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BILET">
+          <Key>
+            <PropertyRef Name="Id_bilet" />
+          </Key>
+          <Property Name="Id_bilet" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Potwierdzenie" Type="tinyint" />
+          <Property Name="Realizacja" Type="tinyint" />
+          <Property Name="Id_seans" Type="int" Nullable="false" />
+          <Property Name="Id_ulga" Type="int" />
+        </EntityType>
+        <EntityType Name="MIEJSCE">
+          <Key>
+            <PropertyRef Name="Id_miejsce" />
+          </Key>
+          <Property Name="Id_miejsce" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Rzad" Type="int" />
+          <Property Name="Miejsce" Type="int" />
+          <Property Name="Zajete" Type="tinyint" />
+          <Property Name="Id_sala" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SALA">
+          <Key>
+            <PropertyRef Name="Id_sala" />
+          </Key>
+          <Property Name="Id_sala" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ilosc_kolumn" Type="int" />
+          <Property Name="Ilosc_wierszy" Type="int" />
+        </EntityType>
+        <EntityType Name="SEANS">
+          <Key>
+            <PropertyRef Name="Id_seans" />
+          </Key>
+          <Property Name="Id_seans" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Data_rozpoczecia" Type="date" />
+          <Property Name="Data_zakonczenia" Type="date" />
+          <Property Name="Id_sala" Type="int" />
+          <Property Name="Id_film" Type="int" />
+        </EntityType>
+        <EntityType Name="ULGA">
+          <Key>
+            <PropertyRef Name="Id_ulga" />
+          </Key>
+          <Property Name="Id_ulga" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Wartosc" Type="int" />
+          <Property Name="Nazwa" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_BILET_SEANS">
+          <End Role="SEANS" Type="Self.SEANS" Multiplicity="1" />
+          <End Role="BILET" Type="Self.BILET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEANS">
+              <PropertyRef Name="Id_seans" />
+            </Principal>
+            <Dependent Role="BILET">
+              <PropertyRef Name="Id_seans" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BILET_ULGA">
+          <End Role="ULGA" Type="Self.ULGA" Multiplicity="0..1" />
+          <End Role="BILET" Type="Self.BILET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ULGA">
+              <PropertyRef Name="Id_ulga" />
+            </Principal>
+            <Dependent Role="BILET">
+              <PropertyRef Name="Id_ulga" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MIEJSCE_SALA">
+          <End Role="SALA" Type="Self.SALA" Multiplicity="1" />
+          <End Role="MIEJSCE" Type="Self.MIEJSCE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SALA">
+              <PropertyRef Name="Id_sala" />
+            </Principal>
+            <Dependent Role="MIEJSCE">
+              <PropertyRef Name="Id_sala" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SEANS_SALA">
+          <End Role="SALA" Type="Self.SALA" Multiplicity="0..1" />
+          <End Role="SEANS" Type="Self.SEANS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SALA">
+              <PropertyRef Name="Id_sala" />
+            </Principal>
+            <Dependent Role="SEANS">
+              <PropertyRef Name="Id_sala" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DatabasePZModelStoreContainer">
+          <EntitySet Name="BILET" EntityType="Self.BILET" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MIEJSCE" EntityType="Self.MIEJSCE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SALA" EntityType="Self.SALA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SEANS" EntityType="Self.SEANS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ULGA" EntityType="Self.ULGA" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_BILET_SEANS" Association="Self.FK_BILET_SEANS">
+            <End Role="SEANS" EntitySet="SEANS" />
+            <End Role="BILET" EntitySet="BILET" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BILET_ULGA" Association="Self.FK_BILET_ULGA">
+            <End Role="ULGA" EntitySet="ULGA" />
+            <End Role="BILET" EntitySet="BILET" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MIEJSCE_SALA" Association="Self.FK_MIEJSCE_SALA">
+            <End Role="SALA" EntitySet="SALA" />
+            <End Role="MIEJSCE" EntitySet="MIEJSCE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SEANS_SALA" Association="Self.FK_SEANS_SALA">
+            <End Role="SALA" EntitySet="SALA" />
+            <End Role="SEANS" EntitySet="SEANS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DatabasePZModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BILET">
+          <Key>
+            <PropertyRef Name="Id_bilet" />
+          </Key>
+          <Property Name="Id_bilet" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Potwierdzenie" Type="Byte" />
+          <Property Name="Realizacja" Type="Byte" />
+          <Property Name="Id_seans" Type="Int32" Nullable="false" />
+          <Property Name="Id_ulga" Type="Int32" />
+          <NavigationProperty Name="SEANS" Relationship="Self.FK_BILET_SEANS" FromRole="BILET" ToRole="SEANS" />
+          <NavigationProperty Name="ULGA" Relationship="Self.FK_BILET_ULGA" FromRole="BILET" ToRole="ULGA" />
+        </EntityType>
+        <EntityType Name="MIEJSCE">
+          <Key>
+            <PropertyRef Name="Id_miejsce" />
+          </Key>
+          <Property Name="Id_miejsce" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Rzad" Type="Int32" />
+          <Property Name="Miejsce1" Type="Int32" />
+          <Property Name="Zajete" Type="Byte" />
+          <Property Name="Id_sala" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="SALA" Relationship="Self.FK_MIEJSCE_SALA" FromRole="MIEJSCE" ToRole="SALA" />
+        </EntityType>
+        <EntityType Name="SALA">
+          <Key>
+            <PropertyRef Name="Id_sala" />
+          </Key>
+          <Property Name="Id_sala" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ilosc_kolumn" Type="Int32" />
+          <Property Name="Ilosc_wierszy" Type="Int32" />
+          <NavigationProperty Name="MIEJSCE" Relationship="Self.FK_MIEJSCE_SALA" FromRole="SALA" ToRole="MIEJSCE" />
+          <NavigationProperty Name="SEANS" Relationship="Self.FK_SEANS_SALA" FromRole="SALA" ToRole="SEANS" />
+        </EntityType>
+        <EntityType Name="SEANS">
+          <Key>
+            <PropertyRef Name="Id_seans" />
+          </Key>
+          <Property Name="Id_seans" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Data_rozpoczecia" Type="DateTime" Precision="0" />
+          <Property Name="Data_zakonczenia" Type="DateTime" Precision="0" />
+          <Property Name="Id_sala" Type="Int32" />
+          <Property Name="Id_film" Type="Int32" />
+          <NavigationProperty Name="BILET" Relationship="Self.FK_BILET_SEANS" FromRole="SEANS" ToRole="BILET" />
+          <NavigationProperty Name="SALA" Relationship="Self.FK_SEANS_SALA" FromRole="SEANS" ToRole="SALA" />
+        </EntityType>
+        <EntityType Name="ULGA">
+          <Key>
+            <PropertyRef Name="Id_ulga" />
+          </Key>
+          <Property Name="Id_ulga" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Wartosc" Type="Int32" />
+          <Property Name="Nazwa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="BILET" Relationship="Self.FK_BILET_ULGA" FromRole="ULGA" ToRole="BILET" />
+        </EntityType>
+        <Association Name="FK_BILET_SEANS">
+          <End Role="SEANS" Type="Self.SEANS" Multiplicity="1" />
+          <End Role="BILET" Type="Self.BILET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEANS">
+              <PropertyRef Name="Id_seans" />
+            </Principal>
+            <Dependent Role="BILET">
+              <PropertyRef Name="Id_seans" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BILET_ULGA">
+          <End Role="ULGA" Type="Self.ULGA" Multiplicity="0..1" />
+          <End Role="BILET" Type="Self.BILET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ULGA">
+              <PropertyRef Name="Id_ulga" />
+            </Principal>
+            <Dependent Role="BILET">
+              <PropertyRef Name="Id_ulga" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MIEJSCE_SALA">
+          <End Role="SALA" Type="Self.SALA" Multiplicity="1" />
+          <End Role="MIEJSCE" Type="Self.MIEJSCE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SALA">
+              <PropertyRef Name="Id_sala" />
+            </Principal>
+            <Dependent Role="MIEJSCE">
+              <PropertyRef Name="Id_sala" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SEANS_SALA">
+          <End Role="SALA" Type="Self.SALA" Multiplicity="0..1" />
+          <End Role="SEANS" Type="Self.SEANS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SALA">
+              <PropertyRef Name="Id_sala" />
+            </Principal>
+            <Dependent Role="SEANS">
+              <PropertyRef Name="Id_sala" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DatabasePZEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BILET" EntityType="Self.BILET" />
+          <EntitySet Name="MIEJSCE" EntityType="Self.MIEJSCE" />
+          <EntitySet Name="SALA" EntityType="Self.SALA" />
+          <EntitySet Name="SEANS" EntityType="Self.SEANS" />
+          <EntitySet Name="ULGA" EntityType="Self.ULGA" />
+          <AssociationSet Name="FK_BILET_SEANS" Association="Self.FK_BILET_SEANS">
+            <End Role="SEANS" EntitySet="SEANS" />
+            <End Role="BILET" EntitySet="BILET" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BILET_ULGA" Association="Self.FK_BILET_ULGA">
+            <End Role="ULGA" EntitySet="ULGA" />
+            <End Role="BILET" EntitySet="BILET" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MIEJSCE_SALA" Association="Self.FK_MIEJSCE_SALA">
+            <End Role="SALA" EntitySet="SALA" />
+            <End Role="MIEJSCE" EntitySet="MIEJSCE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SEANS_SALA" Association="Self.FK_SEANS_SALA">
+            <End Role="SALA" EntitySet="SALA" />
+            <End Role="SEANS" EntitySet="SEANS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DatabasePZModelStoreContainer" CdmEntityContainer="DatabasePZEntities">
+          <EntitySetMapping Name="BILET">
+            <EntityTypeMapping TypeName="DatabasePZModel.BILET">
+              <MappingFragment StoreEntitySet="BILET">
+                <ScalarProperty Name="Id_bilet" ColumnName="Id_bilet" />
+                <ScalarProperty Name="Potwierdzenie" ColumnName="Potwierdzenie" />
+                <ScalarProperty Name="Realizacja" ColumnName="Realizacja" />
+                <ScalarProperty Name="Id_seans" ColumnName="Id_seans" />
+                <ScalarProperty Name="Id_ulga" ColumnName="Id_ulga" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MIEJSCE">
+            <EntityTypeMapping TypeName="DatabasePZModel.MIEJSCE">
+              <MappingFragment StoreEntitySet="MIEJSCE">
+                <ScalarProperty Name="Id_miejsce" ColumnName="Id_miejsce" />
+                <ScalarProperty Name="Rzad" ColumnName="Rzad" />
+                <ScalarProperty Name="Miejsce1" ColumnName="Miejsce" />
+                <ScalarProperty Name="Zajete" ColumnName="Zajete" />
+                <ScalarProperty Name="Id_sala" ColumnName="Id_sala" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SALA">
+            <EntityTypeMapping TypeName="DatabasePZModel.SALA">
+              <MappingFragment StoreEntitySet="SALA">
+                <ScalarProperty Name="Id_sala" ColumnName="Id_sala" />
+                <ScalarProperty Name="Ilosc_kolumn" ColumnName="Ilosc_kolumn" />
+                <ScalarProperty Name="Ilosc_wierszy" ColumnName="Ilosc_wierszy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SEANS">
+            <EntityTypeMapping TypeName="DatabasePZModel.SEANS">
+              <MappingFragment StoreEntitySet="SEANS">
+                <ScalarProperty Name="Id_seans" ColumnName="Id_seans" />
+                <ScalarProperty Name="Data_rozpoczecia" ColumnName="Data_rozpoczecia" />
+                <ScalarProperty Name="Data_zakonczenia" ColumnName="Data_zakonczenia" />
+                <ScalarProperty Name="Id_sala" ColumnName="Id_sala" />
+                <ScalarProperty Name="Id_film" ColumnName="Id_film" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ULGA">
+            <EntityTypeMapping TypeName="DatabasePZModel.ULGA">
+              <MappingFragment StoreEntitySet="ULGA">
+                <ScalarProperty Name="Id_ulga" ColumnName="Id_ulga" />
+                <ScalarProperty Name="Wartosc" ColumnName="Wartosc" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -4,8 +4,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using MyToolkit.Collections;
 using PzProject.Utility;
+using PzProject.View;
 
 namespace PzProject.ViewModel
 {
@@ -13,6 +15,7 @@ namespace PzProject.ViewModel
     {
 
         #region Fields/Commands
+        public ICommand PreviousPageCommand { set; get; }
 
         private ObservableCollection<string> _bookingList;
         private ObservableCollectionView<string> _filteredBookList;
@@ -46,13 +49,14 @@ namespace PzProject.ViewModel
 
         public UserPageViewModel()
         {
+            PreviousPageCommand = new RelayCommand(action => {NavigationManager.NavigateTo(new MainPage());});
             FakeBooking();
         }
 
         #endregion
 
         #region Methods
-
+        
 
         #endregion
 

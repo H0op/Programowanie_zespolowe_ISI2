@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Globalization;
+using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using PzProject.Model;
@@ -88,10 +90,12 @@ namespace PzProject.ViewModel
             NextPageCommand = new RelayCommand(action => NextPage( action ));
             LoginCommand = new RelayCommand(action => Login());
 
+
             Seances = new ObservableCollection<Seance>();
             _morning = new StackPanel();
             _afternoon = new StackPanel();
             _evening = new StackPanel();
+            
 
             InitData();
             InitDataTime();
