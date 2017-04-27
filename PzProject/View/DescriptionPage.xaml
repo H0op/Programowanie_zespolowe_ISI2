@@ -71,11 +71,11 @@
         <!--prawa kolumna-->
         <Grid Grid.Column="1" Margin="15" Background="White">
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
                 <RowDefinition Height="5*"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
                 <RowDefinition MinHeight="80"/>
             </Grid.RowDefinitions>
             <!--Tytuł-->           
@@ -94,15 +94,23 @@
                        Margin="10"
                        Foreground="#666"/>
 
-            <TextBlock Grid.Row="2"
+            <TextBlock TextAlignment="Center"
+                       Grid.Row="2"
                        Margin="50,10,50,5"
                        FontSize="25"
                        Foreground="DarkViolet"
                        Text="Zobacz zwiastun"/>
             
             <!--Zwiastun Youtube-->
-            <Grid Grid.Row="3" Background="#333">
-                <TextBlock TextAlignment="Center" FontSize="100" Text="YouTube"/>
+            <Grid Grid.Row="3">
+                <TextBlock TextAlignment="Center" FontSize="30" VerticalAlignment="Bottom">
+                    <Hyperlink  NavigateUri="https://www.youtube.com/embed/0QsgQgT0O5E" RequestNavigate="Hyperlink_RequestNavigate">
+                        <Image
+                        Source="https://img.youtube.com/vi/0QsgQgT0O5E/hqdefault.jpg"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Grid.Column="0" /><LineBreak/>Kliknij</Hyperlink>
+                </TextBlock>
             </Grid>
 
             <TextBlock Grid.Row="4"
