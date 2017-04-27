@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using PzProject.Model;
+using PzProject.Network;
 using PzProject.Utility;
 using PzProject.View;
 
@@ -150,13 +151,6 @@ namespace PzProject.ViewModel
 
         private void InitData()
         {
-            var johnWick = new Movie("John Wick", "Były płatny morderca ściga gangsterów, którzy wtargnęli do jego domu.", "pack://application:,,,/Resources/movie_img/john_wick.jpg", 1, 32, "7 Apr 2017");
-            var rambo = new Movie("Rambo", "John Rambo, były komandos, naraża się policjantom z pewnego miasteczka.", "pack://application:,,,/Resources/movie_img/rambo.jpg", 1, 24, "8 Apr 2017");
-            var kiler = new Movie("Kiler", "Jerzy Kiler, przypadkowo zostaje wzięty za płatnego zabójcę.","pack://application:,,,/Resources/movie_img/kiler.jpg", 1, 43, "9 Apr 2017");
-            var szklanaPulapka = new Movie("Szklana pułapka", "Grupa terrorystów opanowuje korporacyjny wieżowiec.", "pack://application:,,,/Resources/movie_img/szklana_pulapka.jpg", 2, 14, "10 Apr 2017");
-            var psy = new Movie("Psy", "Franz Maurer, były funkcjonariusz Służby Bezpieczeństwa, zaczyna pracę w policji.", "pack://application:,,,/Resources/movie_img/psy.jpg", 2, 02, "10 Apr 2017");
-
-
             ObservableCollection<Spot> spots = new ObservableCollection<Spot>()
             {
                 new Spot(0, 0, 0, 1),
@@ -338,7 +332,8 @@ namespace PzProject.ViewModel
             ObservableCollection<Room> rooms2 = new ObservableCollection<Room>()
             {
                 new Room(1, spots1, 10, 5),
-                new Room(2, spots2, 10, 5)
+                new Room(2, spots2, 10, 5),
+                
             };
             ObservableCollection<string> seanceHours = new ObservableCollection<string>()
             {
@@ -353,11 +348,19 @@ namespace PzProject.ViewModel
                 "12:00"
             };
 
-            Seances.Add(new Seance(johnWick, rooms, seanceHours, new DateTime(2017, 4, 14), new DateTime(2017, 4, 16) ));
-            Seances.Add(new Seance(rambo, rooms, seanceHours, new DateTime(2017, 4, 14), new DateTime(2017, 4, 16) ));
-            Seances.Add(new Seance(kiler, rooms2, seanceHours2, new DateTime(2017, 4, 14), new DateTime(2017, 4, 16) ));
-            Seances.Add(new Seance(szklanaPulapka, rooms, seanceHours, new DateTime(2017, 4, 14), new DateTime(2017, 4, 16) ));
-            Seances.Add(new Seance(psy, rooms2, seanceHours2, new DateTime(2017, 4, 14), new DateTime(2017, 4, 16) ));
+
+            DatabasePZEntities context = new DatabasePZEntities();
+
+            var api = new ApiRequester();
+            Movie movie;
+            foreach (var seans in context.SEANS)
+            {
+                movie = api.getAppMovie((int)seans.Id_film);
+                movie.ImageSrc = "pack://application:,,,/Resources/movie_img/rambo.jpg";
+                Seances.Add(new Seance(movie, rooms, seanceHours, new DateTime(2017, 4, 14), new DateTime(2017, 4, 16)));
+
+            }
+
         }
         #endregion
 
