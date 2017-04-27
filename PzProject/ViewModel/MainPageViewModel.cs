@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Globalization;
+using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using PzProject.Model;
@@ -14,8 +16,8 @@ namespace PzProject.ViewModel
         #region Fields/Commands
 
         public ICommand NextPageCommand { get; set; }
-        public ICommand MoreInfoCommand { get; set; }
-        
+        public ICommand MoreInfoCommand { get; set; }  
+        public ICommand LoginCommand { get; set; }
 
         private ObservableCollection<Seance> _seances;
         private string[] _dataTime;
@@ -88,12 +90,15 @@ namespace PzProject.ViewModel
         {
             NextPageCommand = new RelayCommand(action => NextPage( action ));
             MoreInfoCommand = new RelayCommand(action => MoreInfoPage(), ()=>_selectedSeance!=null);
+            LoginCommand = new RelayCommand(action => Login());
+
 
 
             Seances = new ObservableCollection<Seance>();
             _morning = new StackPanel();
             _afternoon = new StackPanel();
             _evening = new StackPanel();
+            
 
             InitData();
             InitDataTime();
@@ -116,10 +121,14 @@ namespace PzProject.ViewModel
             }
         }
 
-
         private void NextPage(object hour)
         {
             NavigationManager.NavigateTo(new RoomPage(_selectedSeance, hour.ToString()));
+        }
+
+        private void Login()
+        {
+            NavigationManager.NavigateTo(new LoginPage());
         }
 
         private void MoreInfoPage()
