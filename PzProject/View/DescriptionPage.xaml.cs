@@ -16,18 +16,36 @@ using System.Windows.Shapes;
 
 namespace PzProject.View
 {
-    /// <summary>
-    /// Interaction logic for DescriptionPage.xaml
-    /// </summary>
     public partial class DescriptionPage : Page
     {
         private readonly DescriptionPageViewModel _viewModel;
 
-        public DescriptionPage(Movie film)
+        public DescriptionPage(Seance seans)
         {
             InitializeComponent();
-            _viewModel = new DescriptionPageViewModel(new Movie("John Wick", "Były płatny morderca ściga gangsterów, którzy wtargnęli do jego domu.", "pack://application:,,,/Resources/movie_img/john_wick.jpg", 1, 32));
+            _viewModel = new DescriptionPageViewModel(seans);
             this.DataContext = _viewModel;
+
+
+            /*var wb = new WebBrowser();
+            this.Content = wb;
+            wb.NavigateToString(@"
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <meta http-equiv='Content-Type' content='text/html; charset=unicode' />
+                    <meta http-equiv='X-UA-Compatible' content='IE=9' /> 
+                    <title></title>
+                </head>
+                <body>
+                    <div>
+                         <video autoplay='autoplay' preload='metadata'>
+                            <source src='http://html5demos.com/assets/dizzy.mp4' type='video/mp4' />
+                        </video>
+                    </div>
+                </body>
+                </html>");
+                */
         }
     }
 }

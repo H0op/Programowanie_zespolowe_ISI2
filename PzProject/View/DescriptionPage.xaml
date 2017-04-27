@@ -5,49 +5,135 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PzProject.View"
       mc:Ignorable="d" 
-      d:DesignHeight="360" d:DesignWidth="1000"
+      d:DesignHeight="720" d:DesignWidth="1000"
       Title="DescriptionPage">
 
-<Grid Background="LightGray">
-    <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="*"/>
-        <ColumnDefinition Width="*"/>
-        <ColumnDefinition Width="*"/>
-    </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0" Margin="20" Background="White">
+    <Grid Background="#DDD">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width=".5*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <!--lewa kolumna-->
+        <Grid Grid.Column="0" Margin="15" Background="wHITE">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
+
             </Grid.RowDefinitions>
             <!--Zdjecie-->
-            <TextBox Background="LightPink"                   
-                           Width="150" 
-                           Margin="5" 
-                           Grid.Row="0"/>
-            <TextBlock Text="Zwiastun" Grid.Row="1"/>
+            <Image
+                    Source="{Binding Seans.Movie.ImageSrc, Converter={StaticResource ImageConverter}, Mode=TwoWay}"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    Grid.Column="0" />
+
+            <TextBlock Grid.Row="1" 
+                       Margin="20" 
+                       FontSize="15" 
+                       TextWrapping="Wrap" 
+                       FontStyle="Italic"
+                       Foreground="#666">
+                
+                <Run Text="Premiera: " FontWeight="Bold" />
+                <Run Text="{Binding Seans.Movie.ReleaseDate}" /><LineBreak />
+                
+                <Run Text="Produkcja: " FontWeight="Bold" />
+                <!--<Run Text="{Binding SelectedMovie.ReleaseDate}" /><LineBreak />-->
+                <Run Text="USA" /><LineBreak />
+                
+                <Run Text="Gatunek: " FontWeight="Bold"/>
+                <!--<Run Text="{Binding SelectedMovie.ReleaseDate}" /><LineBreak />-->
+                <Run Text="Dramat" /><LineBreak />
+                
+                <Run Text="Czas trwania: " FontWeight="Bold" />
+                <Run Text="{Binding Path=Seans.Movie.Length, Mode=OneWay}" /><LineBreak />
+                
+                <Run Text="Od lat: " FontWeight="Bold" />
+                <!--<Run Text="{Binding SelectedMovie.ReleaseDate}" /><LineBreak />-->
+                <Run Text="16" /><LineBreak />
+                
+                <Run Text="Reżyseria: " FontWeight="Bold" />
+                <!--<Run Text="{Binding SelectedMovie.ReleaseDate}" /><LineBreak />-->
+                <Run Text="Stuart Hazeldine" /><LineBreak />
+                
+                <Run Text="Scenariusz: " FontWeight="Bold" />
+                <!--<Run Text="{Binding SelectedMovie.ReleaseDate}" /><LineBreak />-->
+                <Run Text="John Fusco" /><LineBreak />
+                
+                <Run Text="Obsata: " FontWeight="Bold" />
+                <!--<Run Text="{Binding SelectedMovie.ReleaseDate}" /><LineBreak />-->
+                <Run Text="Scarlett Johansson, Michael Wincott, Michael Pitt, Juliette Binoche, Pilou Asbæk, Pilou Asbæk" /><LineBreak />
+
+            </TextBlock>
         </Grid>
-        <Grid Grid.Column="1" Margin="20" Background="white">
+        
+        <!--prawa kolumna-->
+        <Grid Grid.Column="1" Margin="15" Background="White">
             <Grid.RowDefinitions>
-                <RowDefinition MinHeight="20"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition MinHeight="80"/>
             </Grid.RowDefinitions>
-            <TextBlock Text="Tytuł Tytuł TytułTytułTytułTytułTytuł tytul tytul tytul" 
-                       x:Name="Tytul"
+            <!--Tytuł-->           
+            <TextBlock Text="{Binding Seans.Movie.Name}"                       
                        TextWrapping="WrapWithOverflow" 
                        Grid.Row="0" 
-                       FontSize="30" 
+                       Margin="10"
+                       FontSize="35" 
                        FontWeight="Bold"/>
-            <TextBlock Text="gatunek,produkcja, kraj itp" Grid.Row="1"/>
-            <TextBlock Text="opis filmu opis filmu opis filmu opis filmu opis filmu " Grid.Row="3"/>
-            <Grid Grid.Row="2">
+
+            <!--Opis filmu-->
+            <TextBlock Text="{Binding Seans.Movie.Description}"
+                       Grid.Row="1" 
+                       TextWrapping="Wrap"
+                       FontSize="15" 
+                       Margin="10"
+                       Foreground="#666"/>
+
+            <TextBlock Grid.Row="2"
+                       Margin="50,10,50,5"
+                       FontSize="25"
+                       Foreground="DarkViolet"
+                       Text="Zobacz zwiastun"/>
+            
+            <!--Zwiastun Youtube-->
+            <Grid Grid.Row="3" Background="#333">
+                <TextBlock TextAlignment="Center" FontSize="100" Text="YouTube"/>
+            </Grid>
+
+            <TextBlock Grid.Row="4"
+                       Margin="50,10,50,5"
+                       FontSize="25"
+                       Foreground="DarkViolet"
+                       Text="Zarezerwuj / Kup bilet"/>
+
+            <Grid Grid.Row="5" Margin="10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="rezyseria" Grid.Column="0"/>
-                <TextBlock Text="obsada" Grid.Column="1"/>
+
+
+                <ContentPresenter HorizontalAlignment="Center"
+                                  Grid.Column="0"
+                                  Content="{Binding Path=Morning, Mode=TwoWay}" />
+                <ContentPresenter HorizontalAlignment="Center"
+                                  Grid.Column="1"
+                               Content="{Binding Path=Afternoon, Mode=TwoWay}" />
+                <ContentPresenter HorizontalAlignment="Center"
+                                  Grid.Column="2"
+                               Content="{Binding Path=Evening, Mode=TwoWay}" />
+                <Button Content="Powrót"
+                        Grid.Column="3"
+                        Width="100"
+                        Command="{Binding PowrotCommand}"/>
+
             </Grid>
         </Grid>
     </Grid>
