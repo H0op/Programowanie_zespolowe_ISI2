@@ -56,7 +56,8 @@
                 <Button Grid.Column="1"
                         Content="Kup Bilet"
                         FontSize="19"
-                        Margin="10 10 150 10" />
+                        Margin="10 10 150 10" 
+                        Command="{Binding BuyingCommand}"/>
 
                 <Button Grid.Column="2"
                         Content="Powrot"

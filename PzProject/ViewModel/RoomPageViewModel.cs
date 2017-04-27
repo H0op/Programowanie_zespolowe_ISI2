@@ -21,6 +21,8 @@ namespace PzProject.ViewModel
         public ICommand PreviousPageCommand { get; set; }
         public ICommand SelectSpotCommand { get; set; }
         public ICommand BookingCommand { get; set; }
+        public ICommand BuyingCommand { get; set; }
+
 
 
         private Grid _grid;
@@ -58,6 +60,7 @@ namespace PzProject.ViewModel
             PreviousPageCommand = new RelayCommand(action => PreviousPage());
             SelectSpotCommand = new RelayCommand(action => SelectSpot( (Spot)action ));
             BookingCommand = new RelayCommand(action => Booking());
+            BuyingCommand = new RelayCommand(action => Buying());
             _selectedSpots = new List<Spot>();
 
             _selectedHour = hour;
@@ -136,6 +139,10 @@ namespace PzProject.ViewModel
         private void Booking()
         {
             NavigationManager.NavigateTo(new BookingPage(_selectedSpots, _seance, _selectedHour));
+        }
+        private void Buying()
+        {
+            NavigationManager.NavigateTo(new BuyingPage(_selectedSpots, _seance, _selectedHour));
         }
 
         #endregion

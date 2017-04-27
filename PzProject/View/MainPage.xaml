@@ -74,9 +74,9 @@
                 </TabItem>
                 <TabItem Header="{Binding Path=DataTime[1], Mode=TwoWay}">
                     <Grid>
-                        <ListBox ItemsSource="{Binding MovieList2}"
+                        <ListBox ItemsSource="{Binding Seances}"
                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                                 SelectedItem="{Binding Path=SelectedMovie, Mode=TwoWay}">
+                                 SelectedItem="{Binding Path=SelectedSeance, Mode=TwoWay}">
 
                             <ListBox.ItemsPanel>
                                 <ItemsPanelTemplate>
@@ -94,13 +94,13 @@
                                                 <RowDefinition Height="0.9*" />
                                                 <RowDefinition Height="0.1*" />
                                             </Grid.RowDefinitions>
-                                            <Image Source="{Binding ImageSrc, Converter={StaticResource ImageConverter}}"
+                                            <Image Source="{Binding Movie.ImageSrc, Converter={StaticResource ImageConverter}}"
                                                    Width="150"
                                                    Margin="5"
                                                    Grid.Row="0" />
                                             <TextBlock Grid.Row="1"
                                                        Margin="5"
-                                                       Text="{Binding Name}"
+                                                       Text="{Binding Movie.Name}"
                                                        FontWeight="Bold"
                                                        HorizontalAlignment="Center" />
                                         </Grid>
@@ -112,9 +112,9 @@
                 </TabItem>
                 <TabItem Header="{Binding Path=DataTime[2], Mode=TwoWay}">
                     <Grid>
-                        <ListBox ItemsSource="{Binding MovieList}"
+                        <ListBox ItemsSource="{Binding Seances}"
                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                                 SelectedItem="{Binding Path=SelectedMovie, Mode=TwoWay}">
+                                 SelectedItem="{Binding Path=SelectedSeance, Mode=TwoWay}">
 
                             <ListBox.ItemsPanel>
                                 <ItemsPanelTemplate>
@@ -132,13 +132,13 @@
                                                 <RowDefinition Height="0.9*" />
                                                 <RowDefinition Height="0.1*" />
                                             </Grid.RowDefinitions>
-                                            <Image Source="{Binding ImageSrc, Converter={StaticResource ImageConverter}}"
+                                            <Image Source="{Binding Movie.ImageSrc, Converter={StaticResource ImageConverter}}"
                                                    Width="150"
                                                    Margin="5"
                                                    Grid.Row="0" />
                                             <TextBlock Grid.Row="1"
                                                        Margin="5"
-                                                       Text="{Binding Name}"
+                                                       Text="{Binding Movie.Name}"
                                                        FontWeight="Bold"
                                                        HorizontalAlignment="Center" />
                                         </Grid>
@@ -150,9 +150,9 @@
                 </TabItem>
                 <TabItem Header="{Binding Path=DataTime[3], Mode=TwoWay}">
                     <Grid>
-                        <ListBox ItemsSource="{Binding MovieList}"
+                        <ListBox ItemsSource="{Binding Seances}"
                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                                 SelectedItem="{Binding Path=SelectedMovie, Mode=TwoWay}">
+                                 SelectedItem="{Binding Path=SelectedSeance, Mode=TwoWay}">
 
                             <ListBox.ItemsPanel>
                                 <ItemsPanelTemplate>
@@ -170,13 +170,13 @@
                                                 <RowDefinition Height="0.9*" />
                                                 <RowDefinition Height="0.1*" />
                                             </Grid.RowDefinitions>
-                                            <Image Source="{Binding ImageSrc, Converter={StaticResource ImageConverter}}"
+                                            <Image Source="{Binding Movie.ImageSrc, Converter={StaticResource ImageConverter}}"
                                                    Width="150"
                                                    Margin="5"
                                                    Grid.Row="0" />
                                             <TextBlock Grid.Row="1"
                                                        Margin="5"
-                                                       Text="{Binding Name}"
+                                                       Text="{Binding Movie.Name}"
                                                        FontWeight="Bold"
                                                        HorizontalAlignment="Center" />
                                         </Grid>
@@ -188,9 +188,9 @@
                 </TabItem>
                 <TabItem Header="{Binding Path=DataTime[4], Mode=TwoWay}">
                     <Grid>
-                        <ListBox ItemsSource="{Binding MovieList}"
+                        <ListBox ItemsSource="{Binding Seances}"
                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                                 SelectedItem="{Binding Path=SelectedMovie, Mode=TwoWay}">
+                                 SelectedItem="{Binding Path=SelectedSeance, Mode=TwoWay}">
 
                             <ListBox.ItemsPanel>
                                 <ItemsPanelTemplate>
@@ -208,13 +208,13 @@
                                                 <RowDefinition Height="0.9*" />
                                                 <RowDefinition Height="0.1*" />
                                             </Grid.RowDefinitions>
-                                            <Image Source="{Binding ImageSrc, Converter={StaticResource ImageConverter}}"
+                                            <Image Source="{Binding Movie.ImageSrc, Converter={StaticResource ImageConverter}}"
                                                    Width="150"
                                                    Margin="5"
                                                    Grid.Row="0" />
                                             <TextBlock Grid.Row="1"
                                                        Margin="5"
-                                                       Text="{Binding Name}"
+                                                       Text="{Binding Movie.Name}"
                                                        FontWeight="Bold"
                                                        HorizontalAlignment="Center" />
                                         </Grid>
@@ -226,9 +226,9 @@
                 </TabItem>
                 <TabItem Header="{Binding Path=DataTime[5], Mode=TwoWay}">
                     <Grid>
-                        <ListBox ItemsSource="{Binding MovieList}"
+                        <ListBox ItemsSource="{Binding Seances}"
                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                                 SelectedItem="{Binding Path=SelectedMovie, Mode=TwoWay}">
+                                 SelectedItem="{Binding Path=SelectedSeance, Mode=TwoWay}">
 
                             <ListBox.ItemsPanel>
                                 <ItemsPanelTemplate>
@@ -246,13 +246,13 @@
                                                 <RowDefinition Height="0.9*" />
                                                 <RowDefinition Height="0.1*" />
                                             </Grid.RowDefinitions>
-                                            <Image Source="{Binding ImageSrc, Converter={StaticResource ImageConverter}}"
+                                            <Image Source="{Binding Movie.ImageSrc, Converter={StaticResource ImageConverter}}"
                                                    Width="150"
                                                    Margin="5"
                                                    Grid.Row="0" />
                                             <TextBlock Grid.Row="1"
                                                        Margin="5"
-                                                       Text="{Binding Name}"
+                                                       Text="{Binding Movie.Name}"
                                                        FontWeight="Bold"
                                                        HorizontalAlignment="Center" />
                                         </Grid>
@@ -264,9 +264,9 @@
                 </TabItem>
                 <TabItem Header="{Binding Path=DataTime[6], Mode=TwoWay}">
                     <Grid>
-                        <ListBox ItemsSource="{Binding MovieList}"
+                        <ListBox ItemsSource="{Binding Seances}"
                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                                 SelectedItem="{Binding Path=SelectedMovie, Mode=TwoWay}">
+                                 SelectedItem="{Binding Path=SelectedSeance, Mode=TwoWay}">
 
                             <ListBox.ItemsPanel>
                                 <ItemsPanelTemplate>
@@ -284,13 +284,13 @@
                                                 <RowDefinition Height="0.9*" />
                                                 <RowDefinition Height="0.1*" />
                                             </Grid.RowDefinitions>
-                                            <Image Source="{Binding ImageSrc, Converter={StaticResource ImageConverter}}"
+                                            <Image Source="{Binding Movie.ImageSrc, Converter={StaticResource ImageConverter}}"
                                                    Width="150"
                                                    Margin="5"
                                                    Grid.Row="0" />
                                             <TextBlock Grid.Row="1"
                                                        Margin="5"
-                                                       Text="{Binding Name}"
+                                                       Text="{Binding Movie.Name}"
                                                        FontWeight="Bold"
                                                        HorizontalAlignment="Center" />
                                         </Grid>
@@ -300,8 +300,8 @@
                         </ListBox>
                     </Grid>
                 </TabItem>
-                
-                
+
+
             </TabControl>
 
             <!-- Prawy panel -->
@@ -385,10 +385,13 @@
 
 
             </Grid>
-
+            
+            
         </Grid>
 
-
+        <Button Content="Zaloguj" Width="70" Height="10" Margin="0 0 10 0"
+                VerticalAlignment="Center" HorizontalAlignment="Right"
+                Command="{Binding LoginCommand}"/>
     </Grid>
 
 </Page>

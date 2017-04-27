@@ -14,6 +14,7 @@ namespace PzProject.ViewModel
         #region Fields/Commands
 
         public ICommand NextPageCommand { get; set; }
+        public ICommand LoginCommand { get; set; }
 
         private ObservableCollection<Seance> _seances;
         private string[] _dataTime;
@@ -85,6 +86,7 @@ namespace PzProject.ViewModel
         public MainPageViewModel()
         {
             NextPageCommand = new RelayCommand(action => NextPage( action ));
+            LoginCommand = new RelayCommand(action => Login());
 
             Seances = new ObservableCollection<Seance>();
             _morning = new StackPanel();
@@ -112,10 +114,14 @@ namespace PzProject.ViewModel
             }
         }
 
-
         private void NextPage(object hour)
         {
             NavigationManager.NavigateTo(new RoomPage(_selectedSeance, hour.ToString()));
+        }
+
+        private void Login()
+        {
+            NavigationManager.NavigateTo(new LoginPage());
         }
 
         #endregion
