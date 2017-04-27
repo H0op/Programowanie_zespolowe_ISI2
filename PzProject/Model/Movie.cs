@@ -16,7 +16,7 @@ namespace PzProject.Model
         private string _imageSrc;
         private int _hours;
         private int _minutes;
-        private string _releasDate;
+        private string _releaseDate;
 
         #endregion
 
@@ -79,10 +79,10 @@ namespace PzProject.Model
 
         public string ReleaseDate
         {
-            get { return _releasDate; }
+            get { return _releaseDate; }
             set
             {
-                SetProperty(ref _releasDate, value);
+                SetProperty(ref _releaseDate, value);
                 OnPropertyChanged("ReleaseDate");
             }
         }
@@ -98,7 +98,7 @@ namespace PzProject.Model
             _imageSrc = imageSrc;
             _hours = hours;
             _minutes = minutes;
-            _releasDate = releaseData;
+            _releaseDate = releaseData;
         }
 
         public Movie()

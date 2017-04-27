@@ -11,6 +11,7 @@ using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Input;
 using PzProject.Model;
+using PzProject.Network;
 using PzProject.Utility;
 using PzProject.View;
 
@@ -87,6 +88,7 @@ namespace PzProject.ViewModel
 
         #region Constructor
 
+        private ApiRequester requester;
         public MainPageViewModel()
         {
             NextPageCommand = new RelayCommand(action => NextPage());
@@ -98,6 +100,11 @@ namespace PzProject.ViewModel
 
             InitData();
             InitDataTime();
+
+            requester = new ApiRequester();
+
+            Movie m = requester.getAppMovie(47964);
+            Movie m1 = requester.getAppMovie(47964);
         }
 
         #endregion
