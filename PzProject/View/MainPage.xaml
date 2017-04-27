@@ -10,15 +10,16 @@
       Title="MainPage">
 
 
-    <Grid Background="LightGray">
+    <Grid Background="#B6CDBD">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <TextBlock Text="Repertuar"
-                   FontSize="20"
-                   FontWeight="Bold"
+                   FontSize="30"
+                   FontWeight="Bold" 
+                   Foreground="#475849"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
                    Grid.Row="0" />
@@ -35,8 +36,9 @@
                         BorderBrush="Gainsboro">
                 <!--Nowy Widok-->
                 <TabItem Header="{Binding Path=DataTime[0], Mode=TwoWay}">
-                    <Grid>
+                    <Grid >
                         <ListBox ItemsSource="{Binding Seances}"
+                                 Background="#F2F9F1" 
                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                                  SelectedItem="{Binding Path=SelectedSeance, Mode=TwoWay}">
 
@@ -316,8 +318,8 @@
                 </Grid.RowDefinitions>
 
                 <Grid Grid.Row="1"
-                      Background="White"
-                      Margin="5">
+                      Background="#F2F9F1"
+                      Margin="10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="0.5*" />
                         <ColumnDefinition Width="*" />
@@ -327,6 +329,7 @@
                         Source="{Binding SelectedSeance.Movie.ImageSrc, Converter={StaticResource ImageConverter}, Mode=TwoWay}"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Top"
+                        Margin="10"
                         Grid.Column="0" />
 
                     <Grid Grid.Column="1">
@@ -336,17 +339,15 @@
                             <RowDefinition Height="0.2*" />
                         </Grid.RowDefinitions>
 
-                        <TextBlock Grid.Row="0" Margin="5,0,0,0">
-                            <Run Text="Tytuł: " FontSize="15" FontWeight="Bold" />
-                            <Run Text="{Binding SelectedSeance.Movie.Name}" FontSize="15" FontWeight="Bold" /><LineBreak />
+                        <TextBlock Grid.Row="0" Margin="10">
+                            <Run Text="{Binding SelectedSeance.Movie.Name}" FontSize="15" Foreground="#5D4C46" FontWeight="Bold" /><LineBreak />
                             <Run Text="Data premiery: " FontSize="10" />
                             <Run Text="{Binding SelectedSeance.Movie.ReleaseDate}" /><LineBreak />
                             <Run Text="Czas trwania: " FontSize="10" />
                             <Run Text="{Binding SelectedSeance.Movie.Length, Mode=OneWay}" />
                         </TextBlock>
 
-                        <TextBlock Grid.Row="1" TextWrapping="Wrap">
-                            <Run Text="Opis: " /><LineBreak />
+                        <TextBlock Grid.Row="1" Margin="10" TextWrapping="Wrap">
                             <Run Text="{Binding Path=SelectedSeance.Movie.Description}"/>
                         </TextBlock>
 
@@ -355,12 +356,13 @@
                                 Width="180"
                                 HorizontalAlignment="Right"
                                 Command="{Binding MoreInfoCommand}"/>
-                                                             
                     </Grid>
 
                 </Grid>
 
-                <Grid Grid.Row="2" Background="White" Margin="0 10 0 10">
+                <Grid Grid.Row="2" 
+                      Background="#F2F9F1" 
+                      Margin="10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />

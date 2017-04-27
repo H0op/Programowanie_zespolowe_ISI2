@@ -8,7 +8,7 @@
       d:DesignHeight="720" d:DesignWidth="500"
       Title="BookingPage">
 
-    <Grid Background="White">
+    <Grid Background="#B6CDBD">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.2*"/>
             <RowDefinition Height="0.6*"/>
@@ -17,7 +17,8 @@
         </Grid.RowDefinitions>
         <TextBlock Text="Rezerwacja"
                    FontSize="30"
-                   FontWeight="Bold"
+                   FontWeight="Bold" 
+                   Foreground="#475849"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
                    Grid.Row="0"/>
@@ -33,11 +34,11 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            
-            <TextBlock Text="Imie: " FontSize="20" FontWeight="Bold" Grid.Row="0" Grid.Column="0" Margin="2"/>
-            <TextBlock Text="Nazwisko: " FontSize="20" FontWeight="Bold" Grid.Row="1" Grid.Column="0" Margin="2"/>
-            <TextBlock Text="Email: " FontSize="20" FontWeight="Bold" Grid.Row="2" Grid.Column="0" Margin="2"/>
-            <TextBlock Text="Nr Telefonu: " FontSize="20" FontWeight="Bold" Grid.Row="3" Grid.Column="0" Margin="2"/>
+
+            <TextBlock Text="Imie: " FontSize="20" FontWeight="Bold" Grid.Row="0" Grid.Column="0" Margin="2" Foreground="#475849"/>
+            <TextBlock Text="Nazwisko: " FontSize="20" FontWeight="Bold" Grid.Row="1" Grid.Column="0" Margin="2" Foreground="#475849"/>
+            <TextBlock Text="Email: " FontSize="20" FontWeight="Bold" Grid.Row="2" Grid.Column="0" Margin="2" Foreground="#475849"/>
+            <TextBlock Text="Nr Telefonu: " FontSize="20" FontWeight="Bold" Grid.Row="3" Grid.Column="0" Margin="2" Foreground="#475849"/>
 
             <TextBox Grid.Row="0" Grid.Column="1" Width="200" Margin="2" Text="{Binding FirstName}"/>
             <TextBox Grid.Row="1" Grid.Column="1" Width="200" Margin="2" Text="{Binding LastName}"/>

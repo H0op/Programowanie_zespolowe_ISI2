@@ -8,14 +8,14 @@
       d:DesignHeight="720" d:DesignWidth="1000"
       Title="DescriptionPage">
 
-    <Grid Background="#DDD">
+    <Grid Background="#B6CDBD">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width=".5*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         
         <!--lewa kolumna-->
-        <Grid Grid.Column="0" Margin="15" Background="wHITE">
+        <Grid Grid.Column="0" Margin="15" Background="#F2F9F1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
@@ -63,14 +63,13 @@
         </Grid>
         
         <!--prawa kolumna-->
-        <Grid Grid.Column="1" Margin="15" Background="White">
+        <Grid Grid.Column="1" Margin="15" Background="#F2F9F1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="0.4*"/>
+                <RowDefinition Height="0.8*"/>
+                <RowDefinition Height="2.2*"/>
+                <RowDefinition Height="0.3*"/>
                 <RowDefinition Height="0.5*"/>
-                <RowDefinition MinHeight="80"/>
             </Grid.RowDefinitions>
             <!--Tytuł-->           
             <TextBlock Text="{Binding Seans.Movie.Name}"                       
@@ -88,14 +87,26 @@
                        Margin="10"
                        Foreground="#666"/>
 
+            <TextBlock TextAlignment="Center" 
+                       FontSize="20" 
+                       VerticalAlignment="Bottom"
+                       Grid.Row="2" >
+                    <Hyperlink  NavigateUri="https://www.youtube.com/embed/0QsgQgT0O5E" RequestNavigate="Hyperlink_RequestNavigate">
+                        <Image Source="https://img.youtube.com/vi/0QsgQgT0O5E/hqdefault.jpg"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Grid.Column="3" /><LineBreak/>Zwiastun</Hyperlink>
+            </TextBlock>
 
-            <TextBlock Grid.Row="4"
+
+            <TextBlock Grid.Row="3"
                        Margin="50,10,50,5"
                        FontSize="25"
-                       Foreground="DarkViolet"
+                       FontWeight="Bold"
+                       Foreground="#475849"
                        Text="Zarezerwuj / Kup bilet"/>
 
-            <Grid Grid.Row="5" Margin="10">
+            <Grid Grid.Row="4" Margin="10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
