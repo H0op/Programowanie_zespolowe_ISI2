@@ -17,6 +17,12 @@ namespace PzProject.Model
         private int _hours;
         private int _minutes;
         private string _releasDate;
+        private string _productionCountries;
+        private string _genres;
+        private string _adult;
+        private string _director;
+        private string _cast;
+        private string _screenPlay;
 
         #endregion
 
@@ -87,11 +93,73 @@ namespace PzProject.Model
             }
         }
 
+        public string ProductionCountries
+        {
+            get { return _productionCountries; }
+            set
+            {
+                SetProperty(ref _productionCountries, value);
+                OnPropertyChanged("ProductionCountries");
+            }
+        }
+
+        public string Genres
+        {
+            get { return _genres; }
+            set
+            {
+                SetProperty(ref _genres, value);
+                OnPropertyChanged("Genres");
+            }
+        }
+
+        public string Adult
+        {
+            get { return _adult; }
+            set
+            {
+                SetProperty(ref _adult, value);
+                OnPropertyChanged("Adult");
+            }
+        }
+
+        public string Director
+        {
+            get { return _director; }
+            set
+            {
+                SetProperty(ref _director, value);
+                OnPropertyChanged("Director");
+            }
+        }
+
+        public string Cast
+        {
+            get { return _cast; }
+            set
+            {
+                SetProperty(ref _cast, value);
+                OnPropertyChanged("Cast");
+            }
+        }
+
+        public string ScreenPlay
+        {
+            get { return _screenPlay; }
+            set
+            {
+                SetProperty(ref _screenPlay, value);
+                OnPropertyChanged("ScreenPlay");
+            }
+        }
+
+   
+
         #endregion
 
         #region Constructor
 
-        public Movie(string name, string description, string imageSrc, int hours, int minutes, string releaseData)
+        public Movie(string name, string description, string imageSrc, int hours, int minutes, string releaseData, string productionCountries, string Genres, string adult, string director, string cast, string sp)
         {
             _name = name;
             _description = description;
@@ -99,6 +167,12 @@ namespace PzProject.Model
             _hours = hours;
             _minutes = minutes;
             _releasDate = releaseData;
+            _productionCountries = productionCountries;
+            _genres = Genres;
+            Adult = adult;
+            _director = director;
+            _cast = cast;
+            _screenPlay = sp;
         }
 
         public Movie()

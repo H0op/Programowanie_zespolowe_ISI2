@@ -39,31 +39,25 @@
                 <Run Text="{Binding Seans.Movie.ReleaseDate}" /><LineBreak />
                 
                 <Run Text="Produkcja: " FontWeight="Bold" />
-                <!--<Run Text="{Binding SelectedMovie.ReleaseDate}" /><LineBreak />-->
-                <Run Text="USA" /><LineBreak />
+                <Run Text="{Binding Seans.Movie.ProductionCountries}" /><LineBreak />
                 
                 <Run Text="Gatunek: " FontWeight="Bold"/>
-                <!--<Run Text="{Binding SelectedMovie.ReleaseDate}" /><LineBreak />-->
-                <Run Text="Dramat" /><LineBreak />
+                <Run Text="{Binding Seans.Movie.Genres}" /><LineBreak />
                 
                 <Run Text="Czas trwania: " FontWeight="Bold" />
                 <Run Text="{Binding Path=Seans.Movie.Length, Mode=OneWay}" /><LineBreak />
                 
-                <Run Text="Od lat: " FontWeight="Bold" />
-                <!--<Run Text="{Binding SelectedMovie.ReleaseDate}" /><LineBreak />-->
-                <Run Text="16" /><LineBreak />
+                <Run Text="Dla dorosłych: " FontWeight="Bold" />
+                <Run Text="{Binding Seans.Movie.Adult}" /><LineBreak />
                 
                 <Run Text="Reżyseria: " FontWeight="Bold" />
-                <!--<Run Text="{Binding SelectedMovie.ReleaseDate}" /><LineBreak />-->
-                <Run Text="Stuart Hazeldine" /><LineBreak />
+                <Run Text="{Binding Seans.Movie.Director}" /><LineBreak />
                 
                 <Run Text="Scenariusz: " FontWeight="Bold" />
-                <!--<Run Text="{Binding SelectedMovie.ReleaseDate}" /><LineBreak />-->
-                <Run Text="John Fusco" /><LineBreak />
+                <Run Text="{Binding Seans.Movie.ScreenPlay}" /><LineBreak />
                 
                 <Run Text="Obsata: " FontWeight="Bold" />
-                <!--<Run Text="{Binding SelectedMovie.ReleaseDate}" /><LineBreak />-->
-                <Run Text="Scarlett Johansson, Michael Wincott, Michael Pitt, Juliette Binoche, Pilou Asbæk, Pilou Asbæk" /><LineBreak />
+                <Run Text="{Binding Seans.Movie.Cast}" /><LineBreak />
 
             </TextBlock>
         </Grid>
@@ -74,8 +68,8 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="5*"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="0.5*"/>
                 <RowDefinition MinHeight="80"/>
             </Grid.RowDefinitions>
             <!--Tytuł-->           
@@ -94,24 +88,6 @@
                        Margin="10"
                        Foreground="#666"/>
 
-            <TextBlock TextAlignment="Center"
-                       Grid.Row="2"
-                       Margin="50,10,50,5"
-                       FontSize="25"
-                       Foreground="DarkViolet"
-                       Text="Zobacz zwiastun"/>
-            
-            <!--Zwiastun Youtube-->
-            <Grid Grid.Row="3">
-                <TextBlock TextAlignment="Center" FontSize="30" VerticalAlignment="Bottom">
-                    <Hyperlink  NavigateUri="https://www.youtube.com/embed/0QsgQgT0O5E" RequestNavigate="Hyperlink_RequestNavigate">
-                        <Image
-                        Source="https://img.youtube.com/vi/0QsgQgT0O5E/hqdefault.jpg"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        Grid.Column="0" /><LineBreak/>Kliknij</Hyperlink>
-                </TextBlock>
-            </Grid>
 
             <TextBlock Grid.Row="4"
                        Margin="50,10,50,5"
