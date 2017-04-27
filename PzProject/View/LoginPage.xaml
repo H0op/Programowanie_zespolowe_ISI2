@@ -9,7 +9,7 @@
       Title="LoginPage">
 
     <Grid Background="LightGray">
-        <StackPanel Background="White" Margin="10">
+        <StackPanel Background="#efe" Margin="10">
             <TextBlock Text="Logowanie: " FontSize="16" FontWeight="Bold"
                        HorizontalAlignment="Center"
                        Margin="10"/>
@@ -30,9 +30,9 @@
                         Margin="10"
                         HorizontalAlignment="Center">
                 <Button Content="Zaloguj" Margin="0 0 10 0"
-                        Command="{Binding Path=LoginCommand}" CommandParameter="{Binding ElementName=PasswordBox}"/>
+                        Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=PasswordBox}"/>
                 <Button Content="Powrot"
-                        Command="{Binding Path=PreviousPageCommand}"/>
+                        Command="{Binding PreviousPageCommand}"/>
             </StackPanel>
         </StackPanel>
     </Grid>

@@ -32,9 +32,9 @@
                        FontWeight="Bold"
                        FontSize="30"
                        Text="{Binding Path=Seance.Movie.Name}"/>
-            
-            
-            <Border Grid.Row="1" Background="GhostWhite" BorderBrush="Gainsboro" BorderThickness="1">
+
+
+            <Border Grid.Row="1" Background="#fdc" BorderBrush="Gainsboro" BorderThickness="1">
                 <ContentPresenter Margin="10"
                                   HorizontalAlignment="Center"
                                   Content="{Binding Path=Grid, Mode=TwoWay}" />
