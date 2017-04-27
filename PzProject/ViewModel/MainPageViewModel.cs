@@ -92,7 +92,6 @@ namespace PzProject.ViewModel
             MoreInfoCommand = new RelayCommand(action => MoreInfoPage(), ()=>_selectedSeance!=null);
             LoginCommand = new RelayCommand(action => Login());
 
-            var req = new Api
 
             Seances = new ObservableCollection<Seance>();
             _morning = new StackPanel();
