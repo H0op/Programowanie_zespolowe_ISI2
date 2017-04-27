@@ -64,6 +64,8 @@
                                                        Margin="5"
                                                        Text="{Binding Movie.Name}"
                                                        FontWeight="Bold"
+                                                       TextWrapping="Wrap"
+                                                       Width="160"
                                                        HorizontalAlignment="Center" />
                                         </Grid>
                                     </Border>
@@ -343,9 +345,9 @@
                             <Run Text="{Binding SelectedSeance.Movie.Length, Mode=OneWay}" />
                         </TextBlock>
 
-                        <TextBlock Grid.Row="1">
+                        <TextBlock Grid.Row="1" TextWrapping="Wrap">
                             <Run Text="Opis: " /><LineBreak />
-                            <Run Text="Tutaj bedzie krotki opis filmu" />
+                            <Run Text="{Binding Path=SelectedSeance.Movie.Description}"/>
                         </TextBlock>
 
                         <Button Grid.Row="2" 
