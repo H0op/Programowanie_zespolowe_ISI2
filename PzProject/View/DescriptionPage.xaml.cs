@@ -1,7 +1,7 @@
-﻿using System;
+﻿using PzProject.Model;
+using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.IO;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,23 +14,25 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using PzProject.Model;
-using PzProject.ViewModel;
-using System.Windows.Markup;
-using System.Xml;
 
 namespace PzProject.View
 {
-
-    public partial class RoomPage : Page
+    public partial class DescriptionPage : Page
     {
-        private RoomPageViewModel _viewModel;
+        private readonly DescriptionPageViewModel _viewModel;
 
-        public RoomPage(Seance selectedSeance, string hour)
+        public DescriptionPage(Seance seans)
         {
             InitializeComponent();
-            _viewModel = new RoomPageViewModel(selectedSeance, hour);
+            _viewModel = new DescriptionPageViewModel(seans);
             this.DataContext = _viewModel;
         }
+
+        private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
+            e.Handled = true;
+        }
+
     }
 }

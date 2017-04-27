@@ -16,6 +16,7 @@ namespace PzProject.ViewModel
         #region Fields/Commands
 
         public ICommand NextPageCommand { get; set; }
+        public ICommand MoreInfoCommand { get; set; }  
         public ICommand LoginCommand { get; set; }
 
         private ObservableCollection<Seance> _seances;
@@ -88,7 +89,9 @@ namespace PzProject.ViewModel
         public MainPageViewModel()
         {
             NextPageCommand = new RelayCommand(action => NextPage( action ));
+            MoreInfoCommand = new RelayCommand(action => MoreInfoPage(), ()=>_selectedSeance!=null);
             LoginCommand = new RelayCommand(action => Login());
+
 
 
             Seances = new ObservableCollection<Seance>();
@@ -126,6 +129,11 @@ namespace PzProject.ViewModel
         private void Login()
         {
             NavigationManager.NavigateTo(new LoginPage());
+        }
+
+        private void MoreInfoPage()
+        {
+            NavigationManager.NavigateTo(new DescriptionPage(_selectedSeance));
         }
 
         #endregion

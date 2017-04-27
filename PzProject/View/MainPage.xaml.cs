@@ -26,5 +26,6 @@ namespace PzProject.View
             _viewModel = new MainPageViewModel();
             this.DataContext = _viewModel;
         }
+
     }
 }
