@@ -255,6 +255,9 @@
       <DependentUpon>DbPz.edmx</DependentUpon>
       <LastGenOutput>DbPz.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\movie_img\badboys.jpg" />
+    <Resource Include="Resources\movie_img\harry.jpg" />
+    <Resource Include="Resources\movie_img\piraci.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\movie_img\john_wick.jpg" />

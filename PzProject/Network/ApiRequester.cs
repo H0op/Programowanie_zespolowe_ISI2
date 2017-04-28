@@ -83,7 +83,7 @@ namespace PzProject.Network
                 movie = new Model.Movie(
                     movieFromApi.Title,
                     movieFromApi.Overview,
-                    movieFromApi.Images.Posters.ToString(),
+                    movieFromApi.BackdropPath,
                     MovieHelper.getHours(movieFromApi.Runtime),
                     MovieHelper.getMinutes(movieFromApi.Runtime),
                     ((DateTime)movieFromApi.ReleaseDate).ToString("d", new CultureInfo("pl-PL")),

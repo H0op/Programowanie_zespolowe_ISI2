@@ -139,7 +139,7 @@ namespace PzProject.ViewModel
         }
         private void PreviousPage()
         {
-            NavigationManager.NavigateTo(new RoomPage(_seance, _selectedHour));
+            NavigationManager.Back();
         }
 
         #endregion

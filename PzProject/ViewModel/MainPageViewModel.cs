@@ -356,7 +356,12 @@ namespace PzProject.ViewModel
             foreach (var seans in context.SEANS)
             {
                 movie = api.getAppMovie((int)seans.Id_film);
-                movie.ImageSrc = "pack://application:,,,/Resources/movie_img/rambo.jpg";
+                if (movie.Name.ToLowerInvariant().Contains("john")) movie.ImageSrc = "pack://application:,,,/Resources/movie_img/john_wick.jpg";
+                if (movie.Name.ToLowerInvariant().Contains("harry")) movie.ImageSrc = "pack://application:,,,/Resources/movie_img/harry.jpg";
+                if (movie.Name.ToLowerInvariant().Contains("pira")) movie.ImageSrc = "pack://application:,,,/Resources/movie_img/piraci.jpg";
+                if (movie.Name.ToLowerInvariant().Contains("rambo")) movie.ImageSrc = "pack://application:,,,/Resources/movie_img/rambo.jpg";
+                if (movie.Name.ToLowerInvariant().Contains("bad")) movie.ImageSrc = "pack://application:,,,/Resources/movie_img/badboys.jpg";
+                if (movie.Name.ToLowerInvariant().Contains("kiler")) movie.ImageSrc = "pack://application:,,,/Resources/movie_img/kiler.jpg";
                 Seances.Add(new Seance(movie, rooms, seanceHours, new DateTime(2017, 4, 14), new DateTime(2017, 4, 16)));
 
             }

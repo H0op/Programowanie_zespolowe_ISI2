@@ -133,7 +133,7 @@ namespace PzProject.ViewModel
 
         private void PreviousPage()
         {
-            NavigationManager.NavigateTo(new MainPage());
+            NavigationManager.Back();
         }
 
         private void Booking()

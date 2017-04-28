@@ -76,9 +76,11 @@
                         </ListBox>
                     </Grid>
                 </TabItem>
+
                 <TabItem Header="{Binding Path=DataTime[1], Mode=TwoWay}">
-                    <Grid>
+                    <Grid >
                         <ListBox ItemsSource="{Binding Seances}"
+                                 Background="#F2F9F1" 
                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                                  SelectedItem="{Binding Path=SelectedSeance, Mode=TwoWay}">
 
@@ -106,6 +108,8 @@
                                                        Margin="5"
                                                        Text="{Binding Movie.Name}"
                                                        FontWeight="Bold"
+                                                       TextWrapping="Wrap"
+                                                       Width="160"
                                                        HorizontalAlignment="Center" />
                                         </Grid>
                                     </Border>
@@ -114,9 +118,11 @@
                         </ListBox>
                     </Grid>
                 </TabItem>
+
                 <TabItem Header="{Binding Path=DataTime[2], Mode=TwoWay}">
-                    <Grid>
+                    <Grid >
                         <ListBox ItemsSource="{Binding Seances}"
+                                 Background="#F2F9F1" 
                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                                  SelectedItem="{Binding Path=SelectedSeance, Mode=TwoWay}">
 
@@ -144,6 +150,8 @@
                                                        Margin="5"
                                                        Text="{Binding Movie.Name}"
                                                        FontWeight="Bold"
+                                                       TextWrapping="Wrap"
+                                                       Width="160"
                                                        HorizontalAlignment="Center" />
                                         </Grid>
                                     </Border>
@@ -152,9 +160,11 @@
                         </ListBox>
                     </Grid>
                 </TabItem>
+
                 <TabItem Header="{Binding Path=DataTime[3], Mode=TwoWay}">
-                    <Grid>
+                    <Grid >
                         <ListBox ItemsSource="{Binding Seances}"
+                                 Background="#F2F9F1" 
                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                                  SelectedItem="{Binding Path=SelectedSeance, Mode=TwoWay}">
 
@@ -182,6 +192,8 @@
                                                        Margin="5"
                                                        Text="{Binding Movie.Name}"
                                                        FontWeight="Bold"
+                                                       TextWrapping="Wrap"
+                                                       Width="160"
                                                        HorizontalAlignment="Center" />
                                         </Grid>
                                     </Border>
@@ -190,9 +202,11 @@
                         </ListBox>
                     </Grid>
                 </TabItem>
+
                 <TabItem Header="{Binding Path=DataTime[4], Mode=TwoWay}">
-                    <Grid>
+                    <Grid >
                         <ListBox ItemsSource="{Binding Seances}"
+                                 Background="#F2F9F1" 
                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                                  SelectedItem="{Binding Path=SelectedSeance, Mode=TwoWay}">
 
@@ -220,6 +234,8 @@
                                                        Margin="5"
                                                        Text="{Binding Movie.Name}"
                                                        FontWeight="Bold"
+                                                       TextWrapping="Wrap"
+                                                       Width="160"
                                                        HorizontalAlignment="Center" />
                                         </Grid>
                                     </Border>
@@ -228,9 +244,11 @@
                         </ListBox>
                     </Grid>
                 </TabItem>
+
                 <TabItem Header="{Binding Path=DataTime[5], Mode=TwoWay}">
-                    <Grid>
+                    <Grid >
                         <ListBox ItemsSource="{Binding Seances}"
+                                 Background="#F2F9F1" 
                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                                  SelectedItem="{Binding Path=SelectedSeance, Mode=TwoWay}">
 
@@ -258,6 +276,8 @@
                                                        Margin="5"
                                                        Text="{Binding Movie.Name}"
                                                        FontWeight="Bold"
+                                                       TextWrapping="Wrap"
+                                                       Width="160"
                                                        HorizontalAlignment="Center" />
                                         </Grid>
                                     </Border>
@@ -266,9 +286,11 @@
                         </ListBox>
                     </Grid>
                 </TabItem>
+
                 <TabItem Header="{Binding Path=DataTime[6], Mode=TwoWay}">
-                    <Grid>
+                    <Grid >
                         <ListBox ItemsSource="{Binding Seances}"
+                                 Background="#F2F9F1" 
                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                                  SelectedItem="{Binding Path=SelectedSeance, Mode=TwoWay}">
 
@@ -296,6 +318,8 @@
                                                        Margin="5"
                                                        Text="{Binding Movie.Name}"
                                                        FontWeight="Bold"
+                                                       TextWrapping="Wrap"
+                                                       Width="160"
                                                        HorizontalAlignment="Center" />
                                         </Grid>
                                     </Border>

@@ -49,7 +49,7 @@ namespace PzProject.ViewModel
 
         public UserPageViewModel()
         {
-            PreviousPageCommand = new RelayCommand(action => {NavigationManager.NavigateTo(new MainPage());});
+            PreviousPageCommand = new RelayCommand(action => {NavigationManager.Back();});
             FakeBooking();
         }
 

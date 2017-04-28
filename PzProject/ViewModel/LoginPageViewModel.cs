@@ -51,7 +51,7 @@ namespace PzProject.ViewModel
 
         public LoginPageViewModel()
         {
-            PreviousPageCommand = new RelayCommand(action => { NavigationManager.NavigateTo(new MainPage()); });
+            PreviousPageCommand = new RelayCommand(action => { NavigationManager.Back(); });
             LoginCommand = new RelayCommand(action => LoginUser(Login, (PasswordBox)action));
         }
 

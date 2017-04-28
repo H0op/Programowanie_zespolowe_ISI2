@@ -31,6 +31,14 @@ namespace PzProject.Utility
             }
         }
 
+        public static void NavigateBack()
+        {
+            if(Frame != null)
+            {
+                Back();
+            }
+        }
+
         public static void Back()
         {
             if (Frame != null)
