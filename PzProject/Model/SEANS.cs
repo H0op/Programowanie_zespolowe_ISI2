@@ -18,6 +18,7 @@ namespace PzProject.Model
         public SEANS()
         {
             this.BILET = new HashSet<BILET>();
+            this.GODZINY = new HashSet<GODZINY>();
         }
     
         public int Id_seans { get; set; }
@@ -29,5 +30,7 @@ namespace PzProject.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BILET> BILET { get; set; }
         public virtual SALA SALA { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<GODZINY> GODZINY { get; set; }
     }
 }

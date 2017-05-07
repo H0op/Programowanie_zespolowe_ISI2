@@ -12,6 +12,8 @@ namespace PzProject.Model
     public class Seance : BindableBase
     {
         #region Fields
+
+        private int _seansID;
         private Movie _movie;
         private ObservableCollection<Room> _rooms;
         private ObservableCollection<string> _seanceHours;
@@ -63,16 +65,27 @@ namespace PzProject.Model
             }
         }
 
+        public int SeansID
+        {
+            get { return _seansID; }
+            set
+            {
+                SetProperty(ref _seansID, value);
+                OnPropertyChanged("SeansID");
+            }
+
+        }
         #endregion
 
         #region Constructor
-        public Seance(Movie movie, ObservableCollection<Room> rooms, ObservableCollection<string> seanceHours, DateTime startDate, DateTime endDate)
+        public Seance(Movie movie, ObservableCollection<Room> rooms, ObservableCollection<string> seanceHours, DateTime startDate, DateTime endDate, int id)
         {
             _movie = movie;
             _rooms = rooms;
             _seanceHours = seanceHours;
             _startDate = startDate;
             _endDate = endDate;
+            _seansID = id;
         }
         #endregion
 

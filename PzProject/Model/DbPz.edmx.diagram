@@ -5,15 +5,16 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="1333b2082e0f476c958802a135de3c7d" Name="Diagram1">
-        <EntityTypeShape EntityType="DatabasePZModel.BILET" Width="1.5" PointX="5.25" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="DatabasePZModel.MIEJSCE" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DatabasePZModel.SALA" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DatabasePZModel.SEANS" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="DatabasePZModel.ULGA" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabasePZModel.BILET" Width="1.5" PointX="5.5" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabasePZModel.SALA" Width="1.5" PointX="2.625" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabasePZModel.SEANS" Width="1.5" PointX="2.625" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabasePZModel.ULGA" Width="1.5" PointX="8.125" PointY="3.5" IsExpanded="true" />
         <AssociationConnector Association="DatabasePZModel.FK_BILET_SEANS" ManuallyRouted="false" />
         <AssociationConnector Association="DatabasePZModel.FK_BILET_ULGA" ManuallyRouted="false" />
-        <AssociationConnector Association="DatabasePZModel.FK_MIEJSCE_SALA" ManuallyRouted="false" />
         <AssociationConnector Association="DatabasePZModel.FK_SEANS_SALA" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DatabasePZModel.GODZINY" Width="1.5" PointX="0.5" PointY="3.875" />
+        <EntityTypeShape EntityType="DatabasePZModel.UZYTKOWNICY" Width="1.5" PointX="13.25" PointY="0.75" />
+        <AssociationConnector Association="DatabasePZModel.FK_GODZINY_ToTable" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

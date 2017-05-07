@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
+using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Windows;
 using System.Windows.Controls;
@@ -134,11 +135,27 @@ namespace PzProject.ViewModel
 
         private void Booking()
         {
-            MessageBox.Show(_phoneNumber);
+            using (DatabasePZEntities db = new DatabasePZEntities())
+            {
+                GODZINY updateSpot = db.GODZINY.Where(h => h.Godzina == _selectedHour).FirstOrDefault(s => s.Id_Seansu == _seance.SeansID);
+                char[] spots = updateSpot.Miejsca.ToCharArray();
+                foreach (var spot in _spots)
+                {
+                    spot.IsAvailable = 1;
+                    spots[spot.SpotNumber - 1] = '1';
+
+                }
+                updateSpot.Miejsca = new string(spots);
+                db.SaveChanges();
+                MessageBox.Show("Bilet zarezerwowany.");
+                NavigationManager.BackToMain();
+            }
+            
+
         }
         private void PreviousPage()
         {
-            NavigationManager.NavigateTo(new RoomPage(_seance, _selectedHour));
+            NavigationManager.Back();
         }
 
         #endregion

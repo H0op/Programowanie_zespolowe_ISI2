@@ -327,7 +327,8 @@
                         Source="{Binding SelectedSeance.Movie.ImageSrc, Converter={StaticResource ImageConverter}, Mode=TwoWay}"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Top"
-                        Grid.Column="0" />
+                        Grid.Column="0" 
+                        Margin="5"/>
 
                     <Grid Grid.Column="1">
                         <Grid.RowDefinitions>

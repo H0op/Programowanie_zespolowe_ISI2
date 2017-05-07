@@ -24,7 +24,7 @@ namespace PzProject.ViewModel
         public ICommand BuyingCommand { get; set; }
 
 
-
+        private string _roomNumber;
         private Grid _grid;
         private Room _room;
         private string _selectedHour;
@@ -51,6 +51,16 @@ namespace PzProject.ViewModel
             set { SetProperty(ref _seance, value); }
         }
 
+        public string RoomNumber
+        {
+            get { return _roomNumber; }
+            private set
+            {
+                SetProperty(ref _roomNumber, value); 
+                OnPropertyChanged("RoomNumber");
+            }
+        }
+
         #endregion
 
         #region Constructor
@@ -67,6 +77,7 @@ namespace PzProject.ViewModel
             _seance = selectedSeance;
             _room = _seance.Rooms[selectedSeance.SeanceHours.IndexOf(_selectedHour)];
             _grid = CreateView();
+            RoomNumber = _room.RoomNumber.ToString();
         }
 
 
@@ -133,7 +144,7 @@ namespace PzProject.ViewModel
 
         private void PreviousPage()
         {
-            NavigationManager.NavigateTo(new MainPage());
+            NavigationManager.Back();
         }
 
         private void Booking()

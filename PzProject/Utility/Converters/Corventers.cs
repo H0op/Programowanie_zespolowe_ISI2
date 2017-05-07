@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Drawing;
 using System.Globalization;
+using System.IO;
+using System.Net;
 using System.Windows.Data;
 using System.Windows.Media.Imaging;
 
@@ -11,8 +14,9 @@ namespace PzProject.Utility.Converters
         {
             try
             {
-                BitmapImage image = new BitmapImage(new Uri((string)value));
-                int a = 1;
+                string url = @"https://image.tmdb.org/t/p/w640" + (string)value;
+                BitmapImage image = new BitmapImage(new Uri(url));
+
                 return image;
             }
             catch (Exception e)

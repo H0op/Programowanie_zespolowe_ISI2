@@ -41,7 +41,7 @@ namespace PzProject.View
 
         private void Powrot()
         {
-            NavigationManager.NavigateTo(new MainPage());
+            NavigationManager.Back();
         }
 
         public Seance Seans

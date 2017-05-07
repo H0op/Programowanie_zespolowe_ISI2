@@ -26,9 +26,10 @@ namespace PzProject.Model
         }
     
         public virtual DbSet<BILET> BILET { get; set; }
-        public virtual DbSet<MIEJSCE> MIEJSCE { get; set; }
         public virtual DbSet<SALA> SALA { get; set; }
         public virtual DbSet<SEANS> SEANS { get; set; }
         public virtual DbSet<ULGA> ULGA { get; set; }
+        public virtual DbSet<GODZINY> GODZINY { get; set; }
+        public virtual DbSet<UZYTKOWNICY> UZYTKOWNICY { get; set; }
     }
 }

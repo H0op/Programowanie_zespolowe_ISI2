@@ -102,6 +102,7 @@ namespace PzProject.ViewModel
             var mainGrid = new Grid();
             ComboBox ulgi;
             TextBlock tekst;
+            DatabasePZEntities context = new DatabasePZEntities();
 
             mainGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
             mainGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
@@ -120,8 +121,11 @@ namespace PzProject.ViewModel
 
                 ulgi = new ComboBox();
                 ulgi.Width = 150;
-                ulgi.Items.Add(new ComboBoxItem() { Content = "Zwykly" });
-                ulgi.Items.Add(new ComboBoxItem() { Content = "Ulgowy" });
+
+                foreach (var ulga in context.ULGA)
+                {
+                    ulgi.Items.Add(new ComboBoxItem() {Content = ulga.Nazwa});
+                }
 
 
                 Grid.SetColumn(ulgi, 1);
@@ -139,7 +143,7 @@ namespace PzProject.ViewModel
         }
         private void PreviousPage()
         {
-            NavigationManager.NavigateTo(new RoomPage(_seance, _selectedHour));
+            NavigationManager.Back();
         }
 
         #endregion

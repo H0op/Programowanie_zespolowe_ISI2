@@ -102,7 +102,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DbPz.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Model\MIEJSCE.cs">
+    <Compile Include="Model\GODZINY.cs">
       <DependentUpon>DbPz.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Movie.cs" />
@@ -116,6 +116,9 @@
     </Compile>
     <Compile Include="Model\Spot.cs" />
     <Compile Include="Model\ULGA.cs">
+      <DependentUpon>DbPz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\UZYTKOWNICY.cs">
       <DependentUpon>DbPz.tt</DependentUpon>
     </Compile>
     <Compile Include="Network\ApiRequester.cs" />

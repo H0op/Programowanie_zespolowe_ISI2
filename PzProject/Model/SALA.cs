@@ -17,7 +17,6 @@ namespace PzProject.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SALA()
         {
-            this.MIEJSCE = new HashSet<MIEJSCE>();
             this.SEANS = new HashSet<SEANS>();
         }
     
@@ -25,8 +24,6 @@ namespace PzProject.Model
         public Nullable<int> Ilosc_kolumn { get; set; }
         public Nullable<int> Ilosc_wierszy { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MIEJSCE> MIEJSCE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SEANS> SEANS { get; set; }
     }
