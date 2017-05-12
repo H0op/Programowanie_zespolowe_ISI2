@@ -17,7 +17,6 @@ namespace PzProject.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SEANS()
         {
-            this.BILET = new HashSet<BILET>();
             this.GODZINY = new HashSet<GODZINY>();
         }
     
@@ -27,8 +26,6 @@ namespace PzProject.Model
         public Nullable<int> Id_sala { get; set; }
         public Nullable<int> Id_film { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BILET> BILET { get; set; }
         public virtual SALA SALA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GODZINY> GODZINY { get; set; }
