@@ -33,7 +33,6 @@
             <!-- Lewy panel -->
             <TabControl Grid.Row="1"
                         BorderBrush="Gainsboro">
-                <!--Nowy Widok-->
                 <TabItem Header="{Binding Path=DataTime[0], Mode=TwoWay}">
                     <Grid>
                         <ListBox ItemsSource="{Binding Seances}"
@@ -104,6 +103,8 @@
                                                        Margin="5"
                                                        Text="{Binding Movie.Name}"
                                                        FontWeight="Bold"
+                                                       TextWrapping="Wrap"
+                                                       Width="160"
                                                        HorizontalAlignment="Center" />
                                         </Grid>
                                     </Border>
@@ -142,6 +143,8 @@
                                                        Margin="5"
                                                        Text="{Binding Movie.Name}"
                                                        FontWeight="Bold"
+                                                       TextWrapping="Wrap"
+                                                       Width="160"
                                                        HorizontalAlignment="Center" />
                                         </Grid>
                                     </Border>
@@ -180,6 +183,8 @@
                                                        Margin="5"
                                                        Text="{Binding Movie.Name}"
                                                        FontWeight="Bold"
+                                                       TextWrapping="Wrap"
+                                                       Width="160"
                                                        HorizontalAlignment="Center" />
                                         </Grid>
                                     </Border>
@@ -218,6 +223,8 @@
                                                        Margin="5"
                                                        Text="{Binding Movie.Name}"
                                                        FontWeight="Bold"
+                                                       TextWrapping="Wrap"
+                                                       Width="160"
                                                        HorizontalAlignment="Center" />
                                         </Grid>
                                     </Border>
@@ -256,6 +263,8 @@
                                                        Margin="5"
                                                        Text="{Binding Movie.Name}"
                                                        FontWeight="Bold"
+                                                       TextWrapping="Wrap"
+                                                       Width="160"
                                                        HorizontalAlignment="Center" />
                                         </Grid>
                                     </Border>
@@ -294,6 +303,8 @@
                                                        Margin="5"
                                                        Text="{Binding Movie.Name}"
                                                        FontWeight="Bold"
+                                                       TextWrapping="Wrap"
+                                                       Width="160"
                                                        HorizontalAlignment="Center" />
                                         </Grid>
                                     </Border>
@@ -302,6 +313,7 @@
                         </ListBox>
                     </Grid>
                 </TabItem>
+
 
 
             </TabControl>
@@ -327,7 +339,8 @@
                         Source="{Binding SelectedSeance.Movie.ImageSrc, Converter={StaticResource ImageConverter}, Mode=TwoWay}"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Top"
-                        Grid.Column="0" />
+                        Grid.Column="0" 
+                        Margin="5"/>
 
                     <Grid Grid.Column="1">
                         <Grid.RowDefinitions>

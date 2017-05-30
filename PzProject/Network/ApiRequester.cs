@@ -39,7 +39,7 @@ namespace PzProject.Network
             Movie movieFromApi = null;
             try
             {
-                movieFromApi = client.GetMovieAsync(id, MovieMethods.Images|MovieMethods.Credits).Result;
+                movieFromApi = client.GetMovieAsync(id, MovieMethods.Credits).Result;
             }
             catch (Exception e)
             {
@@ -83,7 +83,8 @@ namespace PzProject.Network
                 movie = new Model.Movie(
                     movieFromApi.Title,
                     movieFromApi.Overview,
-                    movieFromApi.Images.Posters.ToString(),
+                    //movieFromApi.Images.Posters.ToString(),
+                    movieFromApi.PosterPath,
                     MovieHelper.getHours(movieFromApi.Runtime),
                     MovieHelper.getMinutes(movieFromApi.Runtime),
                     ((DateTime)movieFromApi.ReleaseDate).ToString("d", new CultureInfo("pl-PL")),

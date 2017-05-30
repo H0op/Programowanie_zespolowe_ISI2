@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -98,10 +99,10 @@ namespace PzProject.ViewModel
             _morning = new StackPanel();
             _afternoon = new StackPanel();
             _evening = new StackPanel();
-            
 
-            InitData();
             InitDataTime();
+            InitData();
+
         }
 
         #endregion
@@ -151,204 +152,6 @@ namespace PzProject.ViewModel
 
         private void InitData()
         {
-            ObservableCollection<Spot> spots = new ObservableCollection<Spot>()
-            {
-                new Spot(0, 0, 0, 1),
-                new Spot(0, 1, 0, 2),
-                new Spot(0, 2, 0, 3),
-                new Spot(0, 3, 0, 4),
-                new Spot(0, 4, 0, 5),
-                new Spot(0, 5, 0, 6),
-                new Spot(0, 6, 0, 7),
-                new Spot(0, 7, 0, 8),
-                new Spot(0, 8, 0, 9),
-                new Spot(0, 9, 0, 10),
-
-                new Spot(0, 0, 1, 11),
-                new Spot(0, 1, 1, 12),
-                new Spot(0, 2, 1, 13),
-                new Spot(0, 3, 1, 14),
-                new Spot(0, 4, 1, 15),
-                new Spot(0, 5, 1, 16),
-                new Spot(0, 6, 1, 17),
-                new Spot(0, 7, 1, 18),
-                new Spot(0, 8, 1, 19),
-                new Spot(0, 9, 1, 20),
-
-                new Spot(0, 0, 2, 21),
-                new Spot(0, 1, 2, 22),
-                new Spot(0, 2, 2, 23),
-                new Spot(0, 3, 2, 24),
-                new Spot(0, 4, 2, 25),
-                new Spot(0, 5, 2, 26),
-                new Spot(0, 6, 2, 27),
-                new Spot(0, 7, 2, 28),
-                new Spot(0, 8, 2, 29),
-                new Spot(0, 9, 2, 30),
-
-                new Spot(0, 0, 3, 31),
-                new Spot(0, 1, 3, 32),
-                new Spot(0, 2, 3, 33),
-                new Spot(0, 3, 3, 34),
-                new Spot(0, 4, 3, 35),
-                new Spot(0, 5, 3, 36),
-                new Spot(0, 6, 3, 37),
-                new Spot(0, 7, 3, 38),
-                new Spot(0, 8, 3, 39),
-                new Spot(0, 9, 3, 40),
-
-                new Spot(0, 0, 4, 41),
-                new Spot(0, 1, 4, 42),
-                new Spot(0, 2, 4, 43),
-                new Spot(0, 3, 4, 44),
-                new Spot(0, 4, 4, 45),
-                new Spot(0, 5, 4, 46),
-                new Spot(0, 6, 4, 47),
-                new Spot(0, 7, 4, 48),
-                new Spot(0, 8, 4, 49),
-                new Spot(0, 9, 4, 50)
-            };
-            ObservableCollection<Spot> spots1 = new ObservableCollection<Spot>()
-            {
-                new Spot(0, 0, 0, 1),
-                new Spot(0, 1, 0, 2),
-                new Spot(2, 2, 0, 3),
-                new Spot(2, 3, 0, 4),
-                new Spot(0, 4, 0, 5),
-                new Spot(0, 5, 0, 6),
-                new Spot(0, 6, 0, 7),
-                new Spot(0, 7, 0, 8),
-                new Spot(0, 8, 0, 9),
-                new Spot(0, 9, 0, 10),
-
-                new Spot(0, 0, 1, 11),
-                new Spot(0, 1, 1, 12),
-                new Spot(2, 2, 1, 13),
-                new Spot(2, 3, 1, 14),
-                new Spot(0, 4, 1, 15),
-                new Spot(0, 5, 1, 16),
-                new Spot(0, 6, 1, 17),
-                new Spot(0, 7, 1, 18),
-                new Spot(0, 8, 1, 19),
-                new Spot(0, 9, 1, 20),
-
-                new Spot(0, 0, 2, 21),
-                new Spot(0, 1, 2, 22),
-                new Spot(2, 2, 2, 23),
-                new Spot(2, 3, 2, 24),
-                new Spot(0, 4, 2, 25),
-                new Spot(0, 5, 2, 26),
-                new Spot(0, 6, 2, 27),
-                new Spot(0, 7, 2, 28),
-                new Spot(0, 8, 2, 29),
-                new Spot(0, 9, 2, 30),
-
-                new Spot(0, 0, 3, 31),
-                new Spot(0, 1, 3, 32),
-                new Spot(0, 2, 3, 33),
-                new Spot(0, 3, 3, 34),
-                new Spot(0, 4, 3, 35),
-                new Spot(0, 5, 3, 36),
-                new Spot(0, 6, 3, 37),
-                new Spot(0, 7, 3, 38),
-                new Spot(0, 8, 3, 39),
-                new Spot(0, 9, 3, 40),
-
-                new Spot(0, 0, 4, 41),
-                new Spot(0, 1, 4, 42),
-                new Spot(0, 2, 4, 43),
-                new Spot(0, 3, 4, 44),
-                new Spot(0, 4, 4, 45),
-                new Spot(0, 5, 4, 46),
-                new Spot(0, 6, 4, 47),
-                new Spot(0, 7, 4, 48),
-                new Spot(0, 8, 4, 49),
-                new Spot(0, 9, 4, 50)
-            };
-            ObservableCollection<Spot> spots2 = new ObservableCollection<Spot>()
-            {
-                new Spot(0, 0, 0, 1),
-                new Spot(0, 1, 0, 2),
-                new Spot(0, 2, 0, 3),
-                new Spot(0, 3, 0, 4),
-                new Spot(0, 4, 0, 5),
-                new Spot(1, 5, 0, 6),
-                new Spot(1, 6, 0, 7),
-                new Spot(0, 7, 0, 8),
-                new Spot(0, 8, 0, 9),
-                new Spot(0, 9, 0, 10),
-
-                new Spot(0, 0, 1, 11),
-                new Spot(0, 1, 1, 12),
-                new Spot(0, 2, 1, 13),
-                new Spot(0, 3, 1, 14),
-                new Spot(1, 4, 1, 15),
-                new Spot(1, 5, 1, 16),
-                new Spot(1, 6, 1, 17),
-                new Spot(1, 7, 1, 18),
-                new Spot(1, 8, 1, 19),
-                new Spot(0, 9, 1, 20),
-
-                new Spot(1, 0, 2, 21),
-                new Spot(1, 1, 2, 22),
-                new Spot(0, 2, 2, 23),
-                new Spot(1, 3, 2, 24),
-                new Spot(1, 4, 2, 25),
-                new Spot(0, 5, 2, 26),
-                new Spot(1, 6, 2, 27),
-                new Spot(1, 7, 2, 28),
-                new Spot(1, 8, 2, 29),
-                new Spot(0, 9, 2, 30),
-
-                new Spot(0, 0, 3, 31),
-                new Spot(0, 1, 3, 32),
-                new Spot(1, 2, 3, 33),
-                new Spot(1, 3, 3, 34),
-                new Spot(1, 4, 3, 35),
-                new Spot(1, 5, 3, 36),
-                new Spot(1, 6, 3, 37),
-                new Spot(1, 7, 3, 38),
-                new Spot(0, 8, 3, 39),
-                new Spot(0, 9, 3, 40),
-
-                new Spot(1, 0, 4, 41),
-                new Spot(1, 1, 4, 42),
-                new Spot(1, 2, 4, 43),
-                new Spot(1, 3, 4, 44),
-                new Spot(0, 4, 4, 45),
-                new Spot(1, 5, 4, 46),
-                new Spot(1, 6, 4, 47),
-                new Spot(1, 7, 4, 48),
-                new Spot(1, 8, 4, 49),
-                new Spot(0, 9, 4, 50)
-            };
-            ObservableCollection<Room> rooms = new ObservableCollection<Room>()
-            {
-                new Room(1, spots, 10, 5),
-                new Room(2, spots, 10, 5),
-                new Room(3, spots, 10, 5),
-                new Room(4, spots, 10, 5)
-            };
-            ObservableCollection<Room> rooms2 = new ObservableCollection<Room>()
-            {
-                new Room(1, spots1, 10, 5),
-                new Room(2, spots2, 10, 5),
-                
-            };
-            ObservableCollection<string> seanceHours = new ObservableCollection<string>()
-            {
-                "8:00",
-                "12:00",
-                "16:00",
-                "20:00"
-            };
-            ObservableCollection<string> seanceHours2 = new ObservableCollection<string>()
-            {
-                "8:00",
-                "12:00"
-            };
-
-
             DatabasePZEntities context = new DatabasePZEntities();
 
             var api = new ApiRequester();
@@ -356,12 +159,41 @@ namespace PzProject.ViewModel
             foreach (var seans in context.SEANS)
             {
                 movie = api.getAppMovie((int)seans.Id_film);
-                movie.ImageSrc = "pack://application:,,,/Resources/movie_img/rambo.jpg";
-                Seances.Add(new Seance(movie, rooms, seanceHours, new DateTime(2017, 4, 14), new DateTime(2017, 4, 16)));
+                var hours = new ObservableCollection<string>();
+                var rooms = new ObservableCollection<Room>();
+                string spotTable;
+                int currentSpotNumber;
 
+                foreach (var godziny in context.GODZINY.Where(id => id.Id_Seansu == seans.Id_seans))
+                {
+                    hours.Add(godziny.Godzina);
+                    var spots = new ObservableCollection<Spot>();
+                    SALA room = godziny.SEANS.SALA;
+                    spotTable = godziny.Miejsca;
+
+                    for (int i = 0; i < room.Ilosc_wierszy; i++)
+                    {
+                        for (int j = 0; j < room.Ilosc_kolumn; j++)
+                        {
+                            currentSpotNumber = (i * (int)room.Ilosc_kolumn) + j;
+                            int isAvailable = Int32.Parse(spotTable[currentSpotNumber].ToString());
+                            spots.Add(new Spot(isAvailable, j, i, currentSpotNumber+1));
+                        }
+                    }
+                    
+                    rooms.Add(new Room(room.Id_sala, spots, (int)room.Ilosc_kolumn, (int)room.Ilosc_wierszy));
+
+                }
+
+                Seances.Add(new Seance(movie, rooms, hours, (DateTime)seans.Data_rozpoczecia, (DateTime)seans.Data_zakonczenia, seans.Id_seans));
             }
-
         }
+
+        private async Task Load()
+        {
+            await Task.Run(() => { InitData(); });
+        }
+
         #endregion
 
     }

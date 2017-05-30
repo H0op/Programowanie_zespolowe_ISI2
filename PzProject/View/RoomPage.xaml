@@ -19,6 +19,13 @@
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
                    Grid.Row="0" />
+        <TextBlock Grid.Row="0"
+                   HorizontalAlignment="Right"
+                   VerticalAlignment="Center"
+                   Margin="5" FontWeight="Bold">
+            <Run Text="Sala:"/>
+            <Run Text="{Binding Path=RoomNumber, Mode=OneWay}"/>
+        </TextBlock>
 
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>

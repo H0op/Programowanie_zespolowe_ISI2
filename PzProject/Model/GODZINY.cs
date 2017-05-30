@@ -12,22 +12,21 @@ namespace PzProject.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class SEANS
+    public partial class GODZINY
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public SEANS()
+        public GODZINY()
         {
-            this.GODZINY = new HashSet<GODZINY>();
+            this.BILET = new HashSet<BILET>();
         }
     
-        public int Id_seans { get; set; }
-        public Nullable<System.DateTime> Data_rozpoczecia { get; set; }
-        public Nullable<System.DateTime> Data_zakonczenia { get; set; }
-        public Nullable<int> Id_sala { get; set; }
-        public Nullable<int> Id_film { get; set; }
+        public int Id_Godziny { get; set; }
+        public Nullable<int> Id_Seansu { get; set; }
+        public string Godzina { get; set; }
+        public string Miejsca { get; set; }
     
-        public virtual SALA SALA { get; set; }
+        public virtual SEANS SEANS { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<GODZINY> GODZINY { get; set; }
+        public virtual ICollection<BILET> BILET { get; set; }
     }
 }

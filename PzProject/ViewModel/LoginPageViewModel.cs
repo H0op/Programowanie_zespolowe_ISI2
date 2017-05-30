@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
+using PzProject.Model;
 using PzProject.Utility;
 using PzProject.View;
 
@@ -51,7 +52,7 @@ namespace PzProject.ViewModel
 
         public LoginPageViewModel()
         {
-            PreviousPageCommand = new RelayCommand(action => { NavigationManager.NavigateTo(new MainPage()); });
+            PreviousPageCommand = new RelayCommand(action => { NavigationManager.Back(); });
             LoginCommand = new RelayCommand(action => LoginUser(Login, (PasswordBox)action));
         }
 
@@ -61,9 +62,13 @@ namespace PzProject.ViewModel
 
         private void LoginUser(string log, PasswordBox pass)
         {
-            //sprawdzanie z baza poprawnosci hasla
-            //if (ldb.Login(log, pass.Password))
-            if(pass.Password == "")
+            DatabasePZEntities context = new DatabasePZEntities();
+
+            UZYTKOWNICY user = context.UZYTKOWNICY.Where(l => l.Login == log)
+                .Where(h => h.Haslo == pass.Password)
+                .FirstOrDefault();
+
+            if (user != null)
             {
                 WrongData = string.Empty;
                 NavigationManager.NavigateTo(new UserPage());

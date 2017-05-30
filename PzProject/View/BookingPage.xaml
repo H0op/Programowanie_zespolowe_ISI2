@@ -50,6 +50,7 @@
                           HorizontalAlignment="Center"
                           Content="{Binding Path=Grid, Mode=TwoWay}" />
         
+        
         <WrapPanel Grid.Row="3"
                    HorizontalAlignment="Center">
             <Button Content="Rezerwuj" Width="150" Margin="0 0 10 0" Height="50" Command="{Binding BookingCommand}"/>

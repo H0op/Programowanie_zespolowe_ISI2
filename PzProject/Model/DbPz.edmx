@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DatabasePZModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DatabasePZModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BILET">
           <Key>
             <PropertyRef Name="Id_bilet" />
@@ -12,18 +12,22 @@
           <Property Name="Id_bilet" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Potwierdzenie" Type="tinyint" />
           <Property Name="Realizacja" Type="tinyint" />
-          <Property Name="Id_seans" Type="int" Nullable="false" />
           <Property Name="Id_ulga" Type="int" />
-        </EntityType>
-        <EntityType Name="MIEJSCE">
-          <Key>
-            <PropertyRef Name="Id_miejsce" />
-          </Key>
-          <Property Name="Id_miejsce" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Rzad" Type="int" />
+          <Property Name="Id_Godziny" Type="int" />
           <Property Name="Miejsce" Type="int" />
-          <Property Name="Zajete" Type="tinyint" />
-          <Property Name="Id_sala" Type="int" Nullable="false" />
+          <Property Name="Imie" Type="varchar(max)" />
+          <Property Name="Nazwisko" Type="varchar(max)" />
+          <Property Name="Email" Type="varchar(max)" />
+          <Property Name="Telefon" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="GODZINY">
+          <Key>
+            <PropertyRef Name="Id_Godziny" />
+          </Key>
+          <Property Name="Id_Godziny" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Seansu" Type="int" />
+          <Property Name="Godzina" Type="varchar(max)" />
+          <Property Name="Miejsca" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="SALA">
           <Key>
@@ -51,15 +55,23 @@
           <Property Name="Wartosc" Type="int" />
           <Property Name="Nazwa" Type="varchar" MaxLength="50" />
         </EntityType>
-        <Association Name="FK_BILET_SEANS">
-          <End Role="SEANS" Type="Self.SEANS" Multiplicity="1" />
+        <EntityType Name="UZYTKOWNICY">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Login" Type="varchar" MaxLength="50" />
+          <Property Name="Haslo" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_BILET_GODZINY">
+          <End Role="GODZINY" Type="Self.GODZINY" Multiplicity="0..1" />
           <End Role="BILET" Type="Self.BILET" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="SEANS">
-              <PropertyRef Name="Id_seans" />
+            <Principal Role="GODZINY">
+              <PropertyRef Name="Id_Godziny" />
             </Principal>
             <Dependent Role="BILET">
-              <PropertyRef Name="Id_seans" />
+              <PropertyRef Name="Id_Godziny" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -75,15 +87,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_MIEJSCE_SALA">
-          <End Role="SALA" Type="Self.SALA" Multiplicity="1" />
-          <End Role="MIEJSCE" Type="Self.MIEJSCE" Multiplicity="*" />
+        <Association Name="FK_GODZINY_ToTable">
+          <End Role="SEANS" Type="Self.SEANS" Multiplicity="0..1" />
+          <End Role="GODZINY" Type="Self.GODZINY" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="SALA">
-              <PropertyRef Name="Id_sala" />
+            <Principal Role="SEANS">
+              <PropertyRef Name="Id_seans" />
             </Principal>
-            <Dependent Role="MIEJSCE">
-              <PropertyRef Name="Id_sala" />
+            <Dependent Role="GODZINY">
+              <PropertyRef Name="Id_Seansu" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -101,29 +113,29 @@
         </Association>
         <EntityContainer Name="DatabasePZModelStoreContainer">
           <EntitySet Name="BILET" EntityType="Self.BILET" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="MIEJSCE" EntityType="Self.MIEJSCE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GODZINY" EntityType="Self.GODZINY" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SALA" EntityType="Self.SALA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SEANS" EntityType="Self.SEANS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ULGA" EntityType="Self.ULGA" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_BILET_SEANS" Association="Self.FK_BILET_SEANS">
-            <End Role="SEANS" EntitySet="SEANS" />
+          <EntitySet Name="UZYTKOWNICY" EntityType="Self.UZYTKOWNICY" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_BILET_GODZINY" Association="Self.FK_BILET_GODZINY">
+            <End Role="GODZINY" EntitySet="GODZINY" />
             <End Role="BILET" EntitySet="BILET" />
           </AssociationSet>
           <AssociationSet Name="FK_BILET_ULGA" Association="Self.FK_BILET_ULGA">
             <End Role="ULGA" EntitySet="ULGA" />
             <End Role="BILET" EntitySet="BILET" />
           </AssociationSet>
-          <AssociationSet Name="FK_MIEJSCE_SALA" Association="Self.FK_MIEJSCE_SALA">
-            <End Role="SALA" EntitySet="SALA" />
-            <End Role="MIEJSCE" EntitySet="MIEJSCE" />
+          <AssociationSet Name="FK_GODZINY_ToTable" Association="Self.FK_GODZINY_ToTable">
+            <End Role="SEANS" EntitySet="SEANS" />
+            <End Role="GODZINY" EntitySet="GODZINY" />
           </AssociationSet>
           <AssociationSet Name="FK_SEANS_SALA" Association="Self.FK_SEANS_SALA">
             <End Role="SALA" EntitySet="SALA" />
             <End Role="SEANS" EntitySet="SEANS" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DatabasePZModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -134,21 +146,15 @@
           <Property Name="Id_bilet" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Potwierdzenie" Type="Byte" />
           <Property Name="Realizacja" Type="Byte" />
-          <Property Name="Id_seans" Type="Int32" Nullable="false" />
           <Property Name="Id_ulga" Type="Int32" />
-          <NavigationProperty Name="SEANS" Relationship="Self.FK_BILET_SEANS" FromRole="BILET" ToRole="SEANS" />
           <NavigationProperty Name="ULGA" Relationship="Self.FK_BILET_ULGA" FromRole="BILET" ToRole="ULGA" />
-        </EntityType>
-        <EntityType Name="MIEJSCE">
-          <Key>
-            <PropertyRef Name="Id_miejsce" />
-          </Key>
-          <Property Name="Id_miejsce" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Rzad" Type="Int32" />
-          <Property Name="Miejsce1" Type="Int32" />
-          <Property Name="Zajete" Type="Byte" />
-          <Property Name="Id_sala" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="SALA" Relationship="Self.FK_MIEJSCE_SALA" FromRole="MIEJSCE" ToRole="SALA" />
+          <Property Name="Id_Godziny" Type="Int32" />
+          <Property Name="Miejsce" Type="Int32" />
+          <NavigationProperty Name="GODZINY" Relationship="DatabasePZModel.FK_BILET_GODZINY" FromRole="BILET" ToRole="GODZINY" />
+          <Property Name="Imie" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Nazwisko" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Telefon" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="SALA">
           <Key>
@@ -157,7 +163,6 @@
           <Property Name="Id_sala" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Ilosc_kolumn" Type="Int32" />
           <Property Name="Ilosc_wierszy" Type="Int32" />
-          <NavigationProperty Name="MIEJSCE" Relationship="Self.FK_MIEJSCE_SALA" FromRole="SALA" ToRole="MIEJSCE" />
           <NavigationProperty Name="SEANS" Relationship="Self.FK_SEANS_SALA" FromRole="SALA" ToRole="SEANS" />
         </EntityType>
         <EntityType Name="SEANS">
@@ -169,8 +174,8 @@
           <Property Name="Data_zakonczenia" Type="DateTime" Precision="0" />
           <Property Name="Id_sala" Type="Int32" />
           <Property Name="Id_film" Type="Int32" />
-          <NavigationProperty Name="BILET" Relationship="Self.FK_BILET_SEANS" FromRole="SEANS" ToRole="BILET" />
           <NavigationProperty Name="SALA" Relationship="Self.FK_SEANS_SALA" FromRole="SEANS" ToRole="SALA" />
+          <NavigationProperty Name="GODZINY" Relationship="DatabasePZModel.FK_GODZINY_ToTable" FromRole="SEANS" ToRole="GODZINY" />
         </EntityType>
         <EntityType Name="ULGA">
           <Key>
@@ -181,18 +186,6 @@
           <Property Name="Nazwa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="BILET" Relationship="Self.FK_BILET_ULGA" FromRole="ULGA" ToRole="BILET" />
         </EntityType>
-        <Association Name="FK_BILET_SEANS">
-          <End Role="SEANS" Type="Self.SEANS" Multiplicity="1" />
-          <End Role="BILET" Type="Self.BILET" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SEANS">
-              <PropertyRef Name="Id_seans" />
-            </Principal>
-            <Dependent Role="BILET">
-              <PropertyRef Name="Id_seans" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_BILET_ULGA">
           <End Role="ULGA" Type="Self.ULGA" Multiplicity="0..1" />
           <End Role="BILET" Type="Self.BILET" Multiplicity="*" />
@@ -202,18 +195,6 @@
             </Principal>
             <Dependent Role="BILET">
               <PropertyRef Name="Id_ulga" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MIEJSCE_SALA">
-          <End Role="SALA" Type="Self.SALA" Multiplicity="1" />
-          <End Role="MIEJSCE" Type="Self.MIEJSCE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SALA">
-              <PropertyRef Name="Id_sala" />
-            </Principal>
-            <Dependent Role="MIEJSCE">
-              <PropertyRef Name="Id_sala" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -231,27 +212,71 @@
         </Association>
         <EntityContainer Name="DatabasePZEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="BILET" EntityType="Self.BILET" />
-          <EntitySet Name="MIEJSCE" EntityType="Self.MIEJSCE" />
           <EntitySet Name="SALA" EntityType="Self.SALA" />
           <EntitySet Name="SEANS" EntityType="Self.SEANS" />
           <EntitySet Name="ULGA" EntityType="Self.ULGA" />
-          <AssociationSet Name="FK_BILET_SEANS" Association="Self.FK_BILET_SEANS">
-            <End Role="SEANS" EntitySet="SEANS" />
-            <End Role="BILET" EntitySet="BILET" />
-          </AssociationSet>
           <AssociationSet Name="FK_BILET_ULGA" Association="Self.FK_BILET_ULGA">
             <End Role="ULGA" EntitySet="ULGA" />
             <End Role="BILET" EntitySet="BILET" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MIEJSCE_SALA" Association="Self.FK_MIEJSCE_SALA">
-            <End Role="SALA" EntitySet="SALA" />
-            <End Role="MIEJSCE" EntitySet="MIEJSCE" />
           </AssociationSet>
           <AssociationSet Name="FK_SEANS_SALA" Association="Self.FK_SEANS_SALA">
             <End Role="SALA" EntitySet="SALA" />
             <End Role="SEANS" EntitySet="SEANS" />
           </AssociationSet>
+          <EntitySet Name="GODZINY" EntityType="DatabasePZModel.GODZINY" />
+          <EntitySet Name="UZYTKOWNICY" EntityType="DatabasePZModel.UZYTKOWNICY" />
+          <AssociationSet Name="FK_GODZINY_ToTable" Association="DatabasePZModel.FK_GODZINY_ToTable">
+            <End Role="SEANS" EntitySet="SEANS" />
+            <End Role="GODZINY" EntitySet="GODZINY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BILET_GODZINY" Association="DatabasePZModel.FK_BILET_GODZINY">
+            <End Role="GODZINY" EntitySet="GODZINY" />
+            <End Role="BILET" EntitySet="BILET" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="GODZINY">
+          <Key>
+            <PropertyRef Name="Id_Godziny" />
+          </Key>
+          <Property Name="Id_Godziny" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Seansu" Type="Int32" />
+          <Property Name="Godzina" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SEANS" Relationship="DatabasePZModel.FK_GODZINY_ToTable" FromRole="GODZINY" ToRole="SEANS" />
+          <Property Name="Miejsca" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="BILET" Relationship="DatabasePZModel.FK_BILET_GODZINY" FromRole="GODZINY" ToRole="BILET" />
+        </EntityType>
+        <EntityType Name="UZYTKOWNICY">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Haslo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_GODZINY_ToTable">
+          <End Type="DatabasePZModel.SEANS" Role="SEANS" Multiplicity="0..1" />
+          <End Type="DatabasePZModel.GODZINY" Role="GODZINY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEANS">
+              <PropertyRef Name="Id_seans" />
+            </Principal>
+            <Dependent Role="GODZINY">
+              <PropertyRef Name="Id_Seansu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BILET_GODZINY">
+          <End Type="DatabasePZModel.GODZINY" Role="GODZINY" Multiplicity="0..1" />
+          <End Type="DatabasePZModel.BILET" Role="BILET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GODZINY">
+              <PropertyRef Name="Id_Godziny" />
+            </Principal>
+            <Dependent Role="BILET">
+              <PropertyRef Name="Id_Godziny" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -261,22 +286,16 @@
           <EntitySetMapping Name="BILET">
             <EntityTypeMapping TypeName="DatabasePZModel.BILET">
               <MappingFragment StoreEntitySet="BILET">
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+                <ScalarProperty Name="Imie" ColumnName="Imie" />
+                <ScalarProperty Name="Miejsce" ColumnName="Miejsce" />
+                <ScalarProperty Name="Id_Godziny" ColumnName="Id_Godziny" />
                 <ScalarProperty Name="Id_bilet" ColumnName="Id_bilet" />
                 <ScalarProperty Name="Potwierdzenie" ColumnName="Potwierdzenie" />
                 <ScalarProperty Name="Realizacja" ColumnName="Realizacja" />
-                <ScalarProperty Name="Id_seans" ColumnName="Id_seans" />
                 <ScalarProperty Name="Id_ulga" ColumnName="Id_ulga" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="MIEJSCE">
-            <EntityTypeMapping TypeName="DatabasePZModel.MIEJSCE">
-              <MappingFragment StoreEntitySet="MIEJSCE">
-                <ScalarProperty Name="Id_miejsce" ColumnName="Id_miejsce" />
-                <ScalarProperty Name="Rzad" ColumnName="Rzad" />
-                <ScalarProperty Name="Miejsce1" ColumnName="Miejsce" />
-                <ScalarProperty Name="Zajete" ColumnName="Zajete" />
-                <ScalarProperty Name="Id_sala" ColumnName="Id_sala" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -306,6 +325,25 @@
                 <ScalarProperty Name="Id_ulga" ColumnName="Id_ulga" />
                 <ScalarProperty Name="Wartosc" ColumnName="Wartosc" />
                 <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GODZINY">
+            <EntityTypeMapping TypeName="DatabasePZModel.GODZINY">
+              <MappingFragment StoreEntitySet="GODZINY">
+                <ScalarProperty Name="Miejsca" ColumnName="Miejsca" />
+                <ScalarProperty Name="Godzina" ColumnName="Godzina" />
+                <ScalarProperty Name="Id_Seansu" ColumnName="Id_Seansu" />
+                <ScalarProperty Name="Id_Godziny" ColumnName="Id_Godziny" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UZYTKOWNICY">
+            <EntityTypeMapping TypeName="DatabasePZModel.UZYTKOWNICY">
+              <MappingFragment StoreEntitySet="UZYTKOWNICY">
+                <ScalarProperty Name="Haslo" ColumnName="Haslo" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
