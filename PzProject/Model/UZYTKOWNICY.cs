@@ -12,14 +12,10 @@ namespace PzProject.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class MIEJSCE
+    public partial class UZYTKOWNICY
     {
-        public int Id_miejsce { get; set; }
-        public Nullable<int> Rzad { get; set; }
-        public Nullable<int> Miejsce1 { get; set; }
-        public Nullable<byte> Zajete { get; set; }
-        public int Id_sala { get; set; }
-    
-        public virtual SALA SALA { get; set; }
+        public int Id { get; set; }
+        public string Login { get; set; }
+        public string Haslo { get; set; }
     }
 }

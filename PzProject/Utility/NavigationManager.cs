@@ -53,6 +53,18 @@ namespace PzProject.Utility
             }
         }
 
+        public static void BackToMain()
+        {
+            if (Frame != null)
+            {
+                if (CanGoBack())
+                {
+                    BackStack.RemoveRange(BackStack.Count-2,2);
+                    Frame.Content = BackStack.LastOrDefault();
+                }
+            }
+        }
+
         private static bool CanGoBack()
         {
             if (BackStack.Count > 1)

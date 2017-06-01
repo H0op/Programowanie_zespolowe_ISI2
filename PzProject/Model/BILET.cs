@@ -17,10 +17,15 @@ namespace PzProject.Model
         public int Id_bilet { get; set; }
         public Nullable<byte> Potwierdzenie { get; set; }
         public Nullable<byte> Realizacja { get; set; }
-        public int Id_seans { get; set; }
         public Nullable<int> Id_ulga { get; set; }
+        public Nullable<int> Id_Godziny { get; set; }
+        public Nullable<int> Miejsce { get; set; }
+        public string Imie { get; set; }
+        public string Nazwisko { get; set; }
+        public string Email { get; set; }
+        public string Telefon { get; set; }
     
-        public virtual SEANS SEANS { get; set; }
         public virtual ULGA ULGA { get; set; }
+        public virtual GODZINY GODZINY { get; set; }
     }
 }

@@ -28,10 +28,22 @@ namespace PzProject.ViewModel
         private string _email;
         private string _phoneNumber;
 
+        private int _selectedDiscount;
+
 
         #endregion
 
         #region Properties
+
+        public int SelectedDiscount
+        {
+            get { return _selectedDiscount; }
+            set
+            {
+                SetProperty(ref _selectedDiscount, value);
+                OnPropertyChanged("SelectedDiscount");
+            }
+        }
 
         public Grid Grid
         {
@@ -102,6 +114,7 @@ namespace PzProject.ViewModel
             var mainGrid = new Grid();
             ComboBox ulgi;
             TextBlock tekst;
+            DatabasePZEntities context = new DatabasePZEntities();
 
             mainGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
             mainGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
@@ -119,9 +132,13 @@ namespace PzProject.ViewModel
                 mainGrid.Children.Add(tekst);
 
                 ulgi = new ComboBox();
+                ulgi.SelectedIndex = SelectedDiscount;
                 ulgi.Width = 150;
-                ulgi.Items.Add(new ComboBoxItem() { Content = "Zwykly" });
-                ulgi.Items.Add(new ComboBoxItem() { Content = "Ulgowy" });
+
+                foreach (var ulga in context.ULGA)
+                {
+                    ulgi.Items.Add(new ComboBoxItem() { Content = ulga.Nazwa });
+                }
 
 
                 Grid.SetColumn(ulgi, 1);
@@ -135,8 +152,39 @@ namespace PzProject.ViewModel
 
         private void Buying(string metoda)
         {
-            MessageBox.Show(_phoneNumber+ " "+ metoda);
+            using (DatabasePZEntities db = new DatabasePZEntities())
+            {
+                GODZINY updateSpot = db.GODZINY.Where(h => h.Godzina == _selectedHour).FirstOrDefault(s => s.Id_Seansu == _seance.SeansID);
+                char[] spots = updateSpot.Miejsca.ToCharArray();
+                foreach (var spot in _spots)
+                {
+                    BILET ticket = new BILET()
+                    {
+                        Potwierdzenie = 0,
+                        Imie = _firstName,
+                        Nazwisko = _lastName,
+                        Email = _email,
+                        Telefon = _phoneNumber,
+                        Id_Godziny = updateSpot.Id_Godziny,
+                        Id_ulga = _selectedDiscount + 1,
+                        Realizacja = 0,
+                        Miejsce = spot.SpotNumber - 1
+                    };
+                    db.BILET.Add(ticket);
+                    spot.IsAvailable = 1;
+                    spots[spot.SpotNumber - 1] = '1';
+                }
+                updateSpot.Miejsca = new string(spots);
+                db.SaveChanges();
+
+                // Tutaj bedzie przekierowanie do jakiegos api platnosci karta/gotowka
+
+                MessageBox.Show("Bilet kupiony - " + metoda);
+                NavigationManager.BackToMain();
+            }
+
         }
+
         private void PreviousPage()
         {
             NavigationManager.Back();

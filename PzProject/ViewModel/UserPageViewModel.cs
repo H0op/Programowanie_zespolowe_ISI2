@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using MyToolkit.Collections;
+using PzProject.Model;
 using PzProject.Utility;
 using PzProject.View;
 
@@ -49,7 +50,7 @@ namespace PzProject.ViewModel
 
         public UserPageViewModel()
         {
-            PreviousPageCommand = new RelayCommand(action => {NavigationManager.Back();});
+            PreviousPageCommand = new RelayCommand(action => {NavigationManager.BackToMain();});
             FakeBooking();
         }
 
@@ -65,12 +66,14 @@ namespace PzProject.ViewModel
         private void FakeBooking()
         {
             _bookingList = new ObservableCollection<string>();
-            _bookingList.Add("Rezerwacja 1");
-            _bookingList.Add("Rezerwacja 2");
-            _bookingList.Add("Rezerwacja 3");
-            _bookingList.Add("Rezerwacja 4");
-            _bookingList.Add("Rezerwacja 5");
-            _bookingList.Add("Rezerwacja 6");
+            using (DatabasePZEntities db = new DatabasePZEntities())
+            {
+                foreach (var bilet in db.BILET)
+                {
+                    string rezerwacja = bilet.Imie + " " + bilet.Nazwisko + " " + bilet.Email + " " + bilet.Telefon + " " + bilet.GODZINY.SEANS.Id_film + " " + bilet.GODZINY.Godzina;
+                    _bookingList.Add(rezerwacja);
+                }
+            }
             _filteredBookList = new ObservableCollectionView<string>(_bookingList);
         }
 

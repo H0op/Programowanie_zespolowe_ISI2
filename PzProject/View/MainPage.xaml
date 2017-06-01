@@ -34,7 +34,6 @@
             <!-- Lewy panel -->
             <TabControl Grid.Row="1"
                         BorderBrush="Gainsboro">
-                <!--Nowy Widok-->
                 <TabItem Header="{Binding Path=DataTime[0], Mode=TwoWay}">
                     <Grid >
                         <ListBox ItemsSource="{Binding Seances}"
@@ -328,6 +327,7 @@
                         </ListBox>
                     </Grid>
                 </TabItem>
+
 
 
             </TabControl>
