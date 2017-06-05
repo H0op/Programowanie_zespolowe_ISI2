@@ -11,6 +11,7 @@ using System.Windows.Input;
 using PzProject.Model;
 using PzProject.Utility;
 using PzProject.View;
+using System.ComponentModel.DataAnnotations;
 
 namespace PzProject.ViewModel
 {
@@ -61,8 +62,11 @@ namespace PzProject.ViewModel
             get { return _firstName; }
             set
             {
+                if (String.IsNullOrEmpty(value))
+                    throw new ArgumentException("To pole jest wymagane");
                 SetProperty(ref _firstName, value);
                 OnPropertyChanged("FirstName");
+
             }
         }
         public string LastName
@@ -70,6 +74,8 @@ namespace PzProject.ViewModel
             get { return _lastName; }
             set
             {
+                if (String.IsNullOrEmpty(value))
+                    throw new ArgumentException("To pole jest wymagane");
                 SetProperty(ref _lastName, value);
                 OnPropertyChanged("LastName");
             }
@@ -79,6 +85,10 @@ namespace PzProject.ViewModel
             get { return _email; }
             set
             {
+                if (String.IsNullOrEmpty(value))
+                    throw new ArgumentException("To pole jest wymagane");
+               if(!new EmailAddressAttribute().IsValid(value))
+                    throw new ArgumentException("Podany email jest bledny");
                 SetProperty(ref _email, value);
                 OnPropertyChanged("Email");
             }
@@ -88,6 +98,10 @@ namespace PzProject.ViewModel
             get { return _phoneNumber; }
             set
             {
+                if (String.IsNullOrEmpty(value))
+                    throw new ArgumentException("To pole nie moze byc puste");
+                if (value.Length > 9)
+                    throw new ArgumentException("Bledny numer");
                 SetProperty(ref _phoneNumber, value);
                 OnPropertyChanged("PhoneNumber");
             }
@@ -103,8 +117,9 @@ namespace PzProject.ViewModel
             _selectedHour = selectedHour;
 
             PreviousPageCommand = new RelayCommand(action => PreviousPage());
-            BookingCommand = new RelayCommand(action => Booking());
+            BookingCommand = new RelayCommand(action => Booking(), () => canBooking());
             _grid = CreateDiscount();
+
         }
 
         #endregion
@@ -158,34 +173,60 @@ namespace PzProject.ViewModel
             {
                 GODZINY updateSpot = db.GODZINY.Where(h => h.Godzina == _selectedHour).FirstOrDefault(s => s.Id_Seansu == _seance.SeansID);
                 char[] spots = updateSpot.Miejsca.ToCharArray();
-                foreach (var spot in _spots)
+
+
+                bool canBooking = _spots.Where(n => spots[n.SpotNumber - 1] == '0').Count() != 0;
+
+                if (canBooking)
                 {
-                    BILET ticket = new BILET()
+                    foreach (var spot in _spots)
                     {
-                        Potwierdzenie = 0,
-                        Imie = _firstName,
-                        Nazwisko = _lastName,
-                        Email = _email,
-                        Telefon = _phoneNumber,
-                        Id_Godziny = updateSpot.Id_Godziny,
-                        Id_ulga = _selectedDiscount+1,
-                        Realizacja = 0,
-                        Miejsce = spot.SpotNumber-1
-                    };
-                    db.BILET.Add(ticket);
-                    spot.IsAvailable = 1;
-                    spots[spot.SpotNumber - 1] = '1';
+                        BILET ticket = new BILET()
+                        {
+                            Potwierdzenie = 0,
+                            Imie = _firstName,
+                            Nazwisko = _lastName,
+                            Email = _email,
+                            Telefon = _phoneNumber,
+                            Id_Godziny = updateSpot.Id_Godziny,
+                            Id_ulga = _selectedDiscount + 1,
+                            Realizacja = 0,
+                            Miejsce = spot.SpotNumber - 1
+                        };
+                        db.BILET.Add(ticket);
+                        spot.IsAvailable = 1;
+                        spots[spot.SpotNumber - 1] = '1';
+                    }
+                    updateSpot.Miejsca = new string(spots);
+                    db.SaveChanges();
+                    MessageBox.Show("Bilet zarezerwowany.");
+                    NavigationManager.BackToMain();
                 }
-                updateSpot.Miejsca = new string(spots);
-                db.SaveChanges();
-                MessageBox.Show("Bilet zarezerwowany.");
-                NavigationManager.BackToMain();
+                else
+                {
+                    foreach (var spot in _spots)
+                    {
+                        spot.IsAvailable = 1;
+                    }
+                    MessageBox.Show("Miejsca zostaly juz przez kogos zarezerwowane. Prosze wybrac inne");
+                    NavigationManager.BackToMain();
+                }
+
             }
 
         }
         private void PreviousPage()
         {
             NavigationManager.Back();
+        }
+
+        private bool canBooking()
+        {
+            if (String.IsNullOrEmpty(_email) &&
+                String.IsNullOrEmpty(_firstName) &&
+                String.IsNullOrEmpty(_lastName) &&
+                String.IsNullOrEmpty(_phoneNumber)) return false;
+            else return true;
         }
 
         #endregion

@@ -46,6 +46,7 @@
           <Property Name="Data_zakonczenia" Type="date" />
           <Property Name="Id_sala" Type="int" />
           <Property Name="Id_film" Type="int" />
+          <Property Name="Nazwa_filmu" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="ULGA">
           <Key>
@@ -176,6 +177,7 @@
           <Property Name="Id_film" Type="Int32" />
           <NavigationProperty Name="SALA" Relationship="Self.FK_SEANS_SALA" FromRole="SEANS" ToRole="SALA" />
           <NavigationProperty Name="GODZINY" Relationship="DatabasePZModel.FK_GODZINY_ToTable" FromRole="SEANS" ToRole="GODZINY" />
+          <Property Name="Nazwa_filmu" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="ULGA">
           <Key>
@@ -311,6 +313,7 @@
           <EntitySetMapping Name="SEANS">
             <EntityTypeMapping TypeName="DatabasePZModel.SEANS">
               <MappingFragment StoreEntitySet="SEANS">
+                <ScalarProperty Name="Nazwa_filmu" ColumnName="Nazwa_filmu" />
                 <ScalarProperty Name="Id_seans" ColumnName="Id_seans" />
                 <ScalarProperty Name="Data_rozpoczecia" ColumnName="Data_rozpoczecia" />
                 <ScalarProperty Name="Data_zakonczenia" ColumnName="Data_zakonczenia" />

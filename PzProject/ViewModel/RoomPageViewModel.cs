@@ -69,8 +69,8 @@ namespace PzProject.ViewModel
         {
             PreviousPageCommand = new RelayCommand(action => PreviousPage());
             SelectSpotCommand = new RelayCommand(action => SelectSpot( (Spot)action ));
-            BookingCommand = new RelayCommand(action => Booking());
-            BuyingCommand = new RelayCommand(action => Buying());
+            BookingCommand = new RelayCommand(action => Booking(), () => _selectedSpots.Count != 0);
+            BuyingCommand = new RelayCommand(action => Buying(), () => _selectedSpots.Count != 0);
             _selectedSpots = new List<Spot>();
 
             _selectedHour = hour;
@@ -93,12 +93,14 @@ namespace PzProject.ViewModel
                 SpotButton selectedSpotButton = _grid.Children.Cast<SpotButton>().First(e => Grid.GetRow(e) == spot.Row && Grid.GetColumn(e) == spot.Column);
                 selectedSpotButton.Background = Brushes.Gray;
             }
-            else
+            else if (_selectedSpots.Count < 5)
             {
                 _selectedSpots.Add(spot);
-                SpotButton selectedSpotButton = _grid.Children.Cast<SpotButton>().First(e => Grid.GetRow(e) == spot.Row && Grid.GetColumn(e) == spot.Column);
+                SpotButton selectedSpotButton = _grid.Children.Cast<SpotButton>()
+                    .First(e => Grid.GetRow(e) == spot.Row && Grid.GetColumn(e) == spot.Column);
                 selectedSpotButton.Background = Brushes.ForestGreen;
             }
+            else MessageBox.Show("Mozesz wybrac max 5 miejsc.");
         }
 
         private Grid CreateView()
