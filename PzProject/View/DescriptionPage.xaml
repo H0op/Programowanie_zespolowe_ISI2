@@ -1,0 +1,124 @@
+﻿<Page x:Class="PzProject.View.DescriptionPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PzProject.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="1000"
+      Title="DescriptionPage">
+
+    <Grid Background="#DDD">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width=".5*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <!--lewa kolumna-->
+        <Grid Grid.Column="0" Margin="15" Background="wHITE">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+
+            </Grid.RowDefinitions>
+            <!--Zdjecie-->
+            <Image
+                    Source="{Binding Seans.Movie.ImageSrc, Converter={StaticResource ImageConverter}, Mode=TwoWay}"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    Grid.Column="0" />
+
+            <TextBlock Grid.Row="1" 
+                       Margin="20" 
+                       FontSize="15" 
+                       TextWrapping="Wrap" 
+                       FontStyle="Italic"
+                       Foreground="#666">
+                
+                <Run Text="Premiera: " FontWeight="Bold" />
+                <Run Text="{Binding Seans.Movie.ReleaseDate}" /><LineBreak />
+                
+                <Run Text="Produkcja: " FontWeight="Bold" />
+                <Run Text="{Binding Seans.Movie.ProductionCountries}" /><LineBreak />
+                
+                <Run Text="Gatunek: " FontWeight="Bold"/>
+                <Run Text="{Binding Seans.Movie.Genres}" /><LineBreak />
+                
+                <Run Text="Czas trwania: " FontWeight="Bold" />
+                <Run Text="{Binding Path=Seans.Movie.Length, Mode=OneWay}" /><LineBreak />
+                
+                <Run Text="Dla dorosłych: " FontWeight="Bold" />
+                <Run Text="{Binding Seans.Movie.Adult}" /><LineBreak />
+                
+                <Run Text="Reżyseria: " FontWeight="Bold" />
+                <Run Text="{Binding Seans.Movie.Director}" /><LineBreak />
+                
+                <Run Text="Scenariusz: " FontWeight="Bold" />
+                <Run Text="{Binding Seans.Movie.ScreenPlay}" /><LineBreak />
+                
+                <Run Text="Obsata: " FontWeight="Bold" />
+                <Run Text="{Binding Seans.Movie.Cast}" /><LineBreak />
+
+            </TextBlock>
+        </Grid>
+        
+        <!--prawa kolumna-->
+        <Grid Grid.Column="1" Margin="15" Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition MinHeight="80"/>
+            </Grid.RowDefinitions>
+            <!--Tytuł-->           
+            <TextBlock Text="{Binding Seans.Movie.Name}"                       
+                       TextWrapping="WrapWithOverflow" 
+                       Grid.Row="0" 
+                       Margin="10"
+                       FontSize="35" 
+                       FontWeight="Bold"/>
+
+            <!--Opis filmu-->
+            <TextBlock Text="{Binding Seans.Movie.Description}"
+                       Grid.Row="1" 
+                       TextWrapping="Wrap"
+                       FontSize="15" 
+                       Margin="10"
+                       Foreground="#666"/>
+
+
+            <TextBlock Grid.Row="4"
+                       Margin="50,10,50,5"
+                       FontSize="25"
+                       Foreground="DarkViolet"
+                       Text="Zarezerwuj / Kup bilet"/>
+
+            <Grid Grid.Row="5" Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+
+                <ContentPresenter HorizontalAlignment="Center"
+                                  Grid.Column="0"
+                                  Content="{Binding Path=Morning, Mode=TwoWay}" />
+                <ContentPresenter HorizontalAlignment="Center"
+                                  Grid.Column="1"
+                               Content="{Binding Path=Afternoon, Mode=TwoWay}" />
+                <ContentPresenter HorizontalAlignment="Center"
+                                  Grid.Column="2"
+                               Content="{Binding Path=Evening, Mode=TwoWay}" />
+                <Button Content="Powrót"
+                        Grid.Column="3"
+                        Width="100"
+                        Command="{Binding PowrotCommand}"/>
+
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

@@ -1,0 +1,419 @@
+﻿<Page x:Class="PzProject.View.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:local="clr-namespace:PzProject"
+
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      mc:Ignorable="d"
+      d:DesignHeight="360" d:DesignWidth="1000"
+      Title="MainPage">
+
+
+    <Grid Background="LightGray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Repertuar"
+                   FontSize="20"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Grid.Row="0" />
+
+        <Grid Grid.Row="1"
+              Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Lewy panel -->
+            <TabControl Grid.Row="1"
+                        BorderBrush="Gainsboro">
+                <TabItem Header="{Binding Path=DataTime[0], Mode=TwoWay}">
+                    <Grid>
+                        <ListBox ItemsSource="{Binding Seances}"
+                                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                 SelectedItem="{Binding Path=SelectedSeance, Mode=TwoWay}">
+
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel Orientation="Horizontal" />
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Border CornerRadius="8, 8, 8, 8"
+                                            Background="LightGray"
+                                            Margin="0, 5, 5, 5">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="0.9*" />
+                                                <RowDefinition Height="0.1*" />
+                                            </Grid.RowDefinitions>
+                                            <Image Source="{Binding Movie.ImageSrc, Converter={StaticResource ImageConverter}}"
+                                                   Width="150"
+                                                   Margin="5"
+                                                   Grid.Row="0" />
+                                            <TextBlock Grid.Row="1"
+                                                       Margin="5"
+                                                       Text="{Binding Movie.Name}"
+                                                       FontWeight="Bold"
+                                                       TextWrapping="Wrap"
+                                                       Width="160"
+                                                       HorizontalAlignment="Center" />
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="{Binding Path=DataTime[1], Mode=TwoWay}">
+                    <Grid>
+                        <ListBox ItemsSource="{Binding Seances}"
+                                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                 SelectedItem="{Binding Path=SelectedSeance, Mode=TwoWay}">
+
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel Orientation="Horizontal" />
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Border CornerRadius="8, 8, 8, 8"
+                                            Background="LightGray"
+                                            Margin="0, 5, 5, 5">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="0.9*" />
+                                                <RowDefinition Height="0.1*" />
+                                            </Grid.RowDefinitions>
+                                            <Image Source="{Binding Movie.ImageSrc, Converter={StaticResource ImageConverter}}"
+                                                   Width="150"
+                                                   Margin="5"
+                                                   Grid.Row="0" />
+                                            <TextBlock Grid.Row="1"
+                                                       Margin="5"
+                                                       Text="{Binding Movie.Name}"
+                                                       FontWeight="Bold"
+                                                       TextWrapping="Wrap"
+                                                       Width="160"
+                                                       HorizontalAlignment="Center" />
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="{Binding Path=DataTime[2], Mode=TwoWay}">
+                    <Grid>
+                        <ListBox ItemsSource="{Binding Seances}"
+                                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                 SelectedItem="{Binding Path=SelectedSeance, Mode=TwoWay}">
+
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel Orientation="Horizontal" />
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Border CornerRadius="8, 8, 8, 8"
+                                            Background="LightGray"
+                                            Margin="0, 5, 5, 5">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="0.9*" />
+                                                <RowDefinition Height="0.1*" />
+                                            </Grid.RowDefinitions>
+                                            <Image Source="{Binding Movie.ImageSrc, Converter={StaticResource ImageConverter}}"
+                                                   Width="150"
+                                                   Margin="5"
+                                                   Grid.Row="0" />
+                                            <TextBlock Grid.Row="1"
+                                                       Margin="5"
+                                                       Text="{Binding Movie.Name}"
+                                                       FontWeight="Bold"
+                                                       TextWrapping="Wrap"
+                                                       Width="160"
+                                                       HorizontalAlignment="Center" />
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="{Binding Path=DataTime[3], Mode=TwoWay}">
+                    <Grid>
+                        <ListBox ItemsSource="{Binding Seances}"
+                                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                 SelectedItem="{Binding Path=SelectedSeance, Mode=TwoWay}">
+
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel Orientation="Horizontal" />
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Border CornerRadius="8, 8, 8, 8"
+                                            Background="LightGray"
+                                            Margin="0, 5, 5, 5">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="0.9*" />
+                                                <RowDefinition Height="0.1*" />
+                                            </Grid.RowDefinitions>
+                                            <Image Source="{Binding Movie.ImageSrc, Converter={StaticResource ImageConverter}}"
+                                                   Width="150"
+                                                   Margin="5"
+                                                   Grid.Row="0" />
+                                            <TextBlock Grid.Row="1"
+                                                       Margin="5"
+                                                       Text="{Binding Movie.Name}"
+                                                       FontWeight="Bold"
+                                                       TextWrapping="Wrap"
+                                                       Width="160"
+                                                       HorizontalAlignment="Center" />
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="{Binding Path=DataTime[4], Mode=TwoWay}">
+                    <Grid>
+                        <ListBox ItemsSource="{Binding Seances}"
+                                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                 SelectedItem="{Binding Path=SelectedSeance, Mode=TwoWay}">
+
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel Orientation="Horizontal" />
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Border CornerRadius="8, 8, 8, 8"
+                                            Background="LightGray"
+                                            Margin="0, 5, 5, 5">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="0.9*" />
+                                                <RowDefinition Height="0.1*" />
+                                            </Grid.RowDefinitions>
+                                            <Image Source="{Binding Movie.ImageSrc, Converter={StaticResource ImageConverter}}"
+                                                   Width="150"
+                                                   Margin="5"
+                                                   Grid.Row="0" />
+                                            <TextBlock Grid.Row="1"
+                                                       Margin="5"
+                                                       Text="{Binding Movie.Name}"
+                                                       FontWeight="Bold"
+                                                       TextWrapping="Wrap"
+                                                       Width="160"
+                                                       HorizontalAlignment="Center" />
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="{Binding Path=DataTime[5], Mode=TwoWay}">
+                    <Grid>
+                        <ListBox ItemsSource="{Binding Seances}"
+                                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                 SelectedItem="{Binding Path=SelectedSeance, Mode=TwoWay}">
+
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel Orientation="Horizontal" />
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Border CornerRadius="8, 8, 8, 8"
+                                            Background="LightGray"
+                                            Margin="0, 5, 5, 5">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="0.9*" />
+                                                <RowDefinition Height="0.1*" />
+                                            </Grid.RowDefinitions>
+                                            <Image Source="{Binding Movie.ImageSrc, Converter={StaticResource ImageConverter}}"
+                                                   Width="150"
+                                                   Margin="5"
+                                                   Grid.Row="0" />
+                                            <TextBlock Grid.Row="1"
+                                                       Margin="5"
+                                                       Text="{Binding Movie.Name}"
+                                                       FontWeight="Bold"
+                                                       TextWrapping="Wrap"
+                                                       Width="160"
+                                                       HorizontalAlignment="Center" />
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="{Binding Path=DataTime[6], Mode=TwoWay}">
+                    <Grid>
+                        <ListBox ItemsSource="{Binding Seances}"
+                                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                 SelectedItem="{Binding Path=SelectedSeance, Mode=TwoWay}">
+
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel Orientation="Horizontal" />
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Border CornerRadius="8, 8, 8, 8"
+                                            Background="LightGray"
+                                            Margin="0, 5, 5, 5">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="0.9*" />
+                                                <RowDefinition Height="0.1*" />
+                                            </Grid.RowDefinitions>
+                                            <Image Source="{Binding Movie.ImageSrc, Converter={StaticResource ImageConverter}}"
+                                                   Width="150"
+                                                   Margin="5"
+                                                   Grid.Row="0" />
+                                            <TextBlock Grid.Row="1"
+                                                       Margin="5"
+                                                       Text="{Binding Movie.Name}"
+                                                       FontWeight="Bold"
+                                                       TextWrapping="Wrap"
+                                                       Width="160"
+                                                       HorizontalAlignment="Center" />
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Grid>
+                </TabItem>
+
+
+
+            </TabControl>
+
+            <!-- Prawy panel -->
+            <Grid Grid.Column="1"
+                  Margin="5 0 0 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.1*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="0.5*" />
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="1"
+                      Background="White"
+                      Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.5*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Image
+                        Source="{Binding SelectedSeance.Movie.ImageSrc, Converter={StaticResource ImageConverter}, Mode=TwoWay}"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top"
+                        Grid.Column="0" 
+                        Margin="5"/>
+
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="0.2*" />
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" Margin="5,0,0,0">
+                            <Run Text="Tytuł: " FontSize="15" FontWeight="Bold" />
+                            <Run Text="{Binding SelectedSeance.Movie.Name}" FontSize="15" FontWeight="Bold" /><LineBreak />
+                            <Run Text="Data premiery: " FontSize="10" />
+                            <Run Text="{Binding SelectedSeance.Movie.ReleaseDate}" /><LineBreak />
+                            <Run Text="Czas trwania: " FontSize="10" />
+                            <Run Text="{Binding SelectedSeance.Movie.Length, Mode=OneWay}" />
+                        </TextBlock>
+
+                        <TextBlock Grid.Row="1" TextWrapping="Wrap">
+                            <Run Text="Opis: " /><LineBreak />
+                            <Run Text="{Binding Path=SelectedSeance.Movie.Description}"/>
+                        </TextBlock>
+
+                        <Button Grid.Row="2" 
+                                Content="Szczegółowy opis filmu" 
+                                Width="180"
+                                HorizontalAlignment="Right"
+                                Command="{Binding MoreInfoCommand}"/>
+                                                             
+                    </Grid>
+
+                </Grid>
+
+                <Grid Grid.Row="2" Background="White" Margin="0 10 0 10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.1*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Column="0" Grid.Row="0" Text="Rano:" HorizontalAlignment="Center" />
+                    <TextBlock Grid.Column="1" Grid.Row="0" Text="Po poludniu:" HorizontalAlignment="Center" />
+                    <TextBlock Grid.Column="2" Grid.Row="0" Text="Wieczorem:" HorizontalAlignment="Center" />
+
+                    <!--Rano-->
+                    <Grid Grid.Column="0" Row="1" Margin=" 5 10 0 5">
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          Content="{Binding Path=Morning, Mode=TwoWay}" />
+                    </Grid>
+                    <!--Po poludniu-->
+                    <Grid Grid.Column="1" Row="1" Margin=" 5 10 0 5">
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          Content="{Binding Path=Afternoon, Mode=TwoWay}" />
+                    </Grid>
+                    <!--Wieczorem-->
+                    <Grid Grid.Column="2" Row="1" Margin=" 5 10 5 5">
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          Content="{Binding Path=Evening, Mode=TwoWay}" />
+                    </Grid>
+
+                </Grid>
+
+
+            </Grid>
+            
+            
+        </Grid>
+
+        <Button Content="Zaloguj" Width="70" Height="10" Margin="0 0 10 0"
+                VerticalAlignment="Center" HorizontalAlignment="Right"
+                Command="{Binding LoginCommand}"/>
+    </Grid>
+
+</Page>
