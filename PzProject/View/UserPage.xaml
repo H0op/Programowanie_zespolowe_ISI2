@@ -59,7 +59,6 @@
                         <DataGridTextColumn Binding="{Binding GODZINY.Godzina}" Header="Godzina" IsReadOnly="True"/>
                         <DataGridTextColumn Binding="{Binding Miejsce}" Header="Nr miejsca" IsReadOnly="True"/>
                         <DataGridTextColumn Binding="{Binding GODZINY.SEANS.SALA.Id_sala}" Header="Nr sali" IsReadOnly="True"/>
-                        <DataGridCheckBoxColumn Binding="{Binding Potwierdzenie}" Header="Potwierdzenie"/>
                         <DataGridCheckBoxColumn Binding="{Binding Realizacja}" Header="Realizacja"/>
                     </DataGrid.Columns>
 

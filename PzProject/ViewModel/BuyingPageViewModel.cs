@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using PzProject.Model;
+using PzProject.Network;
 using PzProject.Utility;
 using PzProject.View;
 
@@ -197,6 +198,14 @@ namespace PzProject.ViewModel
                     db.SaveChanges();
 
                     // Tutaj bedzie przekierowanie do jakiegos api platnosci karta/gotowka
+
+
+                    // tresc emaila
+                    string trescEmaila = "Tutaj bedzie jakas tresc emaila";
+
+                    SendEmail email = new SendEmail();
+                    email.SendAsync(_email, "Rezerwacja filmu", trescEmaila);
+
 
                     MessageBox.Show("Bilet kupiony - " + metoda);
                     NavigationManager.BackToMain();
