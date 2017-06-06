@@ -63,7 +63,7 @@
                                                        Margin="5"
                                                        Text="{Binding Movie.Name}"
                                                        FontWeight="Bold"
-                                                       TextWrapping="Wrap"
+                                                       TextWrapping="NoWrap"
                                                        Width="160"
                                                        HorizontalAlignment="Center" />
                                         </Grid>
@@ -103,7 +103,7 @@
                                                        Margin="5"
                                                        Text="{Binding Movie.Name}"
                                                        FontWeight="Bold"
-                                                       TextWrapping="Wrap"
+                                                       TextWrapping="NoWrap"
                                                        Width="160"
                                                        HorizontalAlignment="Center" />
                                         </Grid>
@@ -143,7 +143,7 @@
                                                        Margin="5"
                                                        Text="{Binding Movie.Name}"
                                                        FontWeight="Bold"
-                                                       TextWrapping="Wrap"
+                                                       TextWrapping="NoWrap"
                                                        Width="160"
                                                        HorizontalAlignment="Center" />
                                         </Grid>
@@ -183,7 +183,7 @@
                                                        Margin="5"
                                                        Text="{Binding Movie.Name}"
                                                        FontWeight="Bold"
-                                                       TextWrapping="Wrap"
+                                                       TextWrapping="NoWrap"
                                                        Width="160"
                                                        HorizontalAlignment="Center" />
                                         </Grid>
@@ -223,7 +223,7 @@
                                                        Margin="5"
                                                        Text="{Binding Movie.Name}"
                                                        FontWeight="Bold"
-                                                       TextWrapping="Wrap"
+                                                       TextWrapping="NoWrap"
                                                        Width="160"
                                                        HorizontalAlignment="Center" />
                                         </Grid>
@@ -263,7 +263,7 @@
                                                        Margin="5"
                                                        Text="{Binding Movie.Name}"
                                                        FontWeight="Bold"
-                                                       TextWrapping="Wrap"
+                                                       TextWrapping="NoWrap"
                                                        Width="160"
                                                        HorizontalAlignment="Center" />
                                         </Grid>
@@ -303,7 +303,7 @@
                                                        Margin="5"
                                                        Text="{Binding Movie.Name}"
                                                        FontWeight="Bold"
-                                                       TextWrapping="Wrap"
+                                                       TextWrapping="NoWrap"
                                                        Width="160"
                                                        HorizontalAlignment="Center" />
                                         </Grid>
@@ -349,7 +349,7 @@
                             <RowDefinition Height="0.2*" />
                         </Grid.RowDefinitions>
 
-                        <TextBlock Grid.Row="0" Margin="5,0,0,0">
+                        <TextBlock Grid.Row="0" Margin="5,0,0,0" TextWrapping="Wrap">
                             <Run Text="Tytuł: " FontSize="15" FontWeight="Bold" />
                             <Run Text="{Binding SelectedSeance.Movie.Name}" FontSize="15" FontWeight="Bold" /><LineBreak />
                             <Run Text="Data premiery: " FontSize="10" />

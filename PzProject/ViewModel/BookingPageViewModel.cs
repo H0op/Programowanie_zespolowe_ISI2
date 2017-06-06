@@ -12,6 +12,7 @@ using PzProject.Model;
 using PzProject.Utility;
 using PzProject.View;
 using System.ComponentModel.DataAnnotations;
+using PzProject.Network;
 
 namespace PzProject.ViewModel
 {
@@ -199,6 +200,14 @@ namespace PzProject.ViewModel
                     }
                     updateSpot.Miejsca = new string(spots);
                     db.SaveChanges();
+
+
+                    // tresc emaila
+                    string trescEmaila = "Tutaj bedzie jakas tresc emaila";
+
+                    SendEmail email = new SendEmail();
+                    email.SendAsync(_email, "Rezerwacja filmu", trescEmaila);
+
                     MessageBox.Show("Bilet zarezerwowany.");
                     NavigationManager.BackToMain();
                 }

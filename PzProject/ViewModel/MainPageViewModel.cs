@@ -5,6 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
+using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 using PzProject.Model;
 using PzProject.Network;
 using PzProject.Utility;
@@ -99,8 +101,7 @@ namespace PzProject.ViewModel
             _afternoon = new StackPanel();
             _evening = new StackPanel();
 
-            InitDataTime();
-            InitData();
+            LoadAsync();
 
         }
 
@@ -184,13 +185,23 @@ namespace PzProject.ViewModel
 
                 }
 
-                Seances.Add(new Seance(movie, rooms, hours, (DateTime)seans.Data_rozpoczecia, (DateTime)seans.Data_zakonczenia, seans.Id_seans));
+                
+                App.Current.Dispatcher.BeginInvoke((Action) delegate()
+                {
+                    Seances.Add(new Seance(movie, rooms, hours, (DateTime)seans.Data_rozpoczecia, (DateTime)seans.Data_zakonczenia, seans.Id_seans));
+                });
+
             }
         }
 
-        private async Task Load()
+        private async Task LoadAsync()
         {
-            await Task.Run(() => { InitData(); });
+
+            await Task.Run(() =>
+            {
+                InitDataTime(); 
+                InitData();
+            });
         }
         #endregion
 
