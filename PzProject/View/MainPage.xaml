@@ -10,7 +10,7 @@
       Title="MainPage">
 
 
-    <Grid Background="#B6CDBD">
+    <Grid Background="#2E294E">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*" />
             <RowDefinition Height="*" />
@@ -19,7 +19,7 @@
         <TextBlock Text="Repertuar"
                    FontSize="30"
                    FontWeight="Bold" 
-                   Foreground="#475849"
+                   Foreground="#E1E4ED"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
                    Grid.Row="0" />
@@ -37,7 +37,7 @@
                 <TabItem Header="{Binding Path=DataTime[0], Mode=TwoWay}">
                     <Grid >
                         <ListBox ItemsSource="{Binding Seances}"
-                                 Background="#F2F9F1" 
+                                 Background="#E1E4ED" 
                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                                  SelectedItem="{Binding Path=SelectedSeance, Mode=TwoWay}">
 
@@ -342,7 +342,7 @@
                 </Grid.RowDefinitions>
 
                 <Grid Grid.Row="1"
-                      Background="#F2F9F1"
+                      Background="#E1E4ED"
                       Margin="10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="0.5*" />
@@ -385,7 +385,7 @@
                 </Grid>
 
                 <Grid Grid.Row="2" 
-                      Background="#F2F9F1" 
+                      Background="#E1E4ED" 
                       Margin="10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />

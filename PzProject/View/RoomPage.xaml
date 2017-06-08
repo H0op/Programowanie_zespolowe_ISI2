@@ -7,7 +7,7 @@
       d:DesignHeight="360" d:DesignWidth="1000"
       Title="RoomPage">
 
-    <Grid Background="#B6CDBD">
+    <Grid Background="#2E294E">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*" />
             <RowDefinition Height="*" />
@@ -16,7 +16,7 @@
         <TextBlock Text="Wybór miejsca"
                    FontSize="28"
                    FontWeight="Bold" 
-                   Foreground="#475849"
+                   Foreground="#E1E4ED"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
                    Grid.Row="0" />
@@ -25,7 +25,7 @@
                    VerticalAlignment="Center"
                    Margin="5" FontWeight="Bold">
             <Run Text="Sala:"/>
-            <Run Text="{Binding Path=RoomNumber, Mode=OneWay}"/>
+            <Run Text="{Binding Path=RoomNumber, Mode=OneWay}" Foreground="#E1E4ED"/>
         </TextBlock>
 
         <Grid Grid.Row="1">
@@ -41,15 +41,16 @@
             </Grid.RowDefinitions>
 
             <TextBlock Grid.Row="0"
-                       HorizontalAlignment="Center"
+                       HorizontalAlignment="Left"
                        FontWeight="Bold"
-                       FontSize="30"
+                       FontSize="24"
                        Text="{Binding Path=Seance.Movie.Name}" 
+                       Foreground="#E1E4ED"
                        Grid.Column="0"                       
-                       Grid.ColumnSpan="1"/>
+                       Grid.ColumnSpan="2"/>
 
 
-            <Border Grid.Row="1" Background="#F2F9F1" BorderBrush="Gainsboro" BorderThickness="1" Grid.ColumnSpan="5">
+            <Border Grid.Row="1" Background="#E1E4ED" BorderBrush="Gainsboro" BorderThickness="1" Grid.ColumnSpan="5">
                 <ContentPresenter Margin="10"
                                   HorizontalAlignment="Center"
                                   Content="{Binding Path=Grid, Mode=TwoWay}" />

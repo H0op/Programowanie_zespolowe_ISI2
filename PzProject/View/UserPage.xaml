@@ -8,7 +8,7 @@
       d:DesignHeight="360" d:DesignWidth="1000"
       Title="UserPage">
 
-    <Grid Background="#B6CDBD">
+    <Grid Background="#2E294E">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*"/>
             <RowDefinition Height="*"/>
@@ -18,7 +18,7 @@
         <TextBlock Text="Panel Administracyjny" 
                    FontSize="22" 
                    FontWeight="Bold" 
-                   Foreground="#475849" 
+                   Foreground="#E1E4ED" 
                    HorizontalAlignment="Center"
                    Grid.Row="0"/>
         <Button Content="Powrot" Margin="5" Width="100"

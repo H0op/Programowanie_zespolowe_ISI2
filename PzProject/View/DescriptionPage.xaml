@@ -8,14 +8,14 @@
       d:DesignHeight="720" d:DesignWidth="1000"
       Title="DescriptionPage">
 
-    <Grid Background="#B6CDBD">
+    <Grid Background="#2E294E">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width=".5*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        
+
         <!--lewa kolumna-->
-        <Grid Grid.Column="0" Margin="15" Background="#F2F9F1">
+        <Grid Grid.Column="0" Margin="15" Background="#E1E4ED">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
@@ -61,9 +61,9 @@
 
             </TextBlock>
         </Grid>
-        
+
         <!--prawa kolumna-->
-        <Grid Grid.Column="1" Margin="15" Background="#F2F9F1">
+        <Grid Grid.Column="1" Margin="15" Background="#E1E4ED">
             <Grid.RowDefinitions>
                 <RowDefinition Height="0.4*"/>
                 <RowDefinition Height="0.8*"/>
@@ -71,7 +71,7 @@
                 <RowDefinition Height="0.3*"/>
                 <RowDefinition Height="0.5*"/>
             </Grid.RowDefinitions>
-            <!--Tytuł-->           
+            <!--Tytuł-->
             <TextBlock Text="{Binding Seans.Movie.Name}"                       
                        TextWrapping="WrapWithOverflow" 
                        Grid.Row="0" 
@@ -100,11 +100,11 @@
 
 
             <TextBlock Grid.Row="3"
-                       Margin="50,10,50,5"
+                       Margin="50,0,50,5"
                        FontSize="25"
                        FontWeight="Bold"
-                       Foreground="#475849"
-                       Text="Zarezerwuj / Kup bilet"/>
+                       Foreground="#2E294E"
+                       Text="Zarezerwuj / Kup bilet" Height="34" VerticalAlignment="Bottom"/>
 
             <Grid Grid.Row="4" Margin="10">
                 <Grid.ColumnDefinitions>

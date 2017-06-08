@@ -8,7 +8,7 @@
       d:DesignHeight="720" d:DesignWidth="500"
       Title="BookingPage">
 
-    <Grid Background="#B6CDBD">
+    <Grid Background="#2E294E">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.2*"/>
             <RowDefinition Height="0.6*"/>
@@ -18,7 +18,7 @@
         <TextBlock Text="Rezerwacja"
                    FontSize="30"
                    FontWeight="Bold" 
-                   Foreground="#475849"
+                   Foreground="#E1E4ED"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
                    Grid.Row="0"/>
@@ -35,10 +35,10 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <TextBlock Text="Imie: " FontSize="20" FontWeight="Bold" Grid.Row="0" Grid.Column="0" Margin="2" Foreground="#475849"/>
-            <TextBlock Text="Nazwisko: " FontSize="20" FontWeight="Bold" Grid.Row="1" Grid.Column="0" Margin="2" Foreground="#475849"/>
-            <TextBlock Text="Email: " FontSize="20" FontWeight="Bold" Grid.Row="2" Grid.Column="0" Margin="2" Foreground="#475849"/>
-            <TextBlock Text="Nr Telefonu: " FontSize="20" FontWeight="Bold" Grid.Row="3" Grid.Column="0" Margin="2" Foreground="#475849"/>
+            <TextBlock Text="Imie: " FontSize="20" FontWeight="Bold" Grid.Row="0" Grid.Column="0" Margin="2" Foreground="#E1E4ED"/>
+            <TextBlock Text="Nazwisko: " FontSize="20" FontWeight="Bold" Grid.Row="1" Grid.Column="0" Margin="2" Foreground="#E1E4ED"/>
+            <TextBlock Text="Email: " FontSize="20" FontWeight="Bold" Grid.Row="2" Grid.Column="0" Margin="2" Foreground="#E1E4ED"/>
+            <TextBlock Text="Nr Telefonu: " FontSize="20" FontWeight="Bold" Grid.Row="3" Grid.Column="0" Margin="2" Foreground="#E1E4ED"/>
 
             <TextBox Grid.Row="0" Grid.Column="1" Width="200" Margin="2" Text="{Binding Path=FirstName, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}"/>
             <TextBox Grid.Row="1" Grid.Column="1" Width="200" Margin="2" Text="{Binding Path=LastName,UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}"/>
