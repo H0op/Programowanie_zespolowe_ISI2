@@ -65,7 +65,7 @@
                                                        Margin="5"
                                                        Text="{Binding Movie.Name}"
                                                        FontWeight="Bold"
-                                                       TextWrapping="Wrap"
+                                                       TextWrapping="NoWrap"
                                                        Width="160"
                                                        HorizontalAlignment="Center" />
                                         </Grid>
@@ -107,7 +107,7 @@
                                                        Margin="5"
                                                        Text="{Binding Movie.Name}"
                                                        FontWeight="Bold"
-                                                       TextWrapping="Wrap"
+                                                       TextWrapping="NoWrap"
                                                        Width="160"
                                                        HorizontalAlignment="Center" />
                                         </Grid>
@@ -149,7 +149,7 @@
                                                        Margin="5"
                                                        Text="{Binding Movie.Name}"
                                                        FontWeight="Bold"
-                                                       TextWrapping="Wrap"
+                                                       TextWrapping="NoWrap"
                                                        Width="160"
                                                        HorizontalAlignment="Center" />
                                         </Grid>
@@ -191,7 +191,7 @@
                                                        Margin="5"
                                                        Text="{Binding Movie.Name}"
                                                        FontWeight="Bold"
-                                                       TextWrapping="Wrap"
+                                                       TextWrapping="NoWrap"
                                                        Width="160"
                                                        HorizontalAlignment="Center" />
                                         </Grid>
@@ -233,7 +233,7 @@
                                                        Margin="5"
                                                        Text="{Binding Movie.Name}"
                                                        FontWeight="Bold"
-                                                       TextWrapping="Wrap"
+                                                       TextWrapping="NoWrap"
                                                        Width="160"
                                                        HorizontalAlignment="Center" />
                                         </Grid>
@@ -275,7 +275,7 @@
                                                        Margin="5"
                                                        Text="{Binding Movie.Name}"
                                                        FontWeight="Bold"
-                                                       TextWrapping="Wrap"
+                                                       TextWrapping="NoWrap"
                                                        Width="160"
                                                        HorizontalAlignment="Center" />
                                         </Grid>
@@ -317,7 +317,7 @@
                                                        Margin="5"
                                                        Text="{Binding Movie.Name}"
                                                        FontWeight="Bold"
-                                                       TextWrapping="Wrap"
+                                                       TextWrapping="NoWrap"
                                                        Width="160"
                                                        HorizontalAlignment="Center" />
                                         </Grid>

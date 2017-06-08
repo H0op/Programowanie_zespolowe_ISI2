@@ -28,7 +28,6 @@
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="0.5*"/>
             </Grid.ColumnDefinitions>
 
             <Grid Grid.Row="0">
@@ -49,16 +48,31 @@
                              Width="400" Height="20"/>
                 </StackPanel>
 
-                <ListView Grid.Row="1" 
-                          Margin="10" 
-                          Background="#F2F9F1"
-                          ItemsSource="{Binding FilteredBookList}" Grid.ColumnSpan="2"/>
-            </Grid>
-                <Grid Grid.Column="1" 
-                      Background="#F2F9F1" 
-                      Margin="10">
+                <DataGrid Grid.Row="1" Margin="10" 
+                          ItemsSource="{Binding FilteredBookingList}"
+                          AutoGenerateColumns="False" CanUserAddRows="False" Grid.ColumnSpan="2"
+                          SelectedItem="{Binding SelectedBooking}">
+
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Imie}" Header="Imie" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding Nazwisko}" Header="Nazwisko" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding Email}" Header="Email" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding Telefon}" Header="Telefon" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding ULGA.Nazwa}" Header="Ulga" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding GODZINY.SEANS.Nazwa_filmu}" Header="Film" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding GODZINY.Godzina}" Header="Godzina" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding Miejsce}" Header="Nr miejsca" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding GODZINY.SEANS.SALA.Id_sala}" Header="Nr sali" IsReadOnly="True"/>
+                        <DataGridCheckBoxColumn Binding="{Binding Realizacja}" Header="Realizacja"/>
+                    </DataGrid.Columns>
+
+                </DataGrid>
+
             </Grid>
 
         </Grid>
+        <Button Grid.Row="2" Margin="5" Width="150"
+                HorizontalAlignment="Right" Content="Usun rezerwacje"
+                Command="{Binding RemoveCommand}"/>
     </Grid>
 </Page>

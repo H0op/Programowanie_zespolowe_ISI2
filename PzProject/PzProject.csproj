@@ -124,6 +124,7 @@
     </Compile>
     <Compile Include="Network\ApiRequester.cs" />
     <Compile Include="Network\MovieHelper.cs" />
+    <Compile Include="Network\SendEmail.cs" />
     <Compile Include="Utility\BindableBase.cs" />
     <Compile Include="Utility\Converters\Corventers.cs" />
     <Compile Include="Utility\NavigationManager.cs" />

@@ -25,6 +25,7 @@ namespace PzProject.Model
         public Nullable<System.DateTime> Data_zakonczenia { get; set; }
         public Nullable<int> Id_sala { get; set; }
         public Nullable<int> Id_film { get; set; }
+        public string Nazwa_filmu { get; set; }
     
         public virtual SALA SALA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
