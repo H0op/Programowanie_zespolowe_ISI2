@@ -78,8 +78,8 @@ namespace PzProject.Network
                 string adult = null;
                 if (movieFromApi.Adult) adult = "Tak";
                 else adult = "Nie";
-               
-                
+
+
                 movie = new Model.Movie(
                     movieFromApi.Title,
                     movieFromApi.Overview,
